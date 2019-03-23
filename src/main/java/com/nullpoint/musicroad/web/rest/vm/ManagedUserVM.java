@@ -15,7 +15,7 @@ public class ManagedUserVM extends UserDTO {
     public static final int PASSWORD_MAX_LENGTH = 100;
 
     @Size(min = PASSWORD_MIN_LENGTH, max = PASSWORD_MAX_LENGTH)
-    private String password;
+    private String password, bio, coverPicture;
     private Integer componentNumber;
     private Integer creationYear;
     private Genre genre;
@@ -62,7 +62,24 @@ public class ManagedUserVM extends UserDTO {
 
 	public void setCity(City city) {
 		this.city = city;
+    }
+
+    public String getBio() {
+		return bio;
 	}
+
+	public void setBio(String bio) {
+		this.bio = bio;
+    }
+    public String getCoverPicture() {
+		return coverPicture;
+	}
+
+	public void setCoverPiture(String cv) {
+		this.coverPicture = cv;
+	}
+
+
     @Override
     public String toString() {
         return "ManagedUserVM{" +

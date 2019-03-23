@@ -1,7 +1,6 @@
 package com.nullpoint.musicroad.service;
 
 import java.time.Instant;
-import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.HashSet;
 import java.util.List;
@@ -105,7 +104,7 @@ public class UserService {
 	}
 
 	public User registerUser(UserDTO userDTO, String password, Integer numberComponents, Integer creationYear,
-			Genre genre, City city) {
+			Genre genre, City city, String coverPicture, String bio) {
 		userRepository.findOneByLogin(userDTO.getLogin().toLowerCase()).ifPresent(existingUser -> {
 			boolean removed = removeNonActivatedUser(existingUser);
 			if (!removed) {
@@ -146,7 +145,9 @@ public class UserService {
 		newUserExtra.setCity(city);
 		newUserExtra.setCreationYear(creationYear);
 		newUserExtra.setGenre(genre);
-		newUserExtra.setComponentNumber(numberComponents);
+        newUserExtra.setComponentNumber(numberComponents);
+        newUserExtra.setBio(bio);
+        newUserExtra.setCoverPicture(coverPicture);
 		bandRepository.save(newUserExtra);
 		log.debug("Created Information for UserExtra: {}", newUserExtra);
 

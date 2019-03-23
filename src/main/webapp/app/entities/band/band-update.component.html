@@ -15,6 +15,16 @@
                         [(ngModel)]="band.bandName" />
                 </div>
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="musicroadApp.band.bio" for="field_bio">Bio</label>
+                    <input type="text" class="form-control" name="bio" id="field_bio"
+                        [(ngModel)]="band.bio" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="musicroadApp.band.coverPicture" for="field_coverPicture">Cover Picture</label>
+                    <input type="text" class="form-control" name="coverPicture" id="field_coverPicture"
+                        [(ngModel)]="band.coverPicture" />
+                </div>
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.componentNumber" for="field_componentNumber">Component Number</label>
                     <input type="number" class="form-control" name="componentNumber" id="field_componentNumber"
                         [(ngModel)]="band.componentNumber" />

@@ -20,6 +20,8 @@ export const enum Genre {
 export interface IBand {
     id?: number;
     bandName?: string;
+    bio?: string;
+    coverPicture?: string;
     componentNumber?: number;
     creationYear?: number;
     genre?: Genre;
@@ -32,6 +34,8 @@ export class Band implements IBand {
     constructor(
         public id?: number,
         public bandName?: string,
+        public bio?: string,
+        public coverPicture?: string,
         public componentNumber?: number,
         public creationYear?: number,
         public genre?: Genre,

@@ -6,6 +6,13 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "bio",
+            "fieldType": "String"
+        },{
+            "fieldName": "coverPicture",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "componentNumber",
             "fieldType": "Integer"
         },

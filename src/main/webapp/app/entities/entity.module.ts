@@ -15,6 +15,10 @@ import { RouterModule } from '@angular/router';
             {
                 path: 'collaboration',
                 loadChildren: './collaboration/collaboration.module#MusicroadCollaborationModule'
+            },
+            {
+                path: 'band',
+                loadChildren: './band/band.module#MusicroadBandModule'
             }
             /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
         ])

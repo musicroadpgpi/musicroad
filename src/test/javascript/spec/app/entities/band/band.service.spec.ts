@@ -21,7 +21,7 @@ describe('Service Tests', () => {
             service = injector.get(BandService);
             httpMock = injector.get(HttpTestingController);
 
-            elemDefault = new Band(0, 'AAAAAAA', 0, 0, Genre.Rock);
+            elemDefault = new Band(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 0, 0, Genre.Rock);
         });
 
         describe('Service methods', async () => {
@@ -56,6 +56,8 @@ describe('Service Tests', () => {
                 const returnedFromService = Object.assign(
                     {
                         bandName: 'BBBBBB',
+                        bio: 'BBBBBB',
+                        coverPicture: 'BBBBBB',
                         componentNumber: 1,
                         creationYear: 1,
                         genre: 'BBBBBB'
@@ -76,6 +78,8 @@ describe('Service Tests', () => {
                 const returnedFromService = Object.assign(
                     {
                         bandName: 'BBBBBB',
+                        bio: 'BBBBBB',
+                        coverPicture: 'BBBBBB',
                         componentNumber: 1,
                         creationYear: 1,
                         genre: 'BBBBBB'

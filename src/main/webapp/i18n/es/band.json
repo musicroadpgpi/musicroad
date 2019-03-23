@@ -17,12 +17,14 @@
                 "title": "Band"
             },
             "bandName": "Band Name",
+            "bio": "Bio",
+            "coverPicture": "Cover Picture",
             "componentNumber": "Component Number",
             "creationYear": "Creation Year",
             "genre": "Genre",
+            "user": "User",
             "city": "City",
-            "collaborations": "Collaborations",
-            "user": "User"
+            "collaborations": "Collaborations"
         }
     }
 }

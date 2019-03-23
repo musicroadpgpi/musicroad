@@ -33,6 +33,12 @@ public class Band implements Serializable {
     @Column(name = "band_name")
     private String bandName;
 
+    @Column(name = "bio")
+    private String bio;
+
+    @Column(name = "cover_picture")
+    private String coverPicture;
+
     @Column(name = "component_number")
     private Integer componentNumber;
 
@@ -78,6 +84,32 @@ public class Band implements Serializable {
 
     public void setBandName(String bandName) {
         this.bandName = bandName;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public Band bio(String bio) {
+        this.bio = bio;
+        return this;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public String getCoverPicture() {
+        return coverPicture;
+    }
+
+    public Band coverPicture(String coverPicture) {
+        this.coverPicture = coverPicture;
+        return this;
+    }
+
+    public void setCoverPicture(String coverPicture) {
+        this.coverPicture = coverPicture;
     }
 
     public Integer getComponentNumber() {
@@ -196,6 +228,8 @@ public class Band implements Serializable {
         return "Band{" +
             "id=" + getId() +
             ", bandName='" + getBandName() + "'" +
+            ", bio='" + getBio() + "'" +
+            ", coverPicture='" + getCoverPicture() + "'" +
             ", componentNumber=" + getComponentNumber() +
             ", creationYear=" + getCreationYear() +
             ", genre='" + getGenre() + "'" +

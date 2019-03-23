@@ -31,6 +31,8 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="bandName"><span jhiTranslate="musicroadApp.band.bandName">Band Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="bio"><span jhiTranslate="musicroadApp.band.bio">Bio</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="coverPicture"><span jhiTranslate="musicroadApp.band.coverPicture">Cover Picture</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="componentNumber"><span jhiTranslate="musicroadApp.band.componentNumber">Component Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="creationYear"><span jhiTranslate="musicroadApp.band.creationYear">Creation Year</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="genre"><span jhiTranslate="musicroadApp.band.genre">Genre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -43,6 +45,8 @@
             <tr *ngFor="let band of bands ;trackBy: trackId">
                 <td><a [routerLink]="['/band', band.id, 'view' ]">{{band.id}}</a></td>
                 <td>{{band.bandName}}</td>
+                <td>{{band.bio}}</td>
+                <td>{{band.coverPicture}}</td>
                 <td>{{band.componentNumber}}</td>
                 <td>{{band.creationYear}}</td>
                 <td jhiTranslate="{{'musicroadApp.Genre.' + band.genre}}">{{band.genre}}</td>

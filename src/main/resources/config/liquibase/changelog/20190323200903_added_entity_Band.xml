@@ -26,6 +26,14 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="bio" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="cover_picture" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="component_number" type="integer">
                 <constraints nullable="true" />
             </column>
