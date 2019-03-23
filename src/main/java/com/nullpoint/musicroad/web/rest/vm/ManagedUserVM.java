@@ -2,6 +2,8 @@ package com.nullpoint.musicroad.web.rest.vm;
 
 import com.nullpoint.musicroad.service.dto.UserDTO;
 import javax.validation.constraints.Size;
+import com.nullpoint.musicroad.domain.City;
+import com.nullpoint.musicroad.domain.enumeration.Genre;
 
 /**
  * View Model extending the UserDTO, which is meant to be used in the user management UI.
@@ -14,6 +16,10 @@ public class ManagedUserVM extends UserDTO {
 
     @Size(min = PASSWORD_MIN_LENGTH, max = PASSWORD_MAX_LENGTH)
     private String password;
+    private Integer componentNumber;
+    private Integer creationYear;
+    private Genre genre;
+    private City city;
 
     public ManagedUserVM() {
         // Empty constructor needed for Jackson.
@@ -26,7 +32,37 @@ public class ManagedUserVM extends UserDTO {
     public void setPassword(String password) {
         this.password = password;
     }
+    public Integer getComponentNumber() {
+		return componentNumber;
+	}
 
+	public void setComponentNumber(Integer componentNumber) {
+		this.componentNumber = componentNumber;
+	}
+
+	public Integer getCreationYear() {
+		return creationYear;
+	}
+
+	public void setCreationYear(Integer creationYear) {
+		this.creationYear = creationYear;
+	}
+
+	public Genre getGenre() {
+		return genre;
+	}
+
+	public void setGenre(Genre genre) {
+		this.genre = genre;
+	}
+
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
+	}
     @Override
     public String toString() {
         return "ManagedUserVM{" +

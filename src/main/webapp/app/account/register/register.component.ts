@@ -1,11 +1,17 @@
 import { Component, OnInit, AfterViewInit, Renderer, ElementRef } from '@angular/core';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiLanguageService } from 'ng-jhipster';
-
+import { IBand } from 'app/shared/model/band.model';
+import { BandService } from 'app/entities/band';
+import { ICity } from 'app/shared/model/city.model';
+import { ActivatedRoute } from '@angular/router';
+import { CityService } from 'app/entities/city';
 import { EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } from 'app/shared';
 import { LoginModalService } from 'app/core';
 import { Register } from './register.service';
+import { filter, map } from 'rxjs/operators';
+import { JhiAlertService } from 'ng-jhipster';
 
 @Component({
     selector: 'jhi-register',
@@ -20,16 +26,31 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     registerAccount: any;
     success: boolean;
     modalRef: NgbModalRef;
-
+    cities: ICity[];
+    band: IBand;
     constructor(
+        protected jhiAlertService: JhiAlertService,
         private languageService: JhiLanguageService,
+        protected bandService: BandService,
         private loginModalService: LoginModalService,
+        protected cityService: CityService,
         private registerService: Register,
         private elementRef: ElementRef,
-        private renderer: Renderer
+        private renderer: Renderer,
+        protected activatedRoute: ActivatedRoute
     ) {}
 
     ngOnInit() {
+        this.activatedRoute.data.subscribe(({ band }) => {
+            this.band = band;
+        });
+        this.cityService
+            .query()
+            .pipe(
+                filter((mayBeOk: HttpResponse<ICity[]>) => mayBeOk.ok),
+                map((response: HttpResponse<ICity[]>) => response.body)
+            )
+            .subscribe((res: ICity[]) => (this.cities = res), (res: HttpErrorResponse) => this.onError(res.message));
         this.success = false;
         this.registerAccount = {};
     }
@@ -62,6 +83,22 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         this.modalRef = this.loginModalService.open();
     }
 
+    protected onError(errorMessage: string) {
+        this.jhiAlertService.error(errorMessage, null, null);
+    }
+    trackCityById(index: number, item: ICity) {
+        return item.id;
+    }
+    getSelected(selectedVals: Array<any>, option: any) {
+        if (selectedVals) {
+            for (let i = 0; i < selectedVals.length; i++) {
+                if (option.id === selectedVals[i].id) {
+                    return selectedVals[i];
+                }
+            }
+        }
+        return option;
+    }
     private processError(response: HttpErrorResponse) {
         this.success = null;
         if (response.status === 400 && response.error.type === LOGIN_ALREADY_USED_TYPE) {

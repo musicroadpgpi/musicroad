@@ -49,6 +49,45 @@
                         </small>
                     </div>
                 </div>
+                <!--Propiedades extra de Band-->
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="musicroadApp.band.componentNumber" for="field_componentNumber">Component Number</label>
+                    <input type="number" class="form-control" name="componentNumber" id="field_componentNumber"
+                        [(ngModel)]="registerAccount.componentNumber" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="musicroadApp.band.creationYear" for="field_creationYear">Creation Year</label>
+                    <input type="number" class="form-control" name="creationYear" id="field_creationYear"
+                        [(ngModel)]="registerAccount.creationYear" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="musicroadApp.band.genre" for="field_genre">Genre</label>
+                    <select class="form-control" name="genre" [(ngModel)]="registerAccount.genre" id="field_genre" >
+                        <option value="Rock">{{'musicroadApp.Genre.Rock' | translate}}</option>
+                        <option value="RandB">{{'musicroadApp.Genre.RandB' | translate}}</option>
+                        <option value="Soul">{{'musicroadApp.Genre.Soul' | translate}}</option>
+                        <option value="Pop">{{'musicroadApp.Genre.Pop' | translate}}</option>
+                        <option value="Latin">{{'musicroadApp.Genre.Latin' | translate}}</option>
+                        <option value="Jazz">{{'musicroadApp.Genre.Jazz' | translate}}</option>
+                        <option value="HipHop">{{'musicroadApp.Genre.HipHop' | translate}}</option>
+                        <option value="Folk">{{'musicroadApp.Genre.Folk' | translate}}</option>
+                        <option value="Electronic">{{'musicroadApp.Genre.Electronic' | translate}}</option>
+                        <option value="Country">{{'musicroadApp.Genre.Country' | translate}}</option>
+                        <option value="Blues">{{'musicroadApp.Genre.Blues' | translate}}</option>
+                        <option value="Flamenco">{{'musicroadApp.Genre.Flamenco' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="musicroadApp.band.city" for="field_city">City</label>
+                    <select class="form-control" id="field_city" name="city" [(ngModel)]="registerAccount.city" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="cityOption.id === band.city?.id ? band.city : cityOption" *ngFor="let cityOption of cities; trackBy: trackCityById">{{cityOption.id}}</option>
+                    </select>
+                </div>
+
+
+
                 <div class="form-group">
                     <label class="form-control-label" for="email" jhiTranslate="global.form.email">Email</label>
                     <input type="email" class="form-control" id="email" name="email" #email="ngModel" placeholder="{{'global.form.email.placeholder' | translate}}"
