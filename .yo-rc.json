@@ -1,0 +1,38 @@
+{
+    "generator-jhipster": {
+        "promptValues": {
+            "packageName": "com.nullpoint.musicroad",
+            "nativeLanguage": "en"
+        },
+        "jhipsterVersion": "5.8.2",
+        "applicationType": "monolith",
+        "baseName": "musicroad",
+        "packageName": "com.nullpoint.musicroad",
+        "packageFolder": "com/nullpoint/musicroad",
+        "serverPort": "8080",
+        "authenticationType": "jwt",
+        "cacheProvider": "ehcache",
+        "enableHibernateCache": true,
+        "websocket": false,
+        "databaseType": "sql",
+        "devDatabaseType": "mysql",
+        "prodDatabaseType": "mysql",
+        "searchEngine": false,
+        "messageBroker": false,
+        "serviceDiscoveryType": "eureka",
+        "buildTool": "maven",
+        "enableSwaggerCodegen": false,
+        "jwtSecretKey": "YWQ0OGY3YjlkYTJlODBmNzNiZGMzMzVlZmI3ZTY5MzU0MTQ3OTkzNWJiMjQ1OTEwZDJiOWVlY2QxNDdlZWEwYTIyNWI1ZmI3M2VlYjgxYmU1YjcyOTJkYjU0NDI4YmQ0MGE0ZTRhMGE0MmExYjYyOGE3ZGU3YzczY2RjMzExYWI=",
+        "clientFramework": "angularX",
+        "useSass": true,
+        "clientPackageManager": "npm",
+        "testFrameworks": [],
+        "jhiPrefix": "jhi",
+        "entitySuffix": "",
+        "dtoSuffix": "DTO",
+        "otherModules": [],
+        "enableTranslation": true,
+        "nativeLanguage": "en",
+        "languages": ["en", "es"]
+    }
+}
