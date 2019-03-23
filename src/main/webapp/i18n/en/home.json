@@ -1,19 +1,20 @@
 {
     "home": {
-        "title": "Welcome, Java Hipster!",
-        "subtitle": "This is your homepage",
+        "world": "The world, in your hands",
+        "worldSubtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mattis est id lacus vehicula, vitae dictum neque efficitur. Morbi finibus nulla odio, ut ultricies dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mattis est id lacus vehicula, vitae dictum neque efficitur. Morbi finibus nulla odio",
+        "meet": "Meet new people. Make new fans.",
+        "title": "Welcome to Musicroad",
+        "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mattis est id lacus vehicula, vitae dictum neque efficitur. Morbi finibus nulla odio, ut ultricies dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mattis est id lacus vehicula, vitae dictum neque efficitur. Morbi finibus nulla odio",
+        "showtime": "It's showtime",
+        "showtimesubtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mattis est id lacus vehicula, vitae dictum neque efficitur. Morbi finibus nulla odio, ut ultricies dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mattis est id lacus vehicula, vitae dictum neque efficitur. Morbi finibus nulla odio",
         "logged": {
             "message": "You are logged in as user \"{{username}}\"."
         },
-        "question": "If you have any question on JHipster:",
-        "link": {
-            "homepage": "JHipster homepage",
-            "stackoverflow": "JHipster on Stack Overflow",
-            "bugtracker": "JHipster bug tracker",
-            "chat": "JHipster public chat room",
-            "follow": "follow @java_hipster on Twitter"
-        },
-        "like": "If you like JHipster, don't forget to give us a star on",
-        "github": "GitHub"
+        "socialTitle": "Follow us!",
+        "socialDescription": "If you want to fell the complete MusicRoad experience, check out our social networks.",
+        "relatedLinks": "Useful links",
+        "ourTeam": "The team",
+        "musicroadwork": "Musicroad method",
+        "teamTitle": "Meet the team"
     }
 }

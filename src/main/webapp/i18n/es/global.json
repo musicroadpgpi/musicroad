@@ -1,14 +1,28 @@
 {
     "global": {
+        "david": "Lider del equipo e Ingeniero de DevOps.",
+        "josemary": "Arquitecto de datos.",
+        "marina": "Diseñadora de UI / UX.",
+        "pablo": "Administrador de tecnologías Web-Server.",
+        "felipe": "Experto en seguridad.",
+        "antolin": "Portavoz y Administrador del sistema.",
+        "alfonso": "Programador de la aplicación.",
+        "regina": "Implementadora de Front-end y Márketing.",
+        "julian": "Especialista de aseguramiento de la calidad.",
+        "jesus": "Administrador de red.",
+        "javier": "Representante en StartUs e Ingeniero de pruebas.",
+        "juan": "Operaciones Front-end y Márketing.",
+        "frankie": "Encargado de Base de datos.",
         "title": "Musicroad",
-        "browsehappy":
-            "Está usando un navegador <strong>no actualizado</strong>. Por favor, <a href=\"http://browsehappy.com/?locale=en\">actualice su navegador</a> para mejorar su experiencia.",
+        "browsehappy": "Está usando un navegador <strong>no actualizado</strong>. Por favor, <a href=\"http://browsehappy.com/?locale=en\">actualice su navegador</a> para mejorar su experiencia.",
         "menu": {
+            "search": "Buscador",
             "home": "Inicio",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entidades",
                 "city": "City",
+                "group": "Group",
                 "band": "Band",
                 "collaboration": "Collaboration",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
@@ -54,8 +68,7 @@
                 "authenticated": {
                     "prefix": "Si desea ",
                     "link": "iniciar una sesión",
-                    "suffix":
-                        ", puede intentar con las cuentas predeterminadas:<br/>- Administrator (usuario=\"admin\" y contraseña=\"admin\") <br/>- Usuario (usuario=\"user\" y contraseña=\"user\")."
+                    "suffix": ", puede intentar con las cuentas predeterminadas:<br/>- Administrator (usuario=\"admin\" y contraseña=\"admin\") <br/>- Usuario (usuario=\"user\" y contraseña=\"user\")."
                 },
                 "register": {
                     "noaccount": "¿No tienes una cuenta todavía?",
@@ -103,7 +116,8 @@
             "edit": "Editar",
             "open": "Open",
             "save": "Guardar",
-            "view": "Vista"
+            "view": "Vista",
+            "collaboration": "Colaboración"
         },
         "detail": {
             "field": "Campo",

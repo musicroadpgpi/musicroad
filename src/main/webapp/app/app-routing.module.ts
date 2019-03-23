@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { errorRoute, navbarRoute } from './layouts';
 import { DEBUG_INFO_ENABLED } from 'app/app.constants';
+import { TeamComponent } from './team/team.component';
+import { SearcherComponent } from './searcher/searcher.component';
 
 const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
 
@@ -12,6 +14,14 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
                 {
                     path: 'admin',
                     loadChildren: './admin/admin.module#MusicroadAdminModule'
+                },
+                {
+                    path: 'team',
+                    component: TeamComponent
+                },
+                {
+                    path: 'searcher',
+                    component: SearcherComponent
                 },
                 ...LAYOUT_ROUTES
             ],

@@ -1,14 +1,28 @@
 {
     "global": {
+        "david": "Team leader & DevOps Engineer.",
+        "josemary": "Data Architect.",
+        "marina": "UI / UX Designer.",
+        "pablo": "Web-Server Technologies Manager.",
+        "felipe": "Security Expert.",
+        "antolin": "Spokesman & System administrator.",
+        "alfonso": "Applitation Developer.",
+        "regina": "Front-end Implementation & Marketing.",
+        "julian": "Quality Assurance Specialist.",
+        "jesus": "Network Manager.",
+        "javier": "StartUs representative & Test Engineer.",
+        "juan": "Fron-end operations & Marketing.",
+        "frankie": "Data Base Manager.",
         "title": "Musicroad",
-        "browsehappy":
-            "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
+        "browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
         "menu": {
+            "search": "Searcher",
             "home": "Home",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entities",
                 "city": "City",
+                "group": "Group",
                 "band": "Band",
                 "collaboration": "Collaboration",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
@@ -54,8 +68,7 @@
                 "authenticated": {
                     "prefix": "If you want to ",
                     "link": "sign in",
-                    "suffix":
-                        ", you can try the default accounts:<br/>- Administrator (login=\"admin\" and password=\"admin\") <br/>- User (login=\"user\" and password=\"user\")."
+                    "suffix": ", you can try the default accounts:<br/>- Administrator (login=\"admin\" and password=\"admin\") <br/>- User (login=\"user\" and password=\"user\")."
                 },
                 "register": {
                     "noaccount": "You don't have an account yet?",
@@ -103,7 +116,8 @@
             "edit": "Edit",
             "open": "Open",
             "save": "Save",
-            "view": "View"
+            "view": "View",
+            "collaboration": "Collaboration"
         },
         "detail": {
             "field": "Field",

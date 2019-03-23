@@ -20,9 +20,9 @@
             "componentNumber": "Component Number",
             "creationYear": "Creation Year",
             "genre": "Genre",
-            "user": "User",
             "city": "City",
-            "collaborations": "Collaborations"
+            "collaborations": "Collaborations",
+            "user": "User"
         }
     }
 }

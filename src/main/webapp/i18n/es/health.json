@@ -11,10 +11,6 @@
             "error": "Error"
         },
         "indicator": {
-            "discoveryComposite": "Discovery Composite",
-            "refreshScope": "Microservice Refresh Scope",
-            "configServer": "Microservice Config Server",
-            "hystrix": "Hystrix",
             "diskSpace": "Espacio en disco",
             "mail": "Email",
             "elasticsearch": "Elasticsearch",

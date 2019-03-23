@@ -5,7 +5,8 @@
                 "title": "Collaborations",
                 "createLabel": "Crear nuevo Collaboration",
                 "createOrEditLabel": "Crear o editar Collaboration",
-                "search": "Search for Collaboration"
+                "search": "Search for Collaboration",
+                "write": "Escribir el mensaje"
             },
             "created": "Un nuevo Collaboration ha sido creado con el identificador {{ param }}",
             "updated": "Un Collaboration ha sido actualizado con el identificador {{ param }}",

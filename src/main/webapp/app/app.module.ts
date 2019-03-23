@@ -20,6 +20,8 @@ import { MusicroadEntityModule } from './entities/entity.module';
 import * as moment from 'moment';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
+import { TeamComponent } from './team/team.component';
+import { SearcherComponent } from './searcher/searcher.component';
 
 @NgModule({
     imports: [
@@ -40,7 +42,16 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
         MusicroadEntityModule,
         MusicroadAppRoutingModule
     ],
-    declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
+    declarations: [
+        JhiMainComponent,
+        NavbarComponent,
+        ErrorComponent,
+        PageRibbonComponent,
+        ActiveMenuDirective,
+        FooterComponent,
+        TeamComponent,
+        SearcherComponent
+    ],
     providers: [
         {
             provide: HTTP_INTERCEPTORS,
