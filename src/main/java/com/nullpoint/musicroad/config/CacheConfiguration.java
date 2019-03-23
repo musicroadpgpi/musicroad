@@ -41,6 +41,11 @@ public class CacheConfiguration {
             cm.createCache(com.nullpoint.musicroad.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.nullpoint.musicroad.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.nullpoint.musicroad.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(com.nullpoint.musicroad.domain.City.class.getName(), jcacheConfiguration);
+            cm.createCache(com.nullpoint.musicroad.domain.Band.class.getName(), jcacheConfiguration);
+            cm.createCache(com.nullpoint.musicroad.domain.Band.class.getName() + ".collaborations", jcacheConfiguration);
+            cm.createCache(com.nullpoint.musicroad.domain.Collaboration.class.getName(), jcacheConfiguration);
+            cm.createCache(com.nullpoint.musicroad.domain.Collaboration.class.getName() + ".bands", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

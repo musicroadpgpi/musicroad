@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-band-heading" jhiTranslate="musicroadApp.band.home.createOrEditLabel">Create or edit a Band</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!band.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="band.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="musicroadApp.band.bandName" for="field_bandName">Band Name</label>
+                    <input type="text" class="form-control" name="bandName" id="field_bandName"
+                        [(ngModel)]="band.bandName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="musicroadApp.band.componentNumber" for="field_componentNumber">Component Number</label>
+                    <input type="number" class="form-control" name="componentNumber" id="field_componentNumber"
+                        [(ngModel)]="band.componentNumber" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="musicroadApp.band.creationYear" for="field_creationYear">Creation Year</label>
+                    <input type="number" class="form-control" name="creationYear" id="field_creationYear"
+                        [(ngModel)]="band.creationYear" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="musicroadApp.band.genre" for="field_genre">Genre</label>
+                    <select class="form-control" name="genre" [(ngModel)]="band.genre" id="field_genre" >
+                        <option value="Rock">{{'musicroadApp.Genre.Rock' | translate}}</option>
+                        <option value="RandB">{{'musicroadApp.Genre.RandB' | translate}}</option>
+                        <option value="Soul">{{'musicroadApp.Genre.Soul' | translate}}</option>
+                        <option value="Pop">{{'musicroadApp.Genre.Pop' | translate}}</option>
+                        <option value="Latin">{{'musicroadApp.Genre.Latin' | translate}}</option>
+                        <option value="Jazz">{{'musicroadApp.Genre.Jazz' | translate}}</option>
+                        <option value="HipHop">{{'musicroadApp.Genre.HipHop' | translate}}</option>
+                        <option value="Folk">{{'musicroadApp.Genre.Folk' | translate}}</option>
+                        <option value="Electronic">{{'musicroadApp.Genre.Electronic' | translate}}</option>
+                        <option value="Country">{{'musicroadApp.Genre.Country' | translate}}</option>
+                        <option value="Blues">{{'musicroadApp.Genre.Blues' | translate}}</option>
+                        <option value="Flamenco">{{'musicroadApp.Genre.Flamenco' | translate}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="musicroadApp.band.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" [(ngModel)]="band.user" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === band.user?.id ? band.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="musicroadApp.band.city" for="field_city">City</label>
+                    <select class="form-control" id="field_city" name="city" [(ngModel)]="band.city" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="cityOption.id === band.city?.id ? band.city : cityOption" *ngFor="let cityOption of cities; trackBy: trackCityById">{{cityOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="musicroadApp.band.collaborations" for="field_collaborations">Collaborations</label>
+                    <select class="form-control" id="field_collaborations" multiple name="collaborations" [(ngModel)]="band.collaborations">
+                        <option [ngValue]="getSelected(band.collaborations, collaborationOption)" *ngFor="let collaborationOption of collaborations; trackBy: trackCollaborationById">{{collaborationOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="band">
+            <h2><span jhiTranslate="musicroadApp.band.detail.title">Band</span> {{band.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="musicroadApp.band.bandName">Band Name</span></dt>
+                <dd>
+                    <span>{{band.bandName}}</span>
+                </dd>
+                <dt><span jhiTranslate="musicroadApp.band.componentNumber">Component Number</span></dt>
+                <dd>
+                    <span>{{band.componentNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="musicroadApp.band.creationYear">Creation Year</span></dt>
+                <dd>
+                    <span>{{band.creationYear}}</span>
+                </dd>
+                <dt><span jhiTranslate="musicroadApp.band.genre">Genre</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'musicroadApp.Genre.' + band.genre}}">{{band.genre}}</span>
+                </dd>
+                <dt><span jhiTranslate="musicroadApp.band.user">User</span></dt>
+                <dd>
+                    {{band.user?.id}}
+                </dd>
+                <dt><span jhiTranslate="musicroadApp.band.city">City</span></dt>
+                <dd>
+                    <div *ngIf="band.city">
+                        <a [routerLink]="['/city', band.city?.id, 'view']">{{band.city?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="musicroadApp.band.collaborations">Collaborations</span></dt>
+                <dd>
+                    <span *ngFor="let collaborations of band.collaborations; let last = last">
+                        <a [routerLink]="['/collaboration', collaborations?.id, 'view' ]">{{collaborations.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/band', band.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

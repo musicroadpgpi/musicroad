@@ -1,0 +1,19 @@
+{
+    "musicroadApp": {
+        "Genre": {
+            "null": "",
+            "Rock": "Rock",
+            "RandB": "RandB",
+            "Soul": "Soul",
+            "Pop": "Pop",
+            "Latin": "Latin",
+            "Jazz": "Jazz",
+            "HipHop": "HipHop",
+            "Folk": "Folk",
+            "Electronic": "Electronic",
+            "Country": "Country",
+            "Blues": "Blues",
+            "Flamenco": "Flamenco"
+        }
+    }
+}

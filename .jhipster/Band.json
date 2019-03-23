@@ -1,0 +1,57 @@
+{
+    "name": "Band",
+    "fields": [
+        {
+            "fieldName": "bandName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "componentNumber",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "creationYear",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "genre",
+            "fieldType": "Genre",
+            "fieldValues": "Rock,RandB,Soul,Pop,Latin,Jazz,HipHop,Folk,Electronic,Country,Blues,Flamenco"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "band",
+            "relationshipName": "user",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "city",
+            "otherEntityRelationshipName": "band",
+            "relationshipName": "city",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "collaboration",
+            "otherEntityRelationshipName": "bands",
+            "relationshipName": "collaborations",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20190323200903",
+    "entityTableName": "band",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

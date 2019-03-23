@@ -1,0 +1,24 @@
+{
+    "musicroadApp": {
+        "collaboration": {
+            "home": {
+                "title": "Collaborations",
+                "createLabel": "Crear nuevo Collaboration",
+                "createOrEditLabel": "Crear o editar Collaboration",
+                "search": "Search for Collaboration"
+            },
+            "created": "Un nuevo Collaboration ha sido creado con el identificador {{ param }}",
+            "updated": "Un Collaboration ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Collaboration ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Collaboration {{ id }}?"
+            },
+            "detail": {
+                "title": "Collaboration"
+            },
+            "message": "Message",
+            "proposedDate": "Proposed Date",
+            "bands": "Bands"
+        }
+    }
+}

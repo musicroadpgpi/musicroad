@@ -1,0 +1,41 @@
+// JDL definition for application 'musicroad' generated with command 'jhipster export-jdl'
+entity City {
+  name String,
+  country String
+}
+entity Band {
+  bandName String,
+  componentNumber Integer,
+  creationYear Integer,
+  genre Genre
+}
+entity Collaboration {
+  message String,
+  proposedDate LocalDate
+}
+enum Genre {
+  Rock,
+  RandB,
+  Soul,
+  Pop,
+  Latin,
+  Jazz,
+  HipHop,
+  Folk,
+  Electronic,
+  Country,
+  Blues,
+  Flamenco
+}
+relationship OneToOne {
+  Band{user} to User
+}
+relationship ManyToOne {
+  Band{city} to City
+}
+relationship ManyToMany {
+  Band{collaborations} to Collaboration{bands}
+}
+paginate all with infinite-scroll
+service all with serviceImpl
+search Band with elasticsearch
