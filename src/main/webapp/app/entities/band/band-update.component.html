@@ -56,20 +56,20 @@
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.user" for="field_user">User</label>
                     <select class="form-control" id="field_user" name="user" [(ngModel)]="band.user" >
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="userOption.id === band.user?.id ? band.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+                        <option [ngValue]="userOption.id === band.user?.id ? band.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.firstName}}</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.city" for="field_city">City</label>
                     <select class="form-control" id="field_city" name="city" [(ngModel)]="band.city" >
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="cityOption.id === band.city?.id ? band.city : cityOption" *ngFor="let cityOption of cities; trackBy: trackCityById">{{cityOption.id}}</option>
+                        <option [ngValue]="cityOption.id === band.city?.id ? band.city : cityOption" *ngFor="let cityOption of cities; trackBy: trackCityById">{{cityOption.name}}</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label jhiTranslate="musicroadApp.band.collaborations" for="field_collaborations">Collaborations</label>
                     <select class="form-control" id="field_collaborations" multiple name="collaborations" [(ngModel)]="band.collaborations">
-                        <option [ngValue]="getSelected(band.collaborations, collaborationOption)" *ngFor="let collaborationOption of collaborations; trackBy: trackCollaborationById">{{collaborationOption.id}}</option>
+                        <option [ngValue]="getSelected(band.collaborations, collaborationOption)" *ngFor="let collaborationOption of collaborations; trackBy: trackCollaborationById">{{collaborationOption.proposedDate}}</option>
                     </select>
                 </div>
             </div>

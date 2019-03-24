@@ -44,6 +44,8 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         this.activatedRoute.data.subscribe(({ band }) => {
             this.band = band;
         });
+        this.success = false;
+        this.registerAccount = {};
         this.cityService
             .query()
             .pipe(
@@ -51,8 +53,6 @@ export class RegisterComponent implements OnInit, AfterViewInit {
                 map((response: HttpResponse<ICity[]>) => response.body)
             )
             .subscribe((res: ICity[]) => (this.cities = res), (res: HttpErrorResponse) => this.onError(res.message));
-        this.success = false;
-        this.registerAccount = {};
     }
 
     ngAfterViewInit() {
