@@ -22,6 +22,7 @@ import * as moment from 'moment';
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
 import { TeamComponent } from './team/team.component';
 import { SearcherComponent } from './searcher/searcher.component';
+import { MethodologyComponent } from './methodology/methodology.component';
 
 @NgModule({
     imports: [
@@ -50,7 +51,8 @@ import { SearcherComponent } from './searcher/searcher.component';
         ActiveMenuDirective,
         FooterComponent,
         TeamComponent,
-        SearcherComponent
+        SearcherComponent,
+        MethodologyComponent
     ],
     providers: [
         {

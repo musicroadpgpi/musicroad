@@ -4,7 +4,7 @@ import { errorRoute, navbarRoute } from './layouts';
 import { DEBUG_INFO_ENABLED } from 'app/app.constants';
 import { TeamComponent } from './team/team.component';
 import { SearcherComponent } from './searcher/searcher.component';
-
+import { MethodologyComponent } from './methodology/methodology.component';
 const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
 
 @NgModule({
@@ -18,6 +18,10 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
                 {
                     path: 'team',
                     component: TeamComponent
+                },
+                {
+                    path: 'methodology',
+                    component: MethodologyComponent
                 },
                 {
                     path: 'searcher',

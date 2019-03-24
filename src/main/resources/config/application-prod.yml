@@ -36,7 +36,7 @@ spring:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:mysql://localhost:3306/musicroad?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
         username: root
-        password:
+        password: KPDrBuR7KtaNXJLjsVvMFpq)pmep
         hikari:
             poolName: Hikari
             auto-commit: false
