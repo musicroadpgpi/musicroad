@@ -2,12 +2,12 @@
     "home": {
         "methodology": "Nuestra metodología",
         "world": "El mundo, en tus manos",
-        "worldSubtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mattis est id lacus vehicula, vitae dictum neque efficitur. Morbi finibus nulla odio, ut ultricies dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mattis est id lacus vehicula, vitae dictum neque efficitur. Morbi finibus nulla odio",
+        "worldSubtitle": "Hemos creado una cuadrícula de lugares que esperan ser explorados. Elegid un destino donde una banda activa está dispuesta a colaborar con vosotros.",
         "meet": "Conoce gente. Consigue fans.",
         "title": "¡Bienvenido a Musicroad!",
-        "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mattis est id lacus vehicula, vitae dictum neque efficitur. Morbi finibus nulla odio, ut ultricies dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mattis est id lacus vehicula, vitae dictum neque efficitur. Morbi finibus nulla odio",
-        "showtime": "Que comienze el espectáculo",
-        "showtimesubtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mattis est id lacus vehicula, vitae dictum neque efficitur. Morbi finibus nulla odio, ut ultricies dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mattis est id lacus vehicula, vitae dictum neque efficitur. Morbi finibus nulla odio",
+        "subtitle": "¿Sois músicos? ¿Formáis parte de una banda ameteur? Si queréis llevar vuestra banda a la fama, si os imagináis viajando y conociendo a nuevas personas, si buscáis nuevas experiencias... !Estáis en el sitio correcto! ¡Pasad a conocer a nuestro equipo y nuestra iniciativa!",
+        "showtime": "Que comience el espectáculo",
+        "showtimesubtitle": "Registraos en nuestra plataforma proporcionándonos el nombre de la banda, la ubicación y vuestro estilo musical. Ya estáis listos para buscar una colaboración, eligiendo el estilo de música preferido y la ciudad donde quiere tocar. Una vez que decida, complete el formulario de contacto y organice los detalles con su banda asociada. Vais a ser los teloneros de su espectáculo. Para completar la colaboración, invitad a la banda asociada a ser los vuestros.",
         "logged": {
             "message": "Está conectado como \"{{username}}\"."
         },
@@ -16,6 +16,7 @@
         "relatedLinks": "Te puede interesar",
         "ourTeam": "El equipo",
         "musicroadwork": "Método Musicroad",
-        "teamTitle": "Conoce al equipo"
+        "teamTitle": "Conoce al equipo",
+        "subtitleMeet": "MusicRoad os brinda la oportunidad de compartir vuestra pasión con otras personas, no solo con músicos, también con amantes de la música. Comparte la audiencia de otra banda, haz crecer de esta forma tu público y popularidad. Promociona tu música a millones de nuevos oyentes."
     }
 }
