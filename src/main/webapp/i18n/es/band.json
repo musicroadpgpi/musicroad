@@ -2,29 +2,29 @@
     "musicroadApp": {
         "band": {
             "home": {
-                "title": "Bands",
-                "createLabel": "Crear nuevo Band",
-                "createOrEditLabel": "Crear o editar Band",
-                "search": "Search for Band"
+                "title": "Bandas",
+                "createLabel": "Crear nueva banda",
+                "createOrEditLabel": "Crear o editar banda",
+                "search": "Buscar bandas"
             },
             "created": "Un nuevo Band ha sido creado con el identificador {{ param }}",
             "updated": "Un Band ha sido actualizado con el identificador {{ param }}",
             "deleted": "Un Band ha sido eliminado con el identificador {{ param }}",
             "delete": {
-                "question": "¿Seguro que quiere eliminar Band {{ id }}?"
+                "question": "¿Seguro que quiere eliminar la banda {{ id }}?"
             },
             "detail": {
-                "title": "Band"
+                "title": "Banda"
             },
-            "bandName": "Band Name",
+            "bandName": "Nombre de la banda",
             "bio": "Bio",
-            "coverPicture": "Cover Picture",
-            "componentNumber": "Component Number",
-            "creationYear": "Creation Year",
-            "genre": "Genre",
-            "user": "User",
-            "city": "City",
-            "collaborations": "Collaborations"
+            "coverPicture": "Foto de portada",
+            "componentNumber": "Número de componentes",
+            "creationYear": "Año de creación",
+            "genre": "Estilo musical",
+            "user": "Usuario asociado",
+            "city": "Cuidad",
+            "collaborations": "Colaboraciones"
         }
     }
 }

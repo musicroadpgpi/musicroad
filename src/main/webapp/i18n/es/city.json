@@ -2,22 +2,22 @@
     "musicroadApp": {
         "city": {
             "home": {
-                "title": "Cities",
-                "createLabel": "Crear nuevo City",
-                "createOrEditLabel": "Crear o editar City",
-                "search": "Search for City"
+                "title": "Ciudades",
+                "createLabel": "Crear nueva ciudad",
+                "createOrEditLabel": "Crear o editar ciudad",
+                "search": "Buscar una cuidad"
             },
             "created": "Un nuevo City ha sido creado con el identificador {{ param }}",
             "updated": "Un City ha sido actualizado con el identificador {{ param }}",
             "deleted": "Un City ha sido eliminado con el identificador {{ param }}",
             "delete": {
-                "question": "¿Seguro que quiere eliminar City {{ id }}?"
+                "question": "¿Seguro que quiere eliminar la cuidad {{ id }}?"
             },
             "detail": {
-                "title": "City"
+                "title": "Ciudad"
             },
-            "name": "Name",
-            "country": "Country"
+            "name": "Nombre",
+            "country": "País"
         }
     }
 }
