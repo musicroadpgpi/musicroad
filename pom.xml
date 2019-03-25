@@ -882,6 +882,16 @@
             <build>
                 <plugins>
                     <plugin>
+                        <groupId>com.microsoft.azure</groupId>
+                        <artifactId>azure-webapp-maven-plugin</artifactId>
+                        <version>1.5.4</version>
+                        <configuration>
+                            <resourceGroup>MusicRoad</resourceGroup>
+                            <appName>Musicroad</appName>
+                            <linuxRuntime>tomcat 9.0-jre8</linuxRuntime>
+                        </configuration>
+                    </plugin>
+                    <plugin>
                         <artifactId>maven-clean-plugin</artifactId>
                         <configuration>
                             <filesets>

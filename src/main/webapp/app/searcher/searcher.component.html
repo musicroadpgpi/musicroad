@@ -9,23 +9,34 @@
 
 <!--Boton de ciudad -->
 
-<div class="text-center">
+<div class="text-center row">
 
+    <div class="col-md-3">
 
-    <div class="form-group">
-        <label class="form-control-label" jhiTranslate="musicroadApp.band.genre" for="field_genre">Music Style</label>
-        <select class="form-control" >
-            <option *ngFor="let genre of genres">{{genre}}</option>
-
-        </select>
     </div>
 
-    <div class="form-group">
-        <label class="form-control-label" jhiTranslate="musicroadApp.band.city" for="field_genre">City</label>
-        <select class="form-control" >
-            <option *ngFor="let city of cities">{{city}}</option>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="musicroadApp.band.genre" for="field_genre">Music Style</label>
+            <select class="form-control" >
+                <option *ngFor="let genre of genres">{{genre}}</option>
 
-        </select>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="musicroadApp.band.city" for="field_genre">City</label>
+            <select class="form-control" >
+                <option *ngFor="let city of cities">{{city}}</option>
+
+            </select>
+        </div>
+    </div>
+
+
+
+    <div class="col-md-3">
+
     </div>
 
     </div>
@@ -46,7 +57,7 @@
 
 
 <div class="text-center">
-    <button type="button" class="btn btn-light btn-lg">Search</button>
+    <button type="button" class="btn btn-primary btn-lg">Search</button>
 
 </div>
 
