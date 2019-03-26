@@ -29,9 +29,6 @@ jobs:
     displayName: 'INSTALL: launch npm install'
   - script: |
       chmod +x mvnw
-      ./mvnw clean test
-    displayName: 'TESTS: backend'
-  - script: ./mvnw com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments='run test'
-    displayName: 'TESTS: frontend'
+      ./mvnw clean
   - script: ./mvnw verify -Pprod -DskipTests
     displayName: 'TESTS: packaging'
