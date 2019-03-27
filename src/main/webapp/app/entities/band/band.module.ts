@@ -21,7 +21,8 @@ const ENTITY_STATES = [...bandRoute, ...bandPopupRoute];
     declarations: [BandComponent, BandDetailComponent, BandUpdateComponent, BandDeleteDialogComponent, BandDeletePopupComponent],
     entryComponents: [BandComponent, BandUpdateComponent, BandDeleteDialogComponent, BandDeletePopupComponent],
     providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    exports: [BandComponent]
 })
 export class MusicroadBandModule {
     constructor(private languageService: JhiLanguageService, private languageHelper: JhiLanguageHelper) {

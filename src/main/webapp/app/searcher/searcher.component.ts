@@ -1,10 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BandService } from 'app/entities/band/band.service';
-import { HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { CityService } from 'app/entities/city/city.service';
+import { HttpErrorResponse, HttpHeaders, HttpResponse, HttpClient } from '@angular/common/http';
 import { JhiParseLinks, JhiAlertService } from 'ng-jhipster';
 import { Title } from '@angular/platform-browser';
 import { IBand } from 'app/shared/model/band.model';
+import { ICity, City } from 'app/shared/model/city.model';
+import { SERVER_API_URL } from 'app/app.constants';
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
     selector: 'jhi-searcher',
@@ -21,29 +25,19 @@ export class SearcherComponent implements OnInit {
     totalItems: number;
     title = 'app';
     genres = ['Rock', 'RandB', 'Soul', 'Pop', 'Latin', 'Jazz', 'HipHop', 'Folk', 'Electronic', 'Country', 'Blues', 'Flamenco'];
-    cities = [
-        'Madrid',
-        'Sevilla',
-        'Malaga',
-        'Huelva',
-        'Valladolid',
-        'Granada',
-        'Barcelona',
-        'Jaén',
-        'A Coruña',
-        'Guadalajara',
-        'Huesca',
-        'Lugo',
-        'La Rioja',
-        'Gipuzkoa',
-        'Pontevedra',
-        'Teruel'
-    ];
-    bands: IBand[];
+    // cities: string[] = ['Madrid' , 'Sevilla' , 'Malaga' , 'Huelva' , 'Valladolid' , 'Granada' , 'Barcelona' , 'Jaén' , 'A Coruña' , 'Guadalajara' , 'Huesca' , 'Lugo' , 'La Rioja' , 'Gipuzkoa' , 'Pontevedra' , 'Teruel'];
+    cities: ICity[] = [];
+    city: City;
+    bands: IBand[] = [];
+    cityes: ICity[];
+    formSearch: FormGroup;
+    fromSearcher = true;
 
     constructor(
         protected activatedRoute: ActivatedRoute,
         protected bandService: BandService,
+        protected cityService: CityService,
+        protected client: HttpClient,
         protected parseLinks: JhiParseLinks,
         protected jhiAlertService: JhiAlertService,
         private titleService: Title
@@ -83,11 +77,22 @@ export class SearcherComponent implements OnInit {
     //   }
 
     ngOnInit() {
+        const fBuilder: FormBuilder = new FormBuilder();
+        this.formSearch = fBuilder.group({
+            genre: ['', Validators.required],
+            city: ['', Validators.required]
+        });
+        this.client.get(SERVER_API_URL.concat('/api/cities')).subscribe((cityes: ICity[]) => {
+            cityes.forEach(element => {
+                this.cities[this.cities.length] = element;
+            });
+        });
         this.loadAll();
         this.titleService.setTitle('Search');
     }
 
     loadAll() {
+        console.log('ESTA ES LA QUERY '.concat(this.currentSearch));
         if (this.currentSearch) {
             this.bandService
                 .search({
@@ -147,6 +152,12 @@ export class SearcherComponent implements OnInit {
         this.reverse = false;
         this.currentSearch = query;
         this.loadAll();
+    }
+
+    onSubmit() {
+        const cityName: string = this.formSearch.get('city').value;
+        const genre: string = this.formSearch.get('genre').value;
+        this.search('genre.equals=' + genre + ' AND ' + 'name.equals=' + cityName);
     }
 
     protected paginateBands(data: IBand[], headers: HttpHeaders) {

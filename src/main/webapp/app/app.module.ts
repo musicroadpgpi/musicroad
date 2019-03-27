@@ -23,6 +23,8 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
 import { TeamComponent } from './team/team.component';
 import { SearcherComponent } from './searcher/searcher.component';
 import { MethodologyComponent } from './methodology/methodology.component';
+import { MusicroadCityModule } from './entities/city/city.module';
+import { MusicroadBandModule } from './entities/band/band.module';
 
 @NgModule({
     imports: [
@@ -41,7 +43,9 @@ import { MethodologyComponent } from './methodology/methodology.component';
         MusicroadAccountModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
         MusicroadEntityModule,
-        MusicroadAppRoutingModule
+        MusicroadAppRoutingModule,
+        MusicroadCityModule,
+        MusicroadBandModule
     ],
     declarations: [
         JhiMainComponent,
