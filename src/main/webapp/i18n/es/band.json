@@ -24,7 +24,9 @@
             "genre": "Estilo musical",
             "user": "Usuario asociado",
             "city": "Cuidad",
-            "collaborations": "Colaboraciones"
+            "collaborations": "Colaboraciones",
+            "picture": "Imagen",
+            "description": "Descripción"
         }
     }
 }

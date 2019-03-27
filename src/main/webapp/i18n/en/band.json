@@ -24,7 +24,9 @@
             "genre": "Musical style",
             "user": "Related user",
             "city": "City",
-            "collaborations": "Collaborations"
+            "collaborations": "Collaborations",
+            "picture": "Picture",
+            "description": "Description"
         }
     }
 }
