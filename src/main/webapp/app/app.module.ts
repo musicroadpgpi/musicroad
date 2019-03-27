@@ -25,6 +25,7 @@ import { SearcherComponent } from './searcher/searcher.component';
 import { MethodologyComponent } from './methodology/methodology.component';
 import { MusicroadCityModule } from './entities/city/city.module';
 import { MusicroadBandModule } from './entities/band/band.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [
@@ -45,7 +46,8 @@ import { MusicroadBandModule } from './entities/band/band.module';
         MusicroadEntityModule,
         MusicroadAppRoutingModule,
         MusicroadCityModule,
-        MusicroadBandModule
+        MusicroadBandModule,
+        ReactiveFormsModule
     ],
     declarations: [
         JhiMainComponent,
