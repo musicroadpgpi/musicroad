@@ -55,6 +55,9 @@ public class CollaborationResourceIntTest {
     private static final LocalDate DEFAULT_PROPOSED_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_PROPOSED_DATE = LocalDate.now(ZoneId.systemDefault());
 
+    private static final Boolean DEFAULT_ACCEPTED = false;
+    private static final Boolean UPDATED_ACCEPTED = true;
+
     @Autowired
     private CollaborationRepository collaborationRepository;
 
@@ -109,7 +112,8 @@ public class CollaborationResourceIntTest {
     public static Collaboration createEntity(EntityManager em) {
         Collaboration collaboration = new Collaboration()
             .message(DEFAULT_MESSAGE)
-            .proposedDate(DEFAULT_PROPOSED_DATE);
+            .proposedDate(DEFAULT_PROPOSED_DATE)
+            .accepted(DEFAULT_ACCEPTED);
         return collaboration;
     }
 
@@ -135,6 +139,7 @@ public class CollaborationResourceIntTest {
         Collaboration testCollaboration = collaborationList.get(collaborationList.size() - 1);
         assertThat(testCollaboration.getMessage()).isEqualTo(DEFAULT_MESSAGE);
         assertThat(testCollaboration.getProposedDate()).isEqualTo(DEFAULT_PROPOSED_DATE);
+        assertThat(testCollaboration.isAccepted()).isEqualTo(DEFAULT_ACCEPTED);
 
         // Validate the Collaboration in Elasticsearch
         verify(mockCollaborationSearchRepository, times(1)).save(testCollaboration);
@@ -174,7 +179,8 @@ public class CollaborationResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(collaboration.getId().intValue())))
             .andExpect(jsonPath("$.[*].message").value(hasItem(DEFAULT_MESSAGE.toString())))
-            .andExpect(jsonPath("$.[*].proposedDate").value(hasItem(DEFAULT_PROPOSED_DATE.toString())));
+            .andExpect(jsonPath("$.[*].proposedDate").value(hasItem(DEFAULT_PROPOSED_DATE.toString())))
+            .andExpect(jsonPath("$.[*].accepted").value(hasItem(DEFAULT_ACCEPTED.booleanValue())));
     }
     
     @Test
@@ -189,7 +195,8 @@ public class CollaborationResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(collaboration.getId().intValue()))
             .andExpect(jsonPath("$.message").value(DEFAULT_MESSAGE.toString()))
-            .andExpect(jsonPath("$.proposedDate").value(DEFAULT_PROPOSED_DATE.toString()));
+            .andExpect(jsonPath("$.proposedDate").value(DEFAULT_PROPOSED_DATE.toString()))
+            .andExpect(jsonPath("$.accepted").value(DEFAULT_ACCEPTED.booleanValue()));
     }
 
     @Test
@@ -216,7 +223,8 @@ public class CollaborationResourceIntTest {
         em.detach(updatedCollaboration);
         updatedCollaboration
             .message(UPDATED_MESSAGE)
-            .proposedDate(UPDATED_PROPOSED_DATE);
+            .proposedDate(UPDATED_PROPOSED_DATE)
+            .accepted(UPDATED_ACCEPTED);
 
         restCollaborationMockMvc.perform(put("/api/collaborations")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -229,6 +237,7 @@ public class CollaborationResourceIntTest {
         Collaboration testCollaboration = collaborationList.get(collaborationList.size() - 1);
         assertThat(testCollaboration.getMessage()).isEqualTo(UPDATED_MESSAGE);
         assertThat(testCollaboration.getProposedDate()).isEqualTo(UPDATED_PROPOSED_DATE);
+        assertThat(testCollaboration.isAccepted()).isEqualTo(UPDATED_ACCEPTED);
 
         // Validate the Collaboration in Elasticsearch
         verify(mockCollaborationSearchRepository, times(1)).save(testCollaboration);
@@ -289,7 +298,8 @@ public class CollaborationResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(collaboration.getId().intValue())))
             .andExpect(jsonPath("$.[*].message").value(hasItem(DEFAULT_MESSAGE)))
-            .andExpect(jsonPath("$.[*].proposedDate").value(hasItem(DEFAULT_PROPOSED_DATE.toString())));
+            .andExpect(jsonPath("$.[*].proposedDate").value(hasItem(DEFAULT_PROPOSED_DATE.toString())))
+            .andExpect(jsonPath("$.[*].accepted").value(hasItem(DEFAULT_ACCEPTED.booleanValue())));
     }
 
     @Test

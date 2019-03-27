@@ -8,6 +8,10 @@
         {
             "fieldName": "proposedDate",
             "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "accepted",
+            "fieldType": "Boolean"
         }
     ],
     "relationships": [
