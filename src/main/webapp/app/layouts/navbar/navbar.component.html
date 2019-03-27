@@ -150,7 +150,7 @@
                             <span jhiTranslate="global.menu.account.password">Password</span>
                         </a>
                     </li>
-                    <li *ngSwitchCase="true">
+                    <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
                         <a class="dropdown-item" routerLink="sessions" routerLinkActive="active" (click)="collapseNavbar()">
                             <fa-icon icon="cloud" fixedWidth="true"></fa-icon>
                             <span jhiTranslate="global.menu.account.sessions">Sessions</span>
