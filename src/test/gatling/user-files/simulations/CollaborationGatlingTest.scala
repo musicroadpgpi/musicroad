@@ -74,6 +74,7 @@ class CollaborationGatlingTest extends Simulation {
                 "id":null
                 , "message":"SAMPLE_TEXT"
                 , "proposedDate":"2020-01-01T00:00:00.000Z"
+                , "accepted":null
                 }""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_collaboration_url"))).exitHereIfFailed

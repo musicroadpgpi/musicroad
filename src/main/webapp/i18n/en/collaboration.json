@@ -5,8 +5,7 @@
                 "title": "Collaborations",
                 "createLabel": "Create a new Collaboration",
                 "createOrEditLabel": "Create or edit a Collaboration",
-                "search": "Search for Collaboration",
-                "write": "Write the message"
+                "search": "Search for Collaboration"
             },
             "created": "A new Collaboration is created with identifier {{ param }}",
             "updated": "A Collaboration is updated with identifier {{ param }}",
@@ -19,6 +18,7 @@
             },
             "message": "Message",
             "proposedDate": "Proposed Date",
+            "accepted": "Accepted",
             "bands": "Bands"
         }
     }

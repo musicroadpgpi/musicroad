@@ -25,7 +25,7 @@ describe('Service Tests', () => {
             httpMock = injector.get(HttpTestingController);
             currentDate = moment();
 
-            elemDefault = new Collaboration(0, 'AAAAAAA', currentDate);
+            elemDefault = new Collaboration(0, 'AAAAAAA', currentDate, false);
         });
 
         describe('Service methods', async () => {
@@ -71,7 +71,8 @@ describe('Service Tests', () => {
                 const returnedFromService = Object.assign(
                     {
                         message: 'BBBBBB',
-                        proposedDate: currentDate.format(DATE_FORMAT)
+                        proposedDate: currentDate.format(DATE_FORMAT),
+                        accepted: true
                     },
                     elemDefault
                 );
@@ -94,7 +95,8 @@ describe('Service Tests', () => {
                 const returnedFromService = Object.assign(
                     {
                         message: 'BBBBBB',
-                        proposedDate: currentDate.format(DATE_FORMAT)
+                        proposedDate: currentDate.format(DATE_FORMAT),
+                        accepted: true
                     },
                     elemDefault
                 );

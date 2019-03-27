@@ -35,6 +35,9 @@ public class Collaboration implements Serializable {
     @Column(name = "proposed_date")
     private LocalDate proposedDate;
 
+    @Column(name = "accepted")
+    private Boolean accepted;
+
     @ManyToMany(mappedBy = "collaborations")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JsonIgnore
@@ -73,6 +76,19 @@ public class Collaboration implements Serializable {
 
     public void setProposedDate(LocalDate proposedDate) {
         this.proposedDate = proposedDate;
+    }
+
+    public Boolean isAccepted() {
+        return accepted;
+    }
+
+    public Collaboration accepted(Boolean accepted) {
+        this.accepted = accepted;
+        return this;
+    }
+
+    public void setAccepted(Boolean accepted) {
+        this.accepted = accepted;
     }
 
     public Set<Band> getBands() {
@@ -127,6 +143,7 @@ public class Collaboration implements Serializable {
             "id=" + getId() +
             ", message='" + getMessage() + "'" +
             ", proposedDate='" + getProposedDate() + "'" +
+            ", accepted='" + isAccepted() + "'" +
             "}";
     }
 }
