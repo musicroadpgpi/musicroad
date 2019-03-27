@@ -53,6 +53,12 @@
                 <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
             </button>
 
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.addCollaboration"> Back</span>
+            </button>
+
             <button type="button"
                     [routerLink]="['/band', band.id, 'edit']"
                     class="btn btn-primary">

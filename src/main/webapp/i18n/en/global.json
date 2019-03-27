@@ -117,7 +117,8 @@
             "open": "Open",
             "save": "Save",
             "view": "View",
-            "collaboration": "Collaboration"
+            "collaboration": "Collaboration",
+            "addCollaboration": "Add collaboration"
         },
         "detail": {
             "field": "Field",

@@ -117,7 +117,8 @@
             "open": "Open",
             "save": "Guardar",
             "view": "Vista",
-            "collaboration": "Colaboración"
+            "collaboration": "Colaboración",
+            "addCollaboration": "Añadir colaboración"
         },
         "detail": {
             "field": "Campo",
