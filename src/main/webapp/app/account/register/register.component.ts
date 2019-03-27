@@ -25,8 +25,10 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     errorUserExists: string;
     registerAccount: any;
     success: boolean;
+    genres = ['Rock', 'RandB', 'Soul', 'Pop', 'Latin', 'Jazz', 'HipHop', 'Folk', 'Electronic', 'Country', 'Blues', 'Flamenco'];
     modalRef: NgbModalRef;
     cities: ICity[];
+    city: ICity;
     band: IBand;
     constructor(
         protected jhiAlertService: JhiAlertService,
