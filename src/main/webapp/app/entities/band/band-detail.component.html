@@ -23,7 +23,7 @@
 			<div class="col-sm-3">
 				<div class="text-center">
                     <h2>{{band.bandName}}</h2>
-                </br>
+                <br>
 				</div>
 				<div class='img-round'>
 					<img src='{{band.coverPicture}}'>
@@ -141,9 +141,12 @@
 
             <button type="button"
                     [routerLink]="['/band', band.id, 'edit']"
-                    class="btn btn-primary">
+                    class="btn btn-primary"
+                    *ngIf="user.authorities.includes('ROLE_ADMIN') || user.id === band.user.id">
                 <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
             </button>
         </div>
     </div>
 </div>
+
+{{user.authorities}}
