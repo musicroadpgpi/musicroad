@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
 
@@ -20,9 +20,11 @@ export class BandDetailComponent implements OnInit {
             this.band = band;
         });
         // Esto es para tener un usuario con el que hacer las comprobaciones de seguridad (4 líneas)
-        this.accountService.fetch().subscribe((response: HttpResponse<User>) => {
-            this.user = response.body;
-        });
+        if (this.user === undefined) {
+            this.accountService.fetch().subscribe((response: HttpResponse<User>) => {
+                this.user = response.body;
+            });
+        }
     }
 
     previousState() {

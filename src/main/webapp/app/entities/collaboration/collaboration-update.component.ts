@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { JhiAlertService } from 'ng-jhipster';
-import { ICollaboration } from 'app/shared/model/collaboration.model';
+import { ICollaboration, Collaboration } from 'app/shared/model/collaboration.model';
 import { CollaborationService } from './collaboration.service';
 import { IBand } from 'app/shared/model/band.model';
 import { BandService } from 'app/entities/band';
@@ -15,10 +15,10 @@ import { BandService } from 'app/entities/band';
     templateUrl: './collaboration-update.component.html'
 })
 export class CollaborationUpdateComponent implements OnInit {
-    collaboration: ICollaboration;
+    @Input() collaboration: ICollaboration;
     isSaving: boolean;
 
-    bands: IBand[];
+    @Input() bands: IBand[];
     proposedDateDp: any;
 
     constructor(
@@ -40,6 +40,9 @@ export class CollaborationUpdateComponent implements OnInit {
                 map((response: HttpResponse<IBand[]>) => response.body)
             )
             .subscribe((res: IBand[]) => (this.bands = res), (res: HttpErrorResponse) => this.onError(res.message));
+        if (this.collaboration === undefined) {
+            this.collaboration = new Collaboration();
+        }
     }
 
     previousState() {

@@ -22,7 +22,7 @@ const ENTITY_STATES = [...bandRoute, ...bandPopupRoute];
     entryComponents: [BandComponent, BandUpdateComponent, BandDeleteDialogComponent, BandDeletePopupComponent],
     providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    exports: [BandComponent]
+    exports: [BandComponent, BandDetailComponent]
 })
 export class MusicroadBandModule {
     constructor(private languageService: JhiLanguageService, private languageHelper: JhiLanguageHelper) {

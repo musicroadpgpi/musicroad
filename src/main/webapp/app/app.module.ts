@@ -26,6 +26,8 @@ import { MethodologyComponent } from './methodology/methodology.component';
 import { MusicroadCityModule } from './entities/city/city.module';
 import { MusicroadBandModule } from './entities/band/band.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CollaborationPetitionComponent } from './collaboration-petition/collaboration-petition.component';
+import { MusicroadCollaborationModule } from './entities/collaboration/collaboration.module';
 
 @NgModule({
     imports: [
@@ -47,6 +49,7 @@ import { ReactiveFormsModule } from '@angular/forms';
         MusicroadAppRoutingModule,
         MusicroadCityModule,
         MusicroadBandModule,
+        MusicroadCollaborationModule,
         ReactiveFormsModule
     ],
     declarations: [
@@ -58,6 +61,7 @@ import { ReactiveFormsModule } from '@angular/forms';
         FooterComponent,
         TeamComponent,
         SearcherComponent,
+        CollaborationPetitionComponent,
         MethodologyComponent
     ],
     providers: [

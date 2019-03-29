@@ -92,7 +92,6 @@ export class SearcherComponent implements OnInit {
     }
 
     loadAll() {
-        console.log('ESTA ES LA QUERY '.concat(this.currentSearch));
         if (this.currentSearch) {
             this.bandService
                 .search({

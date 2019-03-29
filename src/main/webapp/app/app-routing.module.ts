@@ -5,6 +5,10 @@ import { DEBUG_INFO_ENABLED } from 'app/app.constants';
 import { TeamComponent } from './team/team.component';
 import { SearcherComponent } from './searcher/searcher.component';
 import { MethodologyComponent } from './methodology/methodology.component';
+import { CollaborationPetitionComponent } from './collaboration-petition/collaboration-petition.component';
+import { BandResolve } from './entities/band/band.route';
+import { UserRouteAccessService } from 'app/core';
+
 const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
 
 @NgModule({
@@ -26,6 +30,18 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
                 {
                     path: 'searcher',
                     component: SearcherComponent
+                },
+                {
+                    path: 'collaboration-petition/:id/view',
+                    component: CollaborationPetitionComponent,
+                    resolve: {
+                        band: BandResolve
+                    },
+                    data: {
+                        authorities: ['ROLE_USER'],
+                        pageTitle: 'musicroadApp.band.home.title'
+                    },
+                    canActivate: [UserRouteAccessService]
                 },
                 ...LAYOUT_ROUTES
             ],
