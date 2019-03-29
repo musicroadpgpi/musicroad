@@ -1,5 +1,7 @@
 # musicroad
 
+Are you a musician? Do you belong to an amateur band? Would you like to be the opening group of another band at zero costs? MusicRoad is a service that will make communication between bands from different locations so much easy in order to share your public and facilities. You just have to arrange a show in your place and we will do the same at ours, an eye for an eye (a tooth for a tooth).
+
 This application was generated using JHipster 5.8.2, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v5.8.2](https://www.jhipster.tech/documentation-archive/v5.8.2).
 
 ## Development
