@@ -1,5 +1,6 @@
 {
     "global": {
+        "gpdr": "RGPD",
         "david": "Lider del equipo e Ingeniero de DevOps.",
         "josemary": "Arquitecto de datos y encargado de UI / UX.",
         "marina": "Diseñadora de UI / UX.",
