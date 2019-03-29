@@ -92,8 +92,7 @@ spring:
                 enabled: true
 
 server:
-    port: 9090 # 9090
-    port: 443
+    port: 9090
     ssl:
           key-store: classpath:config/tls/pkcs.p12
           key-store-password: premierlove
