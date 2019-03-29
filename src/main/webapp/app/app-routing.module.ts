@@ -8,6 +8,7 @@ import { MethodologyComponent } from './methodology/methodology.component';
 import { CollaborationPetitionComponent } from './collaboration-petition/collaboration-petition.component';
 import { BandResolve } from './entities/band/band.route';
 import { UserRouteAccessService } from 'app/core';
+import { GpdrComponent } from './gpdr/gpdr.component';
 
 const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
 
@@ -30,6 +31,10 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
                 {
                     path: 'searcher',
                     component: SearcherComponent
+                },
+                {
+                    path: 'gpdr',
+                    component: GpdrComponent
                 },
                 {
                     path: 'collaboration-petition/:id/view',

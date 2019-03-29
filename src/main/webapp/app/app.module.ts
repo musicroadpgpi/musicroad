@@ -28,6 +28,7 @@ import { MusicroadBandModule } from './entities/band/band.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CollaborationPetitionComponent } from './collaboration-petition/collaboration-petition.component';
 import { MusicroadCollaborationModule } from './entities/collaboration/collaboration.module';
+import { GpdrComponent } from './gpdr/gpdr.component';
 
 @NgModule({
     imports: [
@@ -62,7 +63,8 @@ import { MusicroadCollaborationModule } from './entities/collaboration/collabora
         TeamComponent,
         SearcherComponent,
         CollaborationPetitionComponent,
-        MethodologyComponent
+        MethodologyComponent,
+        GpdrComponent
     ],
     providers: [
         {
