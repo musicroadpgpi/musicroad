@@ -33,3 +33,33 @@ Main page styles
     background: url('../../content/images/world_points.png') no-repeat center;
     margin-bottom: 0%;
 }
+.parallax {
+    /* The image used */
+    background-image: url('../../content/images/worldvect.png');
+
+    /* Set a specific height */
+    height: 450px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.parallax_foc {
+    /* The image used */
+    background-image: url('../../content/images/spotlights.png');
+
+    /* Set a specific height */
+    height: 450px;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+@media only screen and (max-device-width: 700px) {
+    .parallax {
+        background-attachment: scroll;
+    }
+}
