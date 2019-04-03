@@ -7,7 +7,7 @@ import { Title } from '@angular/platform-browser';
 import { IBand } from 'app/shared/model/band.model';
 import { CollaborationService } from 'app/entities/collaboration';
 import { User, AccountService } from 'app/core';
-import { ICollaboration } from 'app/shared/model/collaboration.model';
+import { ICollaboration, Collaboration } from 'app/shared/model/collaboration.model';
 
 @Component({
     selector: 'jhi-collaboration-petition',
@@ -44,6 +44,19 @@ export class CollaborationPetitionComponent implements OnInit {
                 : '';
         this.activatedRoute.data.subscribe(({ band }) => {
             this.band = band;
+            this.accountService.fetch().subscribe((responseUser: HttpResponse<User>) => {
+                this.user = responseUser.body;
+                this.bandService.search('user.login.equals=' + this.user.login).subscribe((responseBand: HttpResponse<IBand[]>) => {
+                    responseBand.body.forEach((band1: IBand) => {
+                        this.bands.push(band1);
+                    });
+                    this.bands.push(this.band);
+                    if (this.collaboration === undefined) {
+                        this.collaboration = new Collaboration();
+                        this.collaboration.bands = this.bands;
+                    }
+                });
+            });
         });
     }
 
@@ -79,12 +92,6 @@ export class CollaborationPetitionComponent implements OnInit {
         this.titleService.setTitle('Collaboration petition');
         this.bands.push(this.band);
         // Esto es para tener un usuario con el que hacer las comprobaciones de seguridad (4 líneas)
-        this.accountService.fetch().subscribe((responseUser: HttpResponse<User>) => {
-            this.user = responseUser.body;
-            this.bandService.search('user.login.equals=' + this.user.login).subscribe((responseBand: HttpResponse<IBand[]>) => {
-                this.bands.push(responseBand.body[0]);
-            });
-        });
     }
 
     protected onError(errorMessage: string) {

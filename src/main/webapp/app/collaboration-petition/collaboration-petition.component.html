@@ -9,8 +9,13 @@
 
 <!--Boton de ciudad -->
 
-<jhi-band-detail></jhi-band-detail>
-<jhi-collaboration-update [bands]="bands" [collaboration]="collaboration" ></jhi-collaboration-update>
+<jhi-band-detail
+    [user] = "user"
+></jhi-band-detail>
+<jhi-collaboration-update 
+    [showingBandDetails] = "true" 
+    [collaboration] = "collaboration" >
+</jhi-collaboration-update>
 
 <br>
 

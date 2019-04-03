@@ -11,7 +11,7 @@ import { IBand } from 'app/shared/model/band.model';
 })
 export class BandDetailComponent implements OnInit {
     band: IBand;
-    user: User;
+    @Input() user: User;
 
     constructor(protected activatedRoute: ActivatedRoute, protected accountService: AccountService) {}
 

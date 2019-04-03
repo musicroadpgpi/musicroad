@@ -9,6 +9,7 @@ import { ICollaboration, Collaboration } from 'app/shared/model/collaboration.mo
 import { CollaborationService } from './collaboration.service';
 import { IBand } from 'app/shared/model/band.model';
 import { BandService } from 'app/entities/band';
+import { IUser, AccountService } from 'app/core';
 
 @Component({
     selector: 'jhi-collaboration-update',
@@ -18,30 +19,59 @@ export class CollaborationUpdateComponent implements OnInit {
     @Input() collaboration: ICollaboration;
     isSaving: boolean;
 
-    @Input() bands: IBand[];
+    bands: IBand[];
     proposedDateDp: any;
+
+    @Input() showingBandDetails: boolean;
+    user: IUser;
 
     constructor(
         protected jhiAlertService: JhiAlertService,
         protected collaborationService: CollaborationService,
         protected bandService: BandService,
+        protected accountService: AccountService,
         protected activatedRoute: ActivatedRoute
     ) {}
 
     ngOnInit() {
+        if (this.showingBandDetails !== true) {
+            this.showingBandDetails = false;
+        }
+        console.log('Mostrando = ' + this.showingBandDetails);
         this.isSaving = false;
-        this.activatedRoute.data.subscribe(({ collaboration }) => {
-            this.collaboration = collaboration;
-        });
-        this.bandService
-            .query()
-            .pipe(
-                filter((mayBeOk: HttpResponse<IBand[]>) => mayBeOk.ok),
-                map((response: HttpResponse<IBand[]>) => response.body)
-            )
-            .subscribe((res: IBand[]) => (this.bands = res), (res: HttpErrorResponse) => this.onError(res.message));
-        if (this.collaboration === undefined) {
-            this.collaboration = new Collaboration();
+        if (this.user === undefined) {
+            this.accountService.fetch().subscribe((principalResponse: HttpResponse<IUser>) => {
+                this.user = principalResponse.body;
+                if (this.showingBandDetails) {
+                    this.bands = [];
+                    this.activatedRoute.data.subscribe(({ band }) => {
+                        this.bands.push(band);
+                    });
+                    console.log('El usuario logueado ' + this.user);
+                    this.bandService
+                        .search({ query: 'user.login.equals=' + this.user.login })
+                        .subscribe((searchBandResponse: HttpResponse<IBand[]>) => {
+                            searchBandResponse.body.forEach((band: IBand) => {
+                                this.bands.push(band);
+                            });
+                        });
+                    if (this.collaboration === undefined) {
+                        this.collaboration = new Collaboration();
+                    }
+                }
+            });
+        }
+        if (!this.showingBandDetails) {
+            this.activatedRoute.data.subscribe(({ collaboration }) => {
+                this.collaboration = collaboration;
+            });
+            this.bandService
+                .query()
+                .pipe(
+                    filter((mayBeOk: HttpResponse<IBand[]>) => mayBeOk.ok),
+                    map((response: HttpResponse<IBand[]>) => response.body)
+                )
+                .subscribe((res: IBand[]) => (this.bands = res), (res: HttpErrorResponse) => this.onError(res.message));
         }
     }
 
@@ -59,12 +89,25 @@ export class CollaborationUpdateComponent implements OnInit {
     }
 
     protected subscribeToSaveResponse(result: Observable<HttpResponse<ICollaboration>>) {
-        result.subscribe((res: HttpResponse<ICollaboration>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
+        result.subscribe(
+            (res: HttpResponse<ICollaboration>) => {
+                this.onSaveSuccess();
+                this.bands.forEach((band: IBand) => {
+                    band.collaborations.push(res.body);
+                    console.log(band.collaborations);
+                    this.bandService.update(band).subscribe((savedBandResponse: HttpResponse<IBand>) => {
+                        console.log(savedBandResponse.body.collaborations);
+                        console.log('Se han actualizado una de las bandas');
+                    });
+                });
+            },
+            (res: HttpErrorResponse) => this.onSaveError()
+        );
     }
 
     protected onSaveSuccess() {
         this.isSaving = false;
-        this.previousState();
+        // this.previousState();
     }
 
     protected onSaveError() {
