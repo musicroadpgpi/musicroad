@@ -79,6 +79,7 @@ export class CollaborationUpdateComponent implements OnInit {
 
     save() {
         this.isSaving = true;
+        this.collaboration.accepted = false;
         if (this.collaboration.id !== undefined) {
             this.subscribeToSaveResponse(this.collaborationService.update(this.collaboration));
         } else {

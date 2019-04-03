@@ -46,16 +46,18 @@ export class CollaborationPetitionComponent implements OnInit {
             this.band = band;
             this.accountService.fetch().subscribe((responseUser: HttpResponse<User>) => {
                 this.user = responseUser.body;
-                this.bandService.search('user.login.equals=' + this.user.login).subscribe((responseBand: HttpResponse<IBand[]>) => {
-                    responseBand.body.forEach((band1: IBand) => {
-                        this.bands.push(band1);
+                this.bandService
+                    .search({ query: 'user.login.equals=' + this.user.login })
+                    .subscribe((responseBand: HttpResponse<IBand[]>) => {
+                        responseBand.body.forEach((band1: IBand) => {
+                            this.bands.push(band1);
+                        });
+                        this.bands.push(this.band);
+                        if (this.collaboration === undefined) {
+                            this.collaboration = new Collaboration();
+                            this.collaboration.bands = this.bands;
+                        }
                     });
-                    this.bands.push(this.band);
-                    if (this.collaboration === undefined) {
-                        this.collaboration = new Collaboration();
-                        this.collaboration.bands = this.bands;
-                    }
-                });
             });
         });
     }

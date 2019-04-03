@@ -32,12 +32,6 @@
       
       
       <div style="margin-top:10px">
-        <button type="submit"
-        (click)="previousState()"
-        class="btn btn-primary">
-    <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.addCollaboration"> Back</span>
-</button>
-        
       </ul>
       <hr class="d-sm-none">
       </div>
@@ -58,7 +52,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <p><b><div *ngIf="band.city">
-                                                    <a [routerLink]="['/city', band.city?.id, 'view']">{{band.city?.id}}</a>
+                                                    <a [routerLink]="['/city', band.city?.id, 'view']">{{band.city?.name}}</a>
                                                 </div></b></p>
                                             </div>
                                         </div>
@@ -133,12 +127,6 @@
                 <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
             </button>
 
-            <button type="submit"
-                    (click)="previousState()"
-                    class="btn btn-primary">
-                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.addCollaboration"> Back</span>
-            </button>
-
             <button type="button"
                     [routerLink]="['/band', band.id, 'edit']"
                     class="btn btn-primary"
@@ -148,5 +136,3 @@
         </div>
     </div>
 </div>
-
-{{user.authorities}}
