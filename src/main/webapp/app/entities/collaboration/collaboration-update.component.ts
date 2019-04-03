@@ -37,7 +37,6 @@ export class CollaborationUpdateComponent implements OnInit {
         if (this.showingBandDetails !== true) {
             this.showingBandDetails = false;
         }
-        console.log('Mostrando = ' + this.showingBandDetails);
         this.isSaving = false;
         if (this.user === undefined) {
             this.accountService.fetch().subscribe((principalResponse: HttpResponse<IUser>) => {
@@ -47,7 +46,6 @@ export class CollaborationUpdateComponent implements OnInit {
                     this.activatedRoute.data.subscribe(({ band }) => {
                         this.bands.push(band);
                     });
-                    console.log('El usuario logueado ' + this.user);
                     this.bandService
                         .search({ query: 'user.login.equals=' + this.user.login })
                         .subscribe((searchBandResponse: HttpResponse<IBand[]>) => {
@@ -94,11 +92,7 @@ export class CollaborationUpdateComponent implements OnInit {
                 this.onSaveSuccess();
                 this.bands.forEach((band: IBand) => {
                     band.collaborations.push(res.body);
-                    console.log(band.collaborations);
-                    this.bandService.update(band).subscribe((savedBandResponse: HttpResponse<IBand>) => {
-                        console.log(savedBandResponse.body.collaborations);
-                        console.log('Se han actualizado una de las bandas');
-                    });
+                    this.bandService.update(band).subscribe((savedBandResponse: HttpResponse<IBand>) => {});
                 });
             },
             (res: HttpErrorResponse) => this.onSaveError()
@@ -107,7 +101,7 @@ export class CollaborationUpdateComponent implements OnInit {
 
     protected onSaveSuccess() {
         this.isSaving = false;
-        // this.previousState();
+        this.previousState();
     }
 
     protected onSaveError() {
