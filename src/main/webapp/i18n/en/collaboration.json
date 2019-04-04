@@ -5,7 +5,8 @@
                 "title": "Collaborations",
                 "createLabel": "Create a new Collaboration",
                 "createOrEditLabel": "Create or edit a Collaboration",
-                "search": "Search for Collaboration"
+                "search": "Search for Collaboration",
+                "mycollaborations": "My Collaborations"
             },
             "created": "A new Collaboration is created with identifier {{ param }}",
             "updated": "A Collaboration is updated with identifier {{ param }}",

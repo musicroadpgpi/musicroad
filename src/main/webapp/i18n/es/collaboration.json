@@ -5,7 +5,8 @@
                 "title": "Collaborations",
                 "createLabel": "Crear nuevo Collaboration",
                 "createOrEditLabel": "Crear o editar Collaboration",
-                "search": "Search for Collaboration"
+                "search": "Search for Collaboration",
+                "mycollaborations": "Mis Collaborations"
             },
             "created": "Un nuevo Collaboration ha sido creado con el identificador {{ param }}",
             "updated": "Un Collaboration ha sido actualizado con el identificador {{ param }}",
@@ -16,10 +17,10 @@
             "detail": {
                 "title": "Collaboration"
             },
-            "message": "Message",
-            "proposedDate": "Proposed Date",
-            "accepted": "Accepted",
-            "bands": "Bands"
+            "message": "Mensaje",
+            "proposedDate": "Fecha propuesta",
+            "accepted": "Acceptada",
+            "bands": "Bandas"
         }
     }
 }
