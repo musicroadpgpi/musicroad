@@ -32,7 +32,7 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="message"><span jhiTranslate="musicroadApp.collaboration.message">Message</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="proposedDate"><span jhiTranslate="musicroadApp.collaboration.proposedDate">Proposed Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="accepted"><span jhiTranslate="musicroadApp.collaboration.accepted">Accepted</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="accepted" *ngIf="false"><span jhiTranslate="musicroadApp.collaboration.accepted">Accepted</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -41,7 +41,7 @@
                 <td><a [routerLink]="['/collaboration', collaboration.id, 'view' ]">{{collaboration.id}}</a></td>
                 <td>{{collaboration.message}}</td>
                 <td>{{collaboration.proposedDate | date:'mediumDate'}}</td>
-                <td>{{collaboration.accepted}}</td>
+                <td *ngIf="false">{{collaboration.accepted}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
