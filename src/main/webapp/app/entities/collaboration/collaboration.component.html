@@ -11,7 +11,7 @@
     <jhi-alert></jhi-alert>
     <div class="row">
         <div class="col-sm-12">
-            <form name="searchForm" class="form-inline">
+            <form *ngIf="false" name="searchForm" class="form-inline">
                 <div class="input-group w-100 mt-3">
                     <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'musicroadApp.collaboration.home.search' | translate }}">
                     <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
