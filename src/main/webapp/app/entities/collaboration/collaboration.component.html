@@ -1,7 +1,7 @@
 <div>
     <h2 id="page-heading">
         <span jhiTranslate="musicroadApp.collaboration.home.title">Collaborations</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-collaboration" [routerLink]="['/collaboration/new']">
+        <button *ngIf="false" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-collaboration" [routerLink]="['/collaboration/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span class="hidden-sm-down"  jhiTranslate="musicroadApp.collaboration.home.createLabel">
             Create new Collaboration
