@@ -26,6 +26,14 @@
                         </span>
                     </a>
                 </li>
+                <li *ngSwitchCase="true"  class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <a class="nav-link" routerLink="/collaboration/my-collaborations" (click)="collapseNavbar()">
+                          <span>
+                            <fa-icon icon="home"></fa-icon>
+                            <span jhiTranslate="musicroadApp.collaboration.home.mycollaborations">My collaborations</span>
+                        </span>
+                    </a>
+                </li>
                <ng-container *jhiHasAnyAuthority="'ROLE_ADMIN'">
              <li *ngSwitchCase="true"  class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                     <a class="nav-link" routerLink="/city" (click)="collapseNavbar()">
