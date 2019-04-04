@@ -52,11 +52,11 @@
                 <td>{{band.picture}}</td>
                 <td>
                     <div *ngIf="band.city">
-                        <a [routerLink]="['../city', band.city?.id, 'view' ]" >{{band.city?.id}}</a>
+                        <a [routerLink]="['../city', band.city?.id, 'view' ]" >{{band.city?.name}}</a>
                     </div>
                 </td>
                 <td>
-                    {{band.user?.id}}
+                    {{band.user?.login}}
                 </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">

@@ -26,7 +26,7 @@ export class BandComponent implements OnInit, OnDestroy {
     reverse: any;
     totalItems: number;
     @Input() fromSearcher: boolean;
-    @Input() currentSearch: string;
+    currentSearch: string;
     user: User;
 
     constructor(
@@ -37,6 +37,9 @@ export class BandComponent implements OnInit, OnDestroy {
         protected activatedRoute: ActivatedRoute,
         protected accountService: AccountService
     ) {
+        if (this.fromSearcher === null) {
+            this.fromSearcher = false;
+        }
         this.bands = [];
         this.itemsPerPage = ITEMS_PER_PAGE;
         this.page = 0;
@@ -49,9 +52,6 @@ export class BandComponent implements OnInit, OnDestroy {
             this.activatedRoute.snapshot && this.activatedRoute.snapshot.params['search']
                 ? this.activatedRoute.snapshot.params['search']
                 : '';
-        if (this.fromSearcher == null) {
-            this.fromSearcher = false;
-        }
         this.accountService.fetch().subscribe((response: HttpResponse<User>) => {
             this.user = response.body;
         });
@@ -123,7 +123,9 @@ export class BandComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.loadAll();
+        if (!this.fromSearcher) {
+            this.loadAll();
+        }
         this.accountService.identity().then(account => {
             this.currentAccount = account;
         });

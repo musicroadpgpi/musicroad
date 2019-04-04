@@ -9,6 +9,7 @@ import { IBand } from 'app/shared/model/band.model';
 import { ICity, City } from 'app/shared/model/city.model';
 import { SERVER_API_URL } from 'app/app.constants';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { ITEMS_PER_PAGE } from 'app/shared';
 
 @Component({
     selector: 'jhi-searcher',
@@ -87,6 +88,13 @@ export class SearcherComponent implements OnInit {
                 this.cities[this.cities.length] = element;
             });
         });
+        this.itemsPerPage = ITEMS_PER_PAGE;
+        this.page = 0;
+        this.links = {
+            last: 0
+        };
+        this.predicate = 'id';
+        this.reverse = true;
         this.loadAll();
         this.titleService.setTitle('Search');
     }
