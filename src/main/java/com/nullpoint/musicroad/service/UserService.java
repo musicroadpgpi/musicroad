@@ -103,7 +103,7 @@ public class UserService {
 		});
 	}
 
-	public User registerUser(UserDTO userDTO, String password, Integer numberComponents, Integer creationYear,
+	public User registerUser(UserDTO userDTO,String bandName, String password, Integer numberComponents, Integer creationYear,
 			Genre genre, City city, String coverPicture, String bio) {
 		userRepository.findOneByLogin(userDTO.getLogin().toLowerCase()).ifPresent(existingUser -> {
 			boolean removed = removeNonActivatedUser(existingUser);
@@ -142,6 +142,7 @@ public class UserService {
 		// Create and save the UserExtra entity
 		Band newUserExtra = new Band();
 		newUserExtra.setUser(newUser);
+		newUserExtra.setBandName(bandName);
 		newUserExtra.setCity(city);
 		newUserExtra.setCreationYear(creationYear);
 		newUserExtra.setGenre(genre);
