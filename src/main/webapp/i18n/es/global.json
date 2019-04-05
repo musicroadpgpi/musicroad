@@ -35,6 +35,7 @@
                 "sessions": "Sesiones",
                 "login": "Iniciar sesión",
                 "logout": "Cerrar la sesión",
+                "editBand": "Editar mi banda",
                 "register": "Crear una cuenta"
             },
             "admin": {

@@ -16,6 +16,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="musicroadApp.band.genre" for="field_genre">Music Style</label>
             <select formControlName="genre" class="form-control" >
+                <option></option>
                 <option *ngFor="let genre of genres">{{genre}}</option>
             </select>
         </div>
@@ -23,6 +24,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="musicroadApp.band.city" for="field_city">City</label>
             <select formControlName="city" class="form-control" >
+                <option></option>
                 <option *ngFor="let city of cities" >{{city.name}}</option>
             </select>
         </div>

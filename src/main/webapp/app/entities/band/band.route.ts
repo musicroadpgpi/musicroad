@@ -73,6 +73,16 @@ export const bandRoute: Routes = [
             pageTitle: 'musicroadApp.band.home.title'
         },
         canActivate: [UserRouteAccessService]
+    },
+
+    {
+        path: 'edit-my-band',
+        component: BandUpdateComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'musicroadApp.band.home.title'
+        },
+        canActivate: [UserRouteAccessService]
     }
 ];
 
