@@ -27,8 +27,13 @@ export class CollaborationDetailComponent implements OnInit {
                 .search({ query: 'id.equals=' + this.collaboration.id })
                 .subscribe((responseSearchBand: HttpResponse<IBand[]>) => {
                     this.collaboration.bands = responseSearchBand.body.filter((filtBand, filtInd, filtBands) => {
+                        console.log(filtBands);
                         return filtBand.collaborations.some((someCollab, someInd, someCollabs) => {
-                            return someCollab.id === this.collaboration.id;
+                            if (someCollab === null) {
+                                return false;
+                            } else {
+                                return someCollab.id === this.collaboration.id;
+                            }
                         });
                     });
                     console.log(this.collaboration.bands);
