@@ -23,9 +23,9 @@
             "entities": {
                 "main": "Entidades",
                 "city": "City",
-                "group": "Group",
-                "band": "Band",
-                "collaboration": "Collaboration",
+                "group": "Grupo",
+                "band": "Banda",
+                "collaboration": "Colaboraciones",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
