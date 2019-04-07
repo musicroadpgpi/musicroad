@@ -1,12 +1,28 @@
-
-<div *ngIf="invalidError" style="color:red">
-    {{ invalidError.message }}
+<div>
+    <form>
+        <input type="text" placeholder="Credit Card #" name="cardNumber">
+        <input type="text" placeholder="Expiration Month" name="expMonth">
+        <input type="text" placeholder="Expiration Year" name="expYear">
+        <input type="text" placeholder="CVC" name="cvc">
+        <button (click)="chargeCreditCard()">Submit</button>
+    </form>
 </div>
 
-<stripe-card #stripeCard
-             (catch)        = "$event"
-             [(token)]      = "token"
-             [(invalid)]    = "error"
-></stripe-card>
 
-<button type="button" (click)="stripeCard.createToken(extraData)">createToken</button>
+<!--
+<form action="/charge" method="post" id="payment-form">
+    <div class="form-row">
+        <label for="card-element">
+            Credit or debit card
+        </label>
+        <div id="card-element">
+            &lt;!&ndash; A Stripe Element will be inserted here. &ndash;&gt;
+        </div>
+
+        &lt;!&ndash; Used to display form errors. &ndash;&gt;
+        <div id="card-errors" role="alert"></div>
+    </div>
+
+    <button>Submit Payment</button>
+</form>
+-->
