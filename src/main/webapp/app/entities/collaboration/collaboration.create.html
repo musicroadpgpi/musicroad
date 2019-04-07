@@ -1,0 +1,24 @@
+<div>
+<h2 id="page-heading">
+	<span jhiTranslate="musicroadApp.collaboration.create.title">Create a Collaboration</span>
+</h2>
+<div class="row">
+        <div class="col-sm-12">
+            <form *ngIf="false" name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                	<span jhiTranslate="musicroadApp.collaboration.choose">Choose a date for the collaboration</span><br><br>
+                    <input type="date" class="dateInput" id="dateInput" name="dateInput" placeholder="{{ 'musicroadApp.collaboration.proposedDate' | translate }}">
+                </div>
+            </form>
+        </div>
+    </div>
+    <br><br>
+<div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/collaboration', collaboration.id, 'create' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.create">Create</span>
+                        </button>
+</div>
+</div>

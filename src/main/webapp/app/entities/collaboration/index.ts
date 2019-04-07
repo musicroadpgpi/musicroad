@@ -4,3 +4,4 @@ export * from './collaboration-delete-dialog.component';
 export * from './collaboration-detail.component';
 export * from './collaboration.component';
 export * from './collaboration.route';
+export * from './collaboration.create';
