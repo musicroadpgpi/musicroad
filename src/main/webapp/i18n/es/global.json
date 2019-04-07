@@ -1,5 +1,6 @@
 {
     "global": {
+        "gpdr": "RGPD",
         "david": "Lider del equipo e Ingeniero de DevOps.",
         "josemary": "Arquitecto de datos y encargado de UI / UX.",
         "marina": "Diseñadora de UI / UX.",
@@ -22,9 +23,9 @@
             "entities": {
                 "main": "Entidades",
                 "city": "City",
-                "group": "Group",
-                "band": "Band",
-                "collaboration": "Collaboration",
+                "group": "Grupo",
+                "band": "Banda",
+                "collaboration": "Colaboraciones",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -34,7 +35,10 @@
                 "sessions": "Sesiones",
                 "login": "Iniciar sesión",
                 "logout": "Cerrar la sesión",
-                "register": "Crear una cuenta"
+                "editBand": "Editar mi banda",
+                "register": "Crear una cuenta",
+                "register2": "¡Empecemos! Crear una cuenta",
+                "payment": "Pago"
             },
             "admin": {
                 "main": "Administración",

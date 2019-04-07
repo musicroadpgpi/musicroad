@@ -1,71 +1,46 @@
 
-<h3 class="text-center" style="align-content: center; color: #343F4B; font-size: 32pt ;margin-top: 50px; letter-spacing: 	 0.6px;">Find a band that wants to exchange a concert and just play!</h3></div>
+<h3 class="text-center" style="align-content: center; color: #343F4B; font-size: 32pt ;margin-top: 50px; letter-spacing: 	 0.6px;" jhiTranslate="musicroadApp.band.searcherTitle1">Find a band that wants to exchange a concert and just play!</h3></div>
 <br>
 
-<p  class="text-center" style="margin-top: -10px;align-content: center; font-size: 12pt; color: #47525E; word-spacing: 0.35px; letter-spacing: 0.35px;">Pick where do you want to play and which one is your style.</p>
+<p  class="text-center" style="margin-top: -10px;align-content: center; font-size: 12pt; color: #47525E; word-spacing: 0.35px; letter-spacing: 0.35px;" jhiTranslate="musicroadApp.band.searcherTitle2">Pick where do you want to play and which one is your style.</p>
 
 
 
 
 <!--Boton de ciudad -->
 
-<div class="text-center row">
+<div class="text-center">
 
-    <div class="col-md-3">
+    <form (ngSubmit)="onSubmit()" [formGroup]="formSearch">
 
-    </div>
-
-    <div class="col-md-6">
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="musicroadApp.band.genre" for="field_genre">Music Style</label>
-            <select class="form-control" >
+            <select formControlName="genre" class="form-control" >
+                <option></option>
                 <option *ngFor="let genre of genres">{{genre}}</option>
-
             </select>
         </div>
 
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="musicroadApp.band.city" for="field_genre">City</label>
-            <select class="form-control" >
-                <option *ngFor="let city of cities">{{city}}</option>
-
+            <label class="form-control-label" jhiTranslate="musicroadApp.band.city" for="field_city">City</label>
+            <select formControlName="city" class="form-control" >
+                <option></option>
+                <option *ngFor="let city of cities" >{{city.name}}</option>
             </select>
         </div>
-    </div>
 
+        <div class="text-center">
+            <button type="submit" class="btn btn-light btn-lg">Search</button>    
+        </div>
 
-
-    <div class="col-md-3">
-
-    </div>
-
-    </div>
-
-            <!--Boton de music style -->
-
-
+    </form>
     <br>
 
-
-
-
-
 <br>
 
-
-
-
-
-<div class="text-center">
-    <button type="button" class="btn btn-primary btn-lg">Search</button>
-
-</div>
-
-</div>
+<jhi-band [fromSearcher] = "true" [bands] = "bands"></jhi-band>
 
 <br>
-
-
 
 
 

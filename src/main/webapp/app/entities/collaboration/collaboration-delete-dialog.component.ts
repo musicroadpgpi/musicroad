@@ -7,6 +7,10 @@ import { JhiEventManager } from 'ng-jhipster';
 import { ICollaboration } from 'app/shared/model/collaboration.model';
 import { CollaborationService } from './collaboration.service';
 
+import { BandService } from 'app/entities/band/band.service';
+import { IBand } from 'app/shared/model/band.model';
+import { HttpResponse } from '@angular/common/http';
+
 @Component({
     selector: 'jhi-collaboration-delete-dialog',
     templateUrl: './collaboration-delete-dialog.component.html'
@@ -16,6 +20,7 @@ export class CollaborationDeleteDialogComponent {
 
     constructor(
         protected collaborationService: CollaborationService,
+        protected bandService: BandService,
         public activeModal: NgbActiveModal,
         protected eventManager: JhiEventManager
     ) {}
@@ -25,12 +30,33 @@ export class CollaborationDeleteDialogComponent {
     }
 
     confirmDelete(id: number) {
-        this.collaborationService.delete(id).subscribe(response => {
-            this.eventManager.broadcast({
-                name: 'collaborationListModification',
-                content: 'Deleted an collaboration'
+        this.bandService.search({ query: 'id.equals=' + id }).subscribe((searchBandsResponse: HttpResponse<IBand[]>) => {
+            let count = searchBandsResponse.body.length;
+            searchBandsResponse.body.forEach((band: IBand) => {
+                delete band.collaborations[
+                    band.collaborations.findIndex((collab: ICollaboration, ind: number, collabs: ICollaboration[]) => {
+                        let res = false;
+                        if (collabs[ind] !== null) {
+                            if (collabs[ind].id === id) {
+                                res = true;
+                            }
+                        }
+                        return res;
+                    })
+                ];
+                this.bandService.update(band).subscribe((updateBandResponse: HttpResponse<IBand>) => {
+                    count--;
+                    if (count === 0) {
+                        this.collaborationService.delete(id).subscribe(response => {
+                            this.eventManager.broadcast({
+                                name: 'collaborationListModification',
+                                content: 'Deleted an collaboration'
+                            });
+                            this.activeModal.dismiss(true);
+                        });
+                    }
+                });
             });
-            this.activeModal.dismiss(true);
         });
     }
 }

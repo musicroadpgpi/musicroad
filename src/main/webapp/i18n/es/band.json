@@ -23,8 +23,12 @@
             "creationYear": "Año de creación",
             "genre": "Estilo musical",
             "user": "Usuario asociado",
-            "city": "Cuidad",
-            "collaborations": "Colaboraciones"
+            "city": "Ciudad",
+            "collaborations": "Colaboraciones",
+            "picture": "Imagen",
+            "description": "Descripción",
+            "searcherTitle1": "¡Encuentra una banda que quiera intercambiar conciertos y tocad!",
+            "searcherTitle2": "Escoge dónde quieres tocar y cuál es tu estilo."
         }
     }
 }

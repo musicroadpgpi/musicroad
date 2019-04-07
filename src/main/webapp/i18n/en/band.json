@@ -24,7 +24,11 @@
             "genre": "Musical style",
             "user": "Related user",
             "city": "City",
-            "collaborations": "Collaborations"
+            "collaborations": "Collaborations",
+            "picture": "Picture",
+            "description": "Description",
+            "searcherTitle1": "Find a band that wants to exchange a concert and just play!",
+            "searcherTitle2": "Pick where do you want to play and which one is your style."
         }
     }
 }

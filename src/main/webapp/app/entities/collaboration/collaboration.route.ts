@@ -39,6 +39,15 @@ export const collaborationRoute: Routes = [
         canActivate: [UserRouteAccessService]
     },
     {
+        path: 'my-collaborations',
+        component: CollaborationComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'musicroadApp.collaboration.home.title'
+        },
+        canActivate: [UserRouteAccessService]
+    },
+    {
         path: ':id/view',
         component: CollaborationDetailComponent,
         resolve: {

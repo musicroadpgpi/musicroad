@@ -17,12 +17,19 @@ import { MusicroadAppRoutingModule } from './app-routing.module';
 import { MusicroadHomeModule } from './home/home.module';
 import { MusicroadAccountModule } from './account/account.module';
 import { MusicroadEntityModule } from './entities/entity.module';
+import { Module as StripeModule } from 'stripe-angular';
 import * as moment from 'moment';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
 import { TeamComponent } from './team/team.component';
 import { SearcherComponent } from './searcher/searcher.component';
 import { MethodologyComponent } from './methodology/methodology.component';
+import { MusicroadCityModule } from './entities/city/city.module';
+import { MusicroadBandModule } from './entities/band/band.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CollaborationPetitionComponent } from './collaboration-petition/collaboration-petition.component';
+import { MusicroadCollaborationModule } from './entities/collaboration/collaboration.module';
+import { GpdrComponent } from './gpdr/gpdr.component';
 
 @NgModule({
     imports: [
@@ -41,7 +48,12 @@ import { MethodologyComponent } from './methodology/methodology.component';
         MusicroadAccountModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
         MusicroadEntityModule,
-        MusicroadAppRoutingModule
+        MusicroadAppRoutingModule,
+        MusicroadCityModule,
+        MusicroadBandModule,
+        MusicroadCollaborationModule,
+        ReactiveFormsModule,
+        StripeModule.forRoot()
     ],
     declarations: [
         JhiMainComponent,
@@ -52,7 +64,9 @@ import { MethodologyComponent } from './methodology/methodology.component';
         FooterComponent,
         TeamComponent,
         SearcherComponent,
-        MethodologyComponent
+        CollaborationPetitionComponent,
+        MethodologyComponent,
+        GpdrComponent
     ],
     providers: [
         {

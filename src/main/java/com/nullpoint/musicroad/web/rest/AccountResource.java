@@ -58,7 +58,7 @@ public class AccountResource {
         if (!checkPasswordLength(managedUserVM.getPassword())) {
             throw new InvalidPasswordException();
         }
-        User user = userService.registerUser(managedUserVM, managedUserVM.getPassword(),
+        User user = userService.registerUser(managedUserVM,managedUserVM.getBandName(), managedUserVM.getPassword(),
         managedUserVM.getComponentNumber(), managedUserVM.getCreationYear(), managedUserVM.getGenre(),
         managedUserVM.getCity(),managedUserVM.getBio(),managedUserVM.getCoverPicture());
         mailService.sendActivationEmail(user);

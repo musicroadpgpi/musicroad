@@ -6,7 +6,7 @@ import { filter, map } from 'rxjs/operators';
 import { JhiAlertService } from 'ng-jhipster';
 import { IBand } from 'app/shared/model/band.model';
 import { BandService } from './band.service';
-import { IUser, UserService } from 'app/core';
+import { IUser, UserService, AccountService } from 'app/core';
 import { ICity } from 'app/shared/model/city.model';
 import { CityService } from 'app/entities/city';
 import { ICollaboration } from 'app/shared/model/collaboration.model';
@@ -32,6 +32,7 @@ export class BandUpdateComponent implements OnInit {
         protected userService: UserService,
         protected cityService: CityService,
         protected collaborationService: CollaborationService,
+        protected accountService: AccountService,
         protected activatedRoute: ActivatedRoute
     ) {}
 
@@ -39,6 +40,15 @@ export class BandUpdateComponent implements OnInit {
         this.isSaving = false;
         this.activatedRoute.data.subscribe(({ band }) => {
             this.band = band;
+            if (this.band === undefined) {
+                this.accountService.fetch().subscribe((fetchResponse: HttpResponse<IUser>) => {
+                    this.bandService
+                        .search({ query: 'login.equals=' + fetchResponse.body.login })
+                        .subscribe((searchBandResponse: HttpResponse<IBand[]>) => {
+                            this.band = searchBandResponse.body[0];
+                        });
+                });
+            }
         });
         this.userService
             .query()

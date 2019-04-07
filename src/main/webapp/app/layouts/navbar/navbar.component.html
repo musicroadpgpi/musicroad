@@ -26,6 +26,24 @@
                         </span>
                     </a>
                 </li>
+                <li *ngSwitchCase="true"  class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <a class="nav-link" routerLink="/collaboration/my-collaborations" (click)="collapseNavbar()">
+                          <span>
+                            <fa-icon icon="handshake"></fa-icon>
+                            <span jhiTranslate="musicroadApp.collaboration.home.mycollaborations">My Collaborations</span>
+                        </span>
+                    </a>
+                </li>
+               <ng-container *jhiHasAnyAuthority="'ROLE_ADMIN'">
+             <li *ngSwitchCase="true"  class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <a class="nav-link" routerLink="/city" (click)="collapseNavbar()">
+                          <span>
+                            <fa-icon icon="city"></fa-icon>
+                            <span jhiTranslate="musicroadApp.city.home.title">Cities</span>
+                        </span>
+                    </a>
+                </li>
+            </ng-container> 
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
             <!-- <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"> -->
              <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
@@ -156,6 +174,21 @@
                             <span jhiTranslate="global.menu.account.sessions">Sessions</span>
                         </a>
                     </li>
+
+                    <li *jhiHasAnyAuthority="'ROLE_USER'">
+                        <a class="dropdown-item" (click)="collapseNavbar()" routerLink="band/edit-my-band" id="editmyband">
+                            <fa-icon icon="wrench" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.account.editBand">Edit band</span>
+                        </a>
+                    </li>
+
+                    <li *jhiHasAnyAuthority="'ROLE_USER'">
+                        <a class="dropdown-item" routerLink="payment" routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="wrench" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.account.payment">Edit band</span>
+                        </a>
+                    </li>
+
                     <li *ngSwitchCase="true">
                         <a class="dropdown-item" (click)="logout()" id="logout">
                             <fa-icon icon="sign-out-alt" fixedWidth="true"></fa-icon>

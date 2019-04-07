@@ -1,5 +1,6 @@
 {
     "home": {
+        "gpdr": "GDPR",
         "methodology": "Our methodology",
         "world": "The world, in your hands",
         "worldSubtitle": "We create a grid of places waiting for you to explore them. Choose a destination where an active band is willing to collaborate with you. There is no limit in your goals. Travel around the world. Play your music.",
@@ -7,7 +8,7 @@
         "title": "Welcome to Musicroad!",
         "subtitle": "Are you a musician? Do you belong to an amateur band? If you want your band to be famous, if you imagine yourself travelling and meeting new people, if you are thrilled to get new experiences, you are in the right place! Get to know are team and our initiative!",
         "showtime": "It's showtime",
-        "showtimesubtitle": "Registrate in our platform providing your crucial information that complete your profile : your band’s name, location and music style. You are now ready to search for a collaboration, choosing the preferred music style and the city you would like to perform. Once you decide, complete the contact form and arrange the details with your partner band. You are going to hold the opening act of the show. To complete the collaboration, invite the partner band to open your show in your city.",
+        "showtimesubtitle": "Registrate in our platform providing your crucial information that complete your profile: your band’s name, location and music style. You are now ready to search for a collaboration, choosing the preferred music style and the city you would like to perform. Once you decide, complete the contact form and arrange the details with your partner band. You are going to hold the opening act of the show. To complete the collaboration, invite the partner band to open your show in your city.",
         "logged": {
             "message": "You are logged in as user \"{{username}}\"."
         },

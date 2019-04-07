@@ -13,10 +13,17 @@
                 <dd>
                     <span>{{collaboration.proposedDate}}</span>
                 </dd>
-                <dt><span jhiTranslate="musicroadApp.collaboration.accepted">Accepted</span></dt>
+                <dt><span jhiTranslate="musicroadApp.collaboration.bands">Bands</span></dt>
                 <dd>
-                    <span>{{collaboration.accepted}}</span>
+                    <span *ngFor="let band of collaboration.bands">{{band.bandName}}<br></span>
                 </dd>
+                <div *ngIf="false">
+                    <dt><span jhiTranslate="musicroadApp.collaboration.accepted">Accepted</span></dt>
+                    <dd>
+                        <span>{{collaboration.accepted}}</span>
+                    </dd>
+                </div>
+
             </dl>
 
             <button type="submit"

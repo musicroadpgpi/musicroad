@@ -1,5 +1,5 @@
 <div>
-    <h2 id="page-heading">
+    <h2 id="page-heading" *ngIf="!fromSearcher">
         <span jhiTranslate="musicroadApp.band.home.title">Bands</span>
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-band" [routerLink]="['/band/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
@@ -9,7 +9,7 @@
         </button>
     </h2>
     <jhi-alert></jhi-alert>
-    <div class="row">
+    <div class="row" *ngIf="!fromSearcher">
         <div class="col-sm-12">
             <form name="searchForm" class="form-inline">
                 <div class="input-group w-100 mt-3">
@@ -31,13 +31,13 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="bandName"><span jhiTranslate="musicroadApp.band.bandName">Band Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="bio"><span jhiTranslate="musicroadApp.band.bio">Bio</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="coverPicture"><span jhiTranslate="musicroadApp.band.coverPicture">Cover Picture</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="componentNumber"><span jhiTranslate="musicroadApp.band.componentNumber">Component Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="creationYear"><span jhiTranslate="musicroadApp.band.creationYear">Creation Year</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="genre"><span jhiTranslate="musicroadApp.band.genre">Genre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="user.id"><span jhiTranslate="musicroadApp.band.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="description"><span jhiTranslate="musicroadApp.band.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="picture"><span jhiTranslate="musicroadApp.band.picture">Picture</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="city.id"><span jhiTranslate="musicroadApp.band.city">City</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="user.id"><span jhiTranslate="musicroadApp.band.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -45,30 +45,29 @@
             <tr *ngFor="let band of bands ;trackBy: trackId">
                 <td><a [routerLink]="['/band', band.id, 'view' ]">{{band.id}}</a></td>
                 <td>{{band.bandName}}</td>
-                <td>{{band.bio}}</td>
-                <td>{{band.coverPicture}}</td>
                 <td>{{band.componentNumber}}</td>
                 <td>{{band.creationYear}}</td>
                 <td jhiTranslate="{{'musicroadApp.Genre.' + band.genre}}">{{band.genre}}</td>
                 <td>
-                    {{band.user?.id}}
+                    <div *ngIf="band.city">
+                        <a [routerLink]="['../city', band.city?.id, 'view' ]" >{{band.city?.name}}</a>
+                    </div>
                 </td>
                 <td>
-                    <div *ngIf="band.city">
-                        <a [routerLink]="['../city', band.city?.id, 'view' ]" >{{band.city?.id}}</a>
-                    </div>
+                    {{band.user?.login}}
                 </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
-                                [routerLink]="['/band', band.id, 'view' ]"
+                                [routerLink]="['../collaboration-petition', band.id, 'view' ]"
                                 class="btn btn-info btn-sm">
                             <fa-icon [icon]="'eye'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/band', band.id, 'edit']"
-                                class="btn btn-primary btn-sm">
+                                class="btn btn-primary btn-sm"
+                                *ngIf="user.authorities.includes('ROLE_ADMIN') || user.id === band.user.id">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
@@ -76,16 +75,11 @@
                                 [routerLink]="['/', 'band', { outlets: { popup: band.id + '/delete'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
-                                class="btn btn-danger btn-sm">
+                                class="btn btn-danger btn-sm"
+                                *ngIf="user.authorities.includes('ROLE_ADMIN') || user.id === band.user.id">
                             <fa-icon [icon]="'times'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                         </button>
-                        <!-- <button type="submit"
-                                [routerLink]="[/collaboration, band, 'new']"
-                                class="btn btn-primary btn-sm">
-                            <fa-icon [icon]="'handshake'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.collaboration">Collaboration</span>
-                        </button> -->
                     </div>
                 </td>
             </tr>

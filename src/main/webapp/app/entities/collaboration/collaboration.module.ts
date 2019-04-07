@@ -32,7 +32,8 @@ const ENTITY_STATES = [...collaborationRoute, ...collaborationPopupRoute];
         CollaborationDeletePopupComponent
     ],
     providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    exports: [CollaborationUpdateComponent]
 })
 export class MusicroadCollaborationModule {
     constructor(private languageService: JhiLanguageService, private languageHelper: JhiLanguageHelper) {
