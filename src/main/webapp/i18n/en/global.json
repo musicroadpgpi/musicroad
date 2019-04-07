@@ -35,7 +35,8 @@
                 "login": "Sign in",
                 "logout": "Sign out",
                 "editBand": "Edit my band",
-                "register": "Register"
+                "register": "Register",
+                "payment": "Payment"
             },
             "admin": {
                 "main": "Administration",
