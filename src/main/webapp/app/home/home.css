@@ -55,14 +55,11 @@ Main page styles
 @media only screen and (max-device-width: 700px) {
     .parallax {
         background-attachment: scroll;
-        margin-left: calc(50% - 50vw);
-        margin-right: calc(50% - 50vw);
-        margin-top: calc(50% - 60vw);
+        /* margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw); */
     }
     .parallax_foc {
         background-attachment: scroll;
-        margin-left: -2%;
-        margin-right: -2%;
         margin-top: calc(50% - 70vw);
         margin-bottom: -15%;
         /* margin-bottom: calc(50% - 80vw); */

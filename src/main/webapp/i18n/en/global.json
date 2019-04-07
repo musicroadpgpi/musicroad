@@ -2,12 +2,10 @@
     "global": {
         "david": "Team leader & DevOps Engineer.",
         "josemary": "Data Architect &  UI / UX designer.",
-        "marina": "UI / UX Designer.",
         "pablo": "Web-Server Technologies Manager.",
         "felipe": "Security Expert.",
         "antolin": "Spokesman & System administrator.",
         "alfonso": "Applitation Developer.",
-        "regina": "Front-end Implementation & Marketing.",
         "julian": "Quality Assurance Specialist.",
         "jesus": "Network Manager.",
         "javier": "StartUs representative & Test Engineer.",
@@ -36,6 +34,7 @@
                 "logout": "Sign out",
                 "editBand": "Edit my band",
                 "register": "Register",
+                "register2": "Let´s get started! Sign in!",
                 "payment": "Payment"
             },
             "admin": {
