@@ -17,6 +17,7 @@ import { MusicroadAppRoutingModule } from './app-routing.module';
 import { MusicroadHomeModule } from './home/home.module';
 import { MusicroadAccountModule } from './account/account.module';
 import { MusicroadEntityModule } from './entities/entity.module';
+import { Module as StripeModule } from 'stripe-angular';
 import * as moment from 'moment';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
@@ -51,7 +52,8 @@ import { GpdrComponent } from './gpdr/gpdr.component';
         MusicroadCityModule,
         MusicroadBandModule,
         MusicroadCollaborationModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        StripeModule.forRoot()
     ],
     declarations: [
         JhiMainComponent,

@@ -48,8 +48,6 @@
                 <td>{{band.componentNumber}}</td>
                 <td>{{band.creationYear}}</td>
                 <td jhiTranslate="{{'musicroadApp.Genre.' + band.genre}}">{{band.genre}}</td>
-                <td>{{band.description}}</td>
-                <td>{{band.picture}}</td>
                 <td>
                     <div *ngIf="band.city">
                         <a [routerLink]="['../city', band.city?.id, 'view' ]" >{{band.city?.name}}</a>
