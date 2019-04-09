@@ -48,11 +48,11 @@
                 <td>{{band.componentNumber}}</td>
                 <td>{{band.creationYear}}</td>
                 <td jhiTranslate="{{'musicroadApp.Genre.' + band.genre}}">{{band.genre}}</td>
-                <td>
-                    <div *ngIf="band.city">
-                        <a [routerLink]="['../city', band.city?.id, 'view' ]" >{{band.city?.name}}</a>
-                    </div>
-                </td>
+                <td>{{band.description}}</td>
+                <td><img [src]="band.coverPicture" /></td>
+                <div *ngIf="band.city">
+                    <a [routerLink]="['../city', band.city?.id, 'view' ]" >{{band.city?.name}}</a>
+                </div>
                 <td>
                     {{band.user?.login}}
                 </td>
