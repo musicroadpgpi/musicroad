@@ -35,7 +35,8 @@
                 "editBand": "Edit my band",
                 "register": "Register",
                 "register2": "Let´s get started! Sign in!",
-                "payment": "Payment"
+                "payment": "Payment",
+                "suscribe": "Suscribe!"
             },
             "admin": {
                 "main": "Administration",

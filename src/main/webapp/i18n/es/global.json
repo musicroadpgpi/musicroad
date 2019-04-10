@@ -38,7 +38,8 @@
                 "editBand": "Editar mi banda",
                 "register": "Crear una cuenta",
                 "register2": "¡Empecemos! Crear una cuenta",
-                "payment": "Pago"
+                "payment": "Pago",
+                "suscribe": "Suscribete!"
             },
             "admin": {
                 "main": "Administración",
