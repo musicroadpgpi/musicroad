@@ -72,7 +72,7 @@
                 "authenticated": {
                     "prefix": "Si desea ",
                     "link": "iniciar una sesión",
-                    "suffix": ", puede intentar con las cuentas predeterminadas:<br/>- Administrator (usuario=\"admin\" y contraseña=\"admin\") <br/>- Usuario (usuario=\"user\" y contraseña=\"user\")."
+                    "suffix": ", puede intentar con las cuentas predeterminadas."
                 },
                 "register": {
                     "noaccount": "¿No tienes una cuenta todavía?",
