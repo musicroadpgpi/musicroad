@@ -2,6 +2,9 @@
 <script type="text/javascript">
      Stripe.setPublishableKey('pk_test_dtW0C0M0HzZumY1D7rsHRVzi0018swuMyg');
 </script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 <div class="row d-flex align-items-center bg-dark text-light mt-0">
     <div class="col-md-5">
@@ -69,17 +72,20 @@
 </div>
 
 <div class="row bg-light pt-5 mb-4">
+       <div class="container">
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Subscribe!
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+       <input type="text" placeholder="Credit Card #" name="cardNumber">
+        <input type="text" placeholder="Expiration Month" name="expMonth">
+        <input type="text" placeholder="Expiration Year" name="expYear">
+        <input type="text" placeholder="CVC" name="cvc">
+        <button type="button"  class="btn btn-primary dropdown-toggle" id="menu1" (click)="chargeCreditCard()">Submit</button> 
+    </ul>
+  </div>
 
-        
-        <form>
-                <input type="text" placeholder="Credit Card #" name="cardNumber">
-                <input type="text" placeholder="Expiration Month" name="expMonth">
-                <input type="text" placeholder="Expiration Year" name="expYear">
-                <input type="text" placeholder="CVC" name="cvc">
-                <button (click)="chargeCreditCard()">Submit</button>
-        </form>
-
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>    
     <script type="text/javascript">
       Stripe.setPublishableKey('pk_test_dtW0C0M0HzZumY1D7rsHRVzi0018swuMyg');
     </script>
