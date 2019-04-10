@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Module as StripeModule, StripeScriptTag, StripeSource, StripeToken } from 'stripe-angular';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { AuthServerProvider } from 'app/core/auth/auth-jwt.service';
+import { SERVER_API_URL } from 'app/app.constants';
 
 @Component({
     selector: 'jhi-payment',
@@ -8,11 +10,10 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
     styles: ['payment.css']
 })
 export class PaymentComponent {
-    private publishableKey: string = 'sk_test_eXsDnOULTLH9SkICbIpfbIw200QEiGs4GU';
-    private http: HttpClient;
+    private publishableKey = 'sk_test_eXsDnOULTLH9SkICbIpfbIw200QEiGs4GU';
 
-    constructor(public StripeScriptTag: StripeScriptTag) {
-        this.StripeScriptTag.setPublishableKey(this.publishableKey);
+    constructor(public stripeScriptTag: StripeScriptTag, protected http: HttpClient, protected authServerProvider: AuthServerProvider) {
+        this.stripeScriptTag.setPublishableKey(this.publishableKey);
     }
 
     /*   extraData = {
@@ -42,7 +43,7 @@ export class PaymentComponent {
 */
 
     chargeCreditCard() {
-        let form = document.getElementsByTagName('form')[0];
+        const form = document.getElementsByTagName('form')[0];
         (<any>window).Stripe.card.createToken(
             {
                 number: form.cardNumber.value,
@@ -51,8 +52,9 @@ export class PaymentComponent {
                 cvc: form.cvc.value
             },
             (status: number, response: any) => {
+                console.log(status);
                 if (status === 200) {
-                    let token = response.id;
+                    const token = response.id;
                     this.chargeCard(token);
                 } else {
                     console.log(response.error.message);
@@ -62,8 +64,18 @@ export class PaymentComponent {
     }
 
     chargeCard(token: string) {
-        const headers = new HttpHeaders({ token: token, amount: '100' });
-        this.http.post('http://localhost:9000/payment/charge', {}, { headers: headers }).subscribe(resp => {
+        const authToken = this.authServerProvider.getToken();
+        console.log(authToken);
+        const headers = new HttpHeaders({
+            token: token,
+            amount: '100'
+            // Content-Type: 'application/json',
+            // Accept: 'application/problem+json',
+            // Authorization: 'Bearer: ' + authToken
+        });
+        console.log(headers);
+        console.log('Aqui esta');
+        this.http.post(SERVER_API_URL + '/api/payment/charge', {}, { headers: headers }).subscribe(resp => {
             console.log(resp);
         });
     }
