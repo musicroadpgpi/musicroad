@@ -57,7 +57,7 @@ spring:
             hibernate.cache.region.factory_class: io.github.jhipster.config.jcache.BeanClassLoaderAwareJCacheRegionFactory
     data:
         jest:
-            uri: http://localhost:9200
+            uri: http://51.136.19.82:9200
     liquibase:
         contexts: prod
     mail:
