@@ -57,7 +57,7 @@ export const cityRoute: Routes = [
             city: CityResolve
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'musicroadApp.city.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -69,7 +69,7 @@ export const cityRoute: Routes = [
             city: CityResolve
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'musicroadApp.city.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -84,7 +84,7 @@ export const cityPopupRoute: Routes = [
             city: CityResolve
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'musicroadApp.city.home.title'
         },
         canActivate: [UserRouteAccessService],
