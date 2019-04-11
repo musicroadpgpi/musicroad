@@ -10,6 +10,7 @@ import {
     CollaborationUpdateComponent,
     CollaborationDeletePopupComponent,
     CollaborationDeleteDialogComponent,
+    CollaborationCreateComponent,
     collaborationRoute,
     collaborationPopupRoute
 } from './';
@@ -23,6 +24,7 @@ const ENTITY_STATES = [...collaborationRoute, ...collaborationPopupRoute];
         CollaborationDetailComponent,
         CollaborationUpdateComponent,
         CollaborationDeleteDialogComponent,
+        CollaborationCreateComponent,
         CollaborationDeletePopupComponent
     ],
     entryComponents: [

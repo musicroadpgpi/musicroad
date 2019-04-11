@@ -6,10 +6,11 @@ import { CollaborationService } from './collaboration.service';
     selector: 'jhi-collaboration-create',
     templateUrl: './collaboration.create.html'
 })
-export class CollaborationCreate {
+export class CollaborationCreateComponent {
     collaboration: ICollaboration;
     constructor(protected collaborationService: CollaborationService) {
-        //this.collaboration.proposedDate = (document.getElementById('dateInput'), 'Moment');
+        // this.collaboration.proposedDate = (document.getElementById('dateInput'), 'Moment');
+        // tslint:disable-next-line: no-unused-expression
         collaborationService.create;
     }
 }

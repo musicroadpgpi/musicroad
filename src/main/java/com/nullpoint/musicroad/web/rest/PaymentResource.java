@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping("/payment")
+@RequestMapping("api/payment")
 public class PaymentResource {
 
 	private StripeService stripeClient;
@@ -21,8 +21,12 @@ public class PaymentResource {
 
 	@PostMapping("/charge")
 	public Charge chargeCard(HttpServletRequest request) throws Exception {
+		String strAmount = request.getHeader("amount");
+		System.out.println("YARE");
 		String token = request.getHeader("token");
-		Double amount = Double.parseDouble(request.getHeader("amount"));
+		System.out.println("YARE");
+		Double amount = Double.parseDouble(strAmount);
+		System.out.println("DAZE");
 		return this.stripeClient.chargeCreditCard(token, amount);
 	}
 }

@@ -50,6 +50,8 @@ public class UserService {
 
 	private final BandRepository bandRepository;
 
+	private final BandService bandService;
+
 	private final PasswordEncoder passwordEncoder;
 
 	private final UserSearchRepository userSearchRepository;
@@ -58,11 +60,12 @@ public class UserService {
 
 	private final CacheManager cacheManager;
 
-	public UserService(UserRepository userRepository, BandRepository bandRepository, PasswordEncoder passwordEncoder,
+	public UserService(UserRepository userRepository, BandRepository bandRepository, BandService bandService, PasswordEncoder passwordEncoder,
 			UserSearchRepository userSearchRepository,
 			AuthorityRepository authorityRepository, CacheManager cacheManager) {
 		this.userRepository = userRepository;
 		this.bandRepository = bandRepository;
+		this.bandService = bandService;
 		this.passwordEncoder = passwordEncoder;
 		this.userSearchRepository = userSearchRepository;
 		this.authorityRepository = authorityRepository;
@@ -149,7 +152,7 @@ public class UserService {
         newUserExtra.setComponentNumber(numberComponents);
         newUserExtra.setBio(bio);
         newUserExtra.setCoverPicture(coverPicture);
-		bandRepository.save(newUserExtra);
+		bandService.save(newUserExtra);
 		log.debug("Created Information for UserExtra: {}", newUserExtra);
 
 		return newUser;
