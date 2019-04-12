@@ -3,6 +3,7 @@ import { Module as StripeModule, StripeScriptTag, StripeSource, StripeToken } fr
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { AuthServerProvider } from 'app/core/auth/auth-jwt.service';
 import { SERVER_API_URL } from 'app/app.constants';
+import { JhiAlertService, JhiAlert } from 'ng-jhipster';
 
 @Component({
     selector: 'jhi-payment',
@@ -12,7 +13,12 @@ import { SERVER_API_URL } from 'app/app.constants';
 export class PaymentComponent {
     private publishableKey = 'sk_test_eXsDnOULTLH9SkICbIpfbIw200QEiGs4GU';
 
-    constructor(public stripeScriptTag: StripeScriptTag, protected http: HttpClient, protected authServerProvider: AuthServerProvider) {
+    constructor(
+        public stripeScriptTag: StripeScriptTag,
+        protected jhiAlertService: JhiAlertService,
+        protected http: HttpClient,
+        protected authServerProvider: AuthServerProvider
+    ) {
         this.stripeScriptTag.setPublishableKey(this.publishableKey);
     }
 
@@ -52,7 +58,6 @@ export class PaymentComponent {
                 cvc: form.cvc.value
             },
             (status: number, response: any) => {
-                console.log(status);
                 if (status === 200) {
                     const token = response.id;
                     this.chargeCard(token);
@@ -65,18 +70,24 @@ export class PaymentComponent {
 
     chargeCard(token: string) {
         const authToken = this.authServerProvider.getToken();
-        console.log(authToken);
         const headers = new HttpHeaders({
             token: token,
-            amount: '100'
+            amount: '9.95'
             // Content-Type: 'application/json',
             // Accept: 'application/problem+json',
             // Authorization: 'Bearer: ' + authToken
         });
-        console.log(headers);
-        console.log('Aqui esta');
         this.http.post(SERVER_API_URL + '/api/payment/charge', {}, { headers: headers }).subscribe(resp => {
-            console.log(resp);
+            if (resp !== undefined) {
+                if (resp !== null) {
+                    const successAlert: JhiAlert = this.jhiAlertService.success('Se ha realizado el pago correctamente');
+                    this.previousState();
+                }
+            }
         });
+    }
+
+    previousState() {
+        window.history.back();
     }
 }
