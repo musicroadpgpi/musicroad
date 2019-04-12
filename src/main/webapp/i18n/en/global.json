@@ -2,12 +2,10 @@
     "global": {
         "david": "Team leader & DevOps Engineer.",
         "josemary": "Data Architect &  UI / UX designer.",
-        "marina": "UI / UX Designer.",
         "pablo": "Web-Server Technologies Manager.",
         "felipe": "Security Expert.",
         "antolin": "Spokesman & System administrator.",
         "alfonso": "Applitation Developer.",
-        "regina": "Front-end Implementation & Marketing.",
         "julian": "Quality Assurance Specialist.",
         "jesus": "Network Manager.",
         "javier": "StartUs representative & Test Engineer.",
@@ -35,7 +33,10 @@
                 "login": "Sign in",
                 "logout": "Sign out",
                 "editBand": "Edit my band",
-                "register": "Register"
+                "register": "Register",
+                "register2": "Let´s get started! Sign in!",
+                "payment": "Payment",
+                "suscribe": "Suscribe!"
             },
             "admin": {
                 "main": "Administration",
@@ -69,7 +70,7 @@
                 "authenticated": {
                     "prefix": "If you want to ",
                     "link": "sign in",
-                    "suffix": ", you can try the default accounts:<br/>- Administrator (login=\"admin\" and password=\"admin\") <br/>- User (login=\"user\" and password=\"user\")."
+                    "suffix": ", you can try the default accounts."
                 },
                 "register": {
                     "noaccount": "You don't have an account yet?",

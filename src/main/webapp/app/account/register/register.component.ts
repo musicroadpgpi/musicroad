@@ -3,7 +3,6 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiLanguageService } from 'ng-jhipster';
 import { IBand } from 'app/shared/model/band.model';
-import { BandService } from 'app/entities/band';
 import { ICity } from 'app/shared/model/city.model';
 import { ActivatedRoute } from '@angular/router';
 import { CityService } from 'app/entities/city';
@@ -31,7 +30,6 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     constructor(
         protected jhiAlertService: JhiAlertService,
         private languageService: JhiLanguageService,
-        protected bandService: BandService,
         private loginModalService: LoginModalService,
         protected cityService: CityService,
         private registerService: Register,
@@ -44,6 +42,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         this.activatedRoute.data.subscribe(({ band }) => {
             this.band = band;
         });
+
         this.success = false;
         this.registerAccount = {};
         this.cityService

@@ -35,7 +35,7 @@ public class Band implements Serializable {
 
     @Column(name = "bio")
     private String bio;
-
+   
     @Column(name = "cover_picture")
     private String coverPicture;
 

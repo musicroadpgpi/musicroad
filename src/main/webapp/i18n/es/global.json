@@ -23,9 +23,9 @@
             "entities": {
                 "main": "Entidades",
                 "city": "City",
-                "group": "Group",
-                "band": "Band",
-                "collaboration": "Collaboration",
+                "group": "Grupo",
+                "band": "Banda",
+                "collaboration": "Colaboraciones",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -36,7 +36,10 @@
                 "login": "Iniciar sesión",
                 "logout": "Cerrar la sesión",
                 "editBand": "Editar mi banda",
-                "register": "Crear una cuenta"
+                "register": "Crear una cuenta",
+                "register2": "¡Empecemos! Crear una cuenta",
+                "payment": "Pago",
+                "suscribe": "Suscribete!"
             },
             "admin": {
                 "main": "Administración",
@@ -70,7 +73,7 @@
                 "authenticated": {
                     "prefix": "Si desea ",
                     "link": "iniciar una sesión",
-                    "suffix": ", puede intentar con las cuentas predeterminadas:<br/>- Administrator (usuario=\"admin\" y contraseña=\"admin\") <br/>- Usuario (usuario=\"user\" y contraseña=\"user\")."
+                    "suffix": ", puede intentar con las cuentas predeterminadas."
                 },
                 "register": {
                     "noaccount": "¿No tienes una cuenta todavía?",

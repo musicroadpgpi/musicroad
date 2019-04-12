@@ -4,11 +4,14 @@
             <h2 id="jhi-band-heading" jhiTranslate="musicroadApp.band.home.createOrEditLabel">Create or edit a Band</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
+                <ng-container *jhiHasAnyAuthority="'ROLE_ADMIN'">
+
                 <div class="form-group" [hidden]="!band.id">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id"
                         [(ngModel)]="band.id" readonly />
                 </div>
+                </ng-container>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.bandName" for="field_bandName">Band Name</label>
                     <input type="text" class="form-control" name="bandName" id="field_bandName"
@@ -31,9 +34,9 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.creationYear" for="field_creationYear">Creation Year</label>
-                    <input type="number" class="form-control" name="creationYear" id="field_creationYear"
-                        [(ngModel)]="band.creationYear" />
+                    <input type="number" class="form-control" name="creationYear" id="field_creationYear" [(ngModel)]="band.creationYear" />
                 </div>
+
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.genre" for="field_genre">Genre</label>
                     <select class="form-control" name="genre" [(ngModel)]="band.genre" id="field_genre" >
@@ -51,14 +54,15 @@
                         <option value="Flamenco">{{'musicroadApp.Genre.Flamenco' | translate}}</option>
                     </select>
                 </div>
-
-                <div class="form-group">
+                <ng-container *jhiHasAnyAuthority="'ROLE_ADMIN'">
+                <div class="form-group" >
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.user" for="field_user">User</label>
                     <select class="form-control" id="field_user" name="user" [(ngModel)]="band.user" >
                         <option [ngValue]="null"></option>
                         <option [ngValue]="userOption.id === band.user?.id ? band.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.firstName}}</option>
                     </select>
                 </div>
+                </ng-container>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.city" for="field_city">City</label>
                     <select class="form-control" id="field_city" name="city" [(ngModel)]="band.city" >
@@ -66,12 +70,14 @@
                         <option [ngValue]="cityOption.id === band.city?.id ? band.city : cityOption" *ngFor="let cityOption of cities; trackBy: trackCityById">{{cityOption.name}}</option>
                     </select>
                 </div>
+                <ng-container *jhiHasAnyAuthority="'ROLE_ADMIN'">
                 <div class="form-group">
                     <label jhiTranslate="musicroadApp.band.collaborations" for="field_collaborations">Collaborations</label>
                     <select class="form-control" id="field_collaborations" multiple name="collaborations" [(ngModel)]="band.collaborations">
                         <option [ngValue]="getSelected(band.collaborations, collaborationOption)" *ngFor="let collaborationOption of collaborations; trackBy: trackCollaborationById">{{collaborationOption.proposedDate}}</option>
                     </select>
                 </div>
+            </ng-container>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

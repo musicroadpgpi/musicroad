@@ -13,6 +13,7 @@ import {
     SettingsComponent,
     accountState
 } from './';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
     imports: [MusicroadSharedModule, RouterModule.forChild(accountState)],
@@ -23,7 +24,8 @@ import {
         PasswordStrengthBarComponent,
         PasswordResetInitComponent,
         PasswordResetFinishComponent,
-        SettingsComponent
+        SettingsComponent,
+        PaymentComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

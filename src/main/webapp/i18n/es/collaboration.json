@@ -2,20 +2,20 @@
     "musicroadApp": {
         "collaboration": {
             "home": {
-                "title": "Collaborations",
-                "createLabel": "Crear nuevo Collaboration",
-                "createOrEditLabel": "Crear o editar Collaboration",
-                "search": "Search for Collaboration",
-                "mycollaborations": "Mis Collaborations"
+                "title": "Colaboración",
+                "createLabel": "Crear nuevo Colaboración",
+                "createOrEditLabel": "Crear o editar Colaboración",
+                "search": "Buscar una colaboración",
+                "mycollaborations": "Mis Colaboraciones"
             },
             "created": "Un nuevo Collaboration ha sido creado con el identificador {{ param }}",
             "updated": "Un Collaboration ha sido actualizado con el identificador {{ param }}",
             "deleted": "Un Collaboration ha sido eliminado con el identificador {{ param }}",
             "delete": {
-                "question": "¿Seguro que quiere eliminar Collaboration {{ id }}?"
+                "question": "¿Seguro que quiere eliminar la colaboración {{ id }}?"
             },
             "detail": {
-                "title": "Collaboration"
+                "title": "Colaboración"
             },
             "message": "Mensaje",
             "proposedDate": "Fecha propuesta",

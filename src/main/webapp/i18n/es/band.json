@@ -18,7 +18,7 @@
             },
             "bandName": "Nombre de la banda",
             "bio": "Bio",
-            "coverPicture": "Foto de portada",
+            "coverPicture": "Link foto de portada",
             "componentNumber": "Número de componentes",
             "creationYear": "Año de creación",
             "genre": "Estilo musical",
