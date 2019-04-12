@@ -1,11 +1,11 @@
-id;name;country
-1;Barcelona;ES
-2;Bilbao;ES
-3;Las Palmas;ES
-4;Madrid;ES
-5;Málaga;ES
-6;Murcia;ES
-7;Palma de Mallorca;ES
-8;Sevilla;ES
-9;Valencia;ES
-10;Zaragoza;ES
+name;country
+Barcelona;ES
+Bilbao;ES
+Las Palmas;ES
+Madrid;ES
+Málaga;ES
+Murcia;ES
+Palma de Mallorca;ES
+Sevilla;ES
+Valencia;ES
+Zaragoza;ES
