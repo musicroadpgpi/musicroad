@@ -156,25 +156,12 @@
                   </span>
                 </a>
                 <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="account-menu">
-                    <li *ngSwitchCase="true">
+                   <!-- <li *ngSwitchCase="true">
                         <a class="dropdown-item" routerLink="settings" routerLinkActive="active" (click)="collapseNavbar()">
                             <fa-icon icon="wrench" fixedWidth="true"></fa-icon>
                             <span jhiTranslate="global.menu.account.settings">Settings</span>
                         </a>
-                    </li>
-                    <li *ngSwitchCase="true">
-                        <a class="dropdown-item" routerLink="password" routerLinkActive="active" (click)="collapseNavbar()">
-                            <fa-icon icon="clock" fixedWidth="true"></fa-icon>
-                            <span jhiTranslate="global.menu.account.password">Password</span>
-                        </a>
-                    </li>
-                    <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
-                        <a class="dropdown-item" routerLink="sessions" routerLinkActive="active" (click)="collapseNavbar()">
-                            <fa-icon icon="cloud" fixedWidth="true"></fa-icon>
-                            <span jhiTranslate="global.menu.account.sessions">Sessions</span>
-                        </a>
-                    </li>
-
+                    </li>-->
                     <li *jhiHasAnyAuthority="'ROLE_USER'">
                         <a class="dropdown-item" (click)="collapseNavbar()" routerLink="band/edit-my-band" id="editmyband">
                             <fa-icon icon="wrench" fixedWidth="true"></fa-icon>
@@ -182,10 +169,25 @@
                         </a>
                     </li>
 
+                    <li *ngSwitchCase="true">
+                        <a class="dropdown-item" routerLink="password" routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="clock" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.account.password">Password</span>
+                        </a>
+                    </li>
+                   <!-- <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
+                        <a class="dropdown-item" routerLink="sessions" routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="cloud" fixedWidth="true"></fa-icon>
+                            <span jhiTranslate="global.menu.account.sessions">Sessions</span>
+                        </a>
+                    </li>-->
+
+                    
+
                     <li *jhiHasAnyAuthority="'ROLE_USER'">
                         <a class="dropdown-item" routerLink="payment" routerLinkActive="active" (click)="collapseNavbar()">
                             <fa-icon icon="wrench" fixedWidth="true"></fa-icon>
-                            <span jhiTranslate="global.menu.account.payment">Edit band</span>
+                            <span jhiTranslate="global.menu.account.payment">Payment</span>
                         </a>
                     </li>
 

@@ -64,12 +64,6 @@
             </column>
         </createTable>
 
-            <loadData encoding="UTF-8"
-                  file="config/liquibase/bands.csv"
-                  separator=";"
-                  tableName="band">
-
-        </loadData>
 
         <addPrimaryKey columnNames="band_id, collaborations_id" tableName="band_collaborations"/>
         
