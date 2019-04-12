@@ -39,7 +39,9 @@
                 "register": "Crear una cuenta",
                 "register2": "¡Empecemos! Crear una cuenta",
                 "payment": "Pago",
-                "suscribe": "Suscribete!"
+                "suscribe": "Suscribete!",
+                "paymentSuccess": "El pago ha sido un éxito",
+                "paymentError": "El pago ha fallado"
             },
             "admin": {
                 "main": "Administración",

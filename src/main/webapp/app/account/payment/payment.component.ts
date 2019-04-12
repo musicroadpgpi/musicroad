@@ -62,6 +62,8 @@ export class PaymentComponent {
                     const token = response.id;
                     this.chargeCard(token);
                 } else {
+                    this.jhiAlertService.error('global.menu.account.paymentError', null, null);
+                    this.previousState();
                     console.log(response.error.message);
                 }
             }
@@ -80,7 +82,7 @@ export class PaymentComponent {
         this.http.post(SERVER_API_URL + '/api/payment/charge', {}, { headers: headers }).subscribe(resp => {
             if (resp !== undefined) {
                 if (resp !== null) {
-                    const successAlert: JhiAlert = this.jhiAlertService.success('Se ha realizado el pago correctamente');
+                    this.jhiAlertService.success('global.menu.account.paymentSuccess', null, null);
                     this.previousState();
                 }
             }

@@ -36,7 +36,9 @@
                 "register": "Register",
                 "register2": "Let´s get started! Sign in!",
                 "payment": "Payment",
-                "suscribe": "Suscribe!"
+                "suscribe": "Suscribe!",
+                "paymentSuccess": "Payment was a success",
+                "paymentError": "Payment was a failure"
             },
             "admin": {
                 "main": "Administration",

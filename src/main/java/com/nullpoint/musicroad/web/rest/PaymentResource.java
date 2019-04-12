@@ -22,11 +22,8 @@ public class PaymentResource {
 	@PostMapping("/charge")
 	public Charge chargeCard(HttpServletRequest request) throws Exception {
 		String strAmount = request.getHeader("amount");
-		System.out.println("YARE");
 		String token = request.getHeader("token");
-		System.out.println("YARE");
 		Double amount = Double.parseDouble(strAmount);
-		System.out.println("DAZE");
 		return this.stripeClient.chargeCreditCard(token, amount);
 	}
 }
