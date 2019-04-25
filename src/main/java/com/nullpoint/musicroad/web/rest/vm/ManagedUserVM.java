@@ -1,6 +1,8 @@
 package com.nullpoint.musicroad.web.rest.vm;
 
 import com.nullpoint.musicroad.service.dto.UserDTO;
+
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import com.nullpoint.musicroad.domain.City;
 import com.nullpoint.musicroad.domain.enumeration.Genre;
@@ -15,7 +17,10 @@ public class ManagedUserVM extends UserDTO {
     public static final int PASSWORD_MAX_LENGTH = 100;
 
     @Size(min = PASSWORD_MIN_LENGTH, max = PASSWORD_MAX_LENGTH)
-    private String bandName,password, bio, coverPicture;
+	private String password;
+	private String bandName;
+	private String bio;
+	private String coverPicture;
     private Integer componentNumber;
     private Integer creationYear;
     private Genre genre;
