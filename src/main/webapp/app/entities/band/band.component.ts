@@ -29,6 +29,9 @@ export class BandComponent implements OnInit, OnDestroy {
     currentSearch: string;
     user: User;
 
+    isTablet = false;
+    isDesktop = false;
+
     constructor(
         protected bandService: BandService,
         protected jhiAlertService: JhiAlertService,
@@ -130,6 +133,12 @@ export class BandComponent implements OnInit, OnDestroy {
             this.currentAccount = account;
         });
         this.registerChangeInBands();
+        if (window.innerWidth > 700) {
+            this.isTablet = true;
+        }
+        if (window.innerWidth > 1024) {
+            this.isDesktop = true;
+        }
     }
 
     ngOnDestroy() {

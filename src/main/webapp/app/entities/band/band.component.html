@@ -29,35 +29,35 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="id" *ngIf="false"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="bandName"><span jhiTranslate="musicroadApp.band.bandName">Band Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="componentNumber"><span jhiTranslate="musicroadApp.band.componentNumber">Component Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="creationYear"><span jhiTranslate="musicroadApp.band.creationYear">Creation Year</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="genre"><span jhiTranslate="musicroadApp.band.genre">Genre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="description"><span jhiTranslate="musicroadApp.band.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="picture"><span jhiTranslate="musicroadApp.band.picture">Picture</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="city.id"><span jhiTranslate="musicroadApp.band.city">City</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="user.id"><span jhiTranslate="musicroadApp.band.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th *ngIf="isDesktop" jhiSortBy="componentNumber"><span jhiTranslate="musicroadApp.band.componentNumber">Component Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th *ngIf="isTablet" jhiSortBy="creationYear"><span jhiTranslate="musicroadApp.band.creationYear">Creation Year</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th *ngIf="isDesktop" jhiSortBy="genre"><span jhiTranslate="musicroadApp.band.genre">Genre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th *ngIf="isTablet" jhiSortBy="description"><span jhiTranslate="musicroadApp.band.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th *ngIf="isDesktop" jhiSortBy="picture"><span jhiTranslate="musicroadApp.band.picture">Picture</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th *ngIf="isDesktop" jhiSortBy="city.id"><span jhiTranslate="musicroadApp.band.city">City</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th *ngIf="isDesktop" jhiSortBy="user.id"><span jhiTranslate="musicroadApp.band.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
             <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
             <tr *ngFor="let band of bands ;trackBy: trackId">
-                <td><a [routerLink]="['/band', band.id, 'view' ]">{{band.id}}</a></td>
+                <td *ngIf="false"><a [routerLink]="['/band', band.id, 'view' ]">{{band.id}}</a></td>
                 <td>{{band.bandName}}</td>
-                <td>{{band.componentNumber}}</td>
-                <td>{{band.creationYear}}</td>
-                <td jhiTranslate="{{'musicroadApp.Genre.' + band.genre}}">{{band.genre}}</td>
-                <td>{{band.description}}</td>
-                <td><img [src]="band.coverPicture" [alt]="band.coverPicture" /></td>
-                <td>
-                    <div *ngIf="band.city">
-                        <a [routerLink]="['../city', band.city?.id, 'view' ]" >{{band.city?.name}}</a>
-                    </div>
-                </td>
-                <td>
-                    {{band.user?.login}}
-                </td>
+                    <td *ngIf="isDesktop">{{band.componentNumber}}</td>
+                    <td *ngIf="isTablet">{{band.creationYear}}</td>
+                    <td *ngIf="isDesktop" jhiTranslate="{{'musicroadApp.Genre.' + band.genre}}">{{band.genre}}</td>
+                    <td *ngIf="isTablet">{{band.description}}</td>
+                    <td *ngIf="isDesktop"><img [src]="band.coverPicture" [alt]="band.coverPicture" /></td>
+                    <td *ngIf="isDesktop">
+                        <div *ngIf="band.city">
+                            <a [routerLink]="['../city', band.city?.id, 'view' ]" >{{band.city?.name}}</a>
+                        </div>
+                    </td>
+                    <td *ngIf="isDesktop">
+                        {{band.user?.login}}
+                    </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
