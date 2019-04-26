@@ -6,6 +6,7 @@ import { BandService } from '../band';
 import { AccountService, IUser } from 'app/core';
 import { IBand } from 'app/shared/model/band.model';
 import { HttpResponse } from '@angular/common/http';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
     selector: 'jhi-collaboration-detail',
@@ -14,6 +15,7 @@ import { HttpResponse } from '@angular/common/http';
 export class CollaborationDetailComponent implements OnInit {
     collaboration: ICollaboration;
     user: IUser;
+    idOtherBand: number;
 
     constructor(protected activatedRoute: ActivatedRoute, protected bandService: BandService, protected accountService: AccountService) {}
 
@@ -35,7 +37,11 @@ export class CollaborationDetailComponent implements OnInit {
                             }
                         });
                     });
-                    console.log(this.collaboration.bands);
+                    this.collaboration.bands.forEach((band: IBand) => {
+                        if (band.user.id !== this.user.id) {
+                            this.idOtherBand = band.id;
+                        }
+                    });
                 });
         });
     }
