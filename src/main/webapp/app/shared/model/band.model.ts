@@ -34,7 +34,8 @@ export interface IBand {
     id?: number;
     bandName?: string;
     bio?: string;
-    coverPicture?: string;
+    coverPictureContentType?: string;
+    coverPicture?: any;
     componentNumber?: number;
     creationYear?: number;
     genre?: Genre;
@@ -48,7 +49,8 @@ export class Band implements IBand {
         public id?: number,
         public bandName?: string,
         public bio?: string,
-        public coverPicture?: string,
+        public coverPictureContentType?: string,
+        public coverPicture?: any,
         public componentNumber?: number,
         public creationYear?: number,
         public genre?: Genre,

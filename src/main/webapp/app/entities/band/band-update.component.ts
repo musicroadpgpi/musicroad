@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
-import { JhiAlertService } from 'ng-jhipster';
+import { JhiAlertService, JhiDataUtils } from 'ng-jhipster';
 import { IBand } from 'app/shared/model/band.model';
 import { BandService } from './band.service';
 import { IUser, UserService, AccountService } from 'app/core';
@@ -27,12 +27,14 @@ export class BandUpdateComponent implements OnInit {
     collaborations: ICollaboration[];
 
     constructor(
+        protected dataUtils: JhiDataUtils,
         protected jhiAlertService: JhiAlertService,
         protected bandService: BandService,
         protected userService: UserService,
         protected cityService: CityService,
         protected collaborationService: CollaborationService,
         protected accountService: AccountService,
+        protected elementRef: ElementRef,
         protected activatedRoute: ActivatedRoute
     ) {}
 
@@ -124,5 +126,20 @@ export class BandUpdateComponent implements OnInit {
             }
         }
         return option;
+    }
+    byteSize(field) {
+        return this.dataUtils.byteSize(field);
+    }
+
+    openFile(contentType, field) {
+        return this.dataUtils.openFile(contentType, field);
+    }
+
+    setFileData(event, entity, field, isImage) {
+        this.dataUtils.setFileData(event, entity, field, isImage);
+    }
+
+    clearInputImage(field: string, fieldContentType: string, idInput: string) {
+        this.dataUtils.clearInputImage(this.band, this.elementRef, field, fieldContentType, idInput);
     }
 }

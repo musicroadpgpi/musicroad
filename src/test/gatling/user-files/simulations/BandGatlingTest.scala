@@ -74,7 +74,7 @@ class BandGatlingTest extends Simulation {
                 "id":null
                 , "bandName":"SAMPLE_TEXT"
                 , "bio":"SAMPLE_TEXT"
-                , "coverPicture":"SAMPLE_TEXT"
+                , "coverPicture":"null"
                 , "componentNumber":"0"
                 , "creationYear":"0"
                 , "genre":"Rock"

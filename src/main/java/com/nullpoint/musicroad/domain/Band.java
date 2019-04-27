@@ -36,9 +36,13 @@ public class Band implements Serializable {
 
     @Column(name = "bio")
     private String bio;
-   
+
+    @Lob
     @Column(name = "cover_picture")
-    private String coverPicture;
+    private byte[] coverPicture;
+
+    @Column(name = "cover_picture_content_type")
+    private String coverPictureContentType;
 
     @Column(name = "component_number")
     private Integer componentNumber;
@@ -100,17 +104,30 @@ public class Band implements Serializable {
         this.bio = bio;
     }
 
-    public String getCoverPicture() {
+    public byte[] getCoverPicture() {
         return coverPicture;
     }
 
-    public Band coverPicture(String coverPicture) {
+    public Band coverPicture(byte[] coverPicture) {
         this.coverPicture = coverPicture;
         return this;
     }
 
-    public void setCoverPicture(String coverPicture) {
+    public void setCoverPicture(byte[] coverPicture) {
         this.coverPicture = coverPicture;
+    }
+
+    public String getCoverPictureContentType() {
+        return coverPictureContentType;
+    }
+
+    public Band coverPictureContentType(String coverPictureContentType) {
+        this.coverPictureContentType = coverPictureContentType;
+        return this;
+    }
+
+    public void setCoverPictureContentType(String coverPictureContentType) {
+        this.coverPictureContentType = coverPictureContentType;
     }
 
     public Integer getComponentNumber() {
@@ -231,6 +248,7 @@ public class Band implements Serializable {
             ", bandName='" + getBandName() + "'" +
             ", bio='" + getBio() + "'" +
             ", coverPicture='" + getCoverPicture() + "'" +
+            ", coverPictureContentType='" + getCoverPictureContentType() + "'" +
             ", componentNumber=" + getComponentNumber() +
             ", creationYear=" + getCreationYear() +
             ", genre='" + getGenre() + "'" +

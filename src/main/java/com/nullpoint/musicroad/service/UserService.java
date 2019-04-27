@@ -107,7 +107,7 @@ public class UserService {
 	}
 
 	public User registerUser(UserDTO userDTO,String bandName, String password, Integer numberComponents, Integer creationYear,
-			Genre genre, City city, String coverPicture, String bio) {
+			Genre genre, City city, byte[] coverPicture, String coverPictureContentType, String bio) {
 		userRepository.findOneByLogin(userDTO.getLogin().toLowerCase()).ifPresent(existingUser -> {
 			boolean removed = removeNonActivatedUser(existingUser);
 			if (!removed) {
@@ -151,7 +151,8 @@ public class UserService {
 		newUserExtra.setGenre(genre);
         newUserExtra.setComponentNumber(numberComponents);
         newUserExtra.setBio(bio);
-        newUserExtra.setCoverPicture(coverPicture);
+		newUserExtra.setCoverPicture(coverPicture);
+		newUserExtra.setCoverPictureContentType(coverPictureContentType);
 		bandService.save(newUserExtra);
 		log.debug("Created Information for UserExtra: {}", newUserExtra);
 

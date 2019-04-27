@@ -10,7 +10,8 @@
             "fieldType": "String"
         },{
             "fieldName": "coverPicture",
-            "fieldType": "String"
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
         },
         {
             "fieldName": "componentNumber",

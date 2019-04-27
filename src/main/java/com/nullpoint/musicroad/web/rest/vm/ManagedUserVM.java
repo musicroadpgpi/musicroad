@@ -20,7 +20,8 @@ public class ManagedUserVM extends UserDTO {
 	private String password;
 	private String bandName;
 	private String bio;
-	private String coverPicture;
+	private byte[] coverPicture;
+	private String coverPictureContentType;
     private Integer componentNumber;
     private Integer creationYear;
     private Genre genre;
@@ -76,9 +77,18 @@ public class ManagedUserVM extends UserDTO {
 	public void setBio(String bio) {
 		this.bio = bio;
     }
-    public String getCoverPicture() {
-		return coverPicture;
+    public byte[] getCoverPicture() {
+        return coverPicture;
 	}
+	public void setCoverPicture(byte[] coverPicture) {
+        this.coverPicture = coverPicture;
+	}
+	public String getCoverPictureContentType() {
+        return coverPictureContentType;
+	}
+	public void setCoverPictureContentType(String coverPictureContentType) {
+        this.coverPictureContentType = coverPictureContentType;
+    }
 
 
     @Override
@@ -101,10 +111,4 @@ public class ManagedUserVM extends UserDTO {
 		this.bandName = bandName;
 	}
 
-	/**
-	 * @param coverPicture the coverPicture to set
-	 */
-	public void setCoverPicture(String coverPicture) {
-		this.coverPicture = coverPicture;
-	}
 }

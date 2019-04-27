@@ -3,7 +3,7 @@ import { HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/ht
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
-import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
+import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiDataUtils } from 'ng-jhipster';
 
 import { IBand } from 'app/shared/model/band.model';
 import { AccountService, User } from 'app/core';
@@ -34,6 +34,7 @@ export class BandComponent implements OnInit, OnDestroy {
 
     constructor(
         protected bandService: BandService,
+        protected dataUtils: JhiDataUtils,
         protected jhiAlertService: JhiAlertService,
         protected eventManager: JhiEventManager,
         protected parseLinks: JhiParseLinks,
@@ -96,6 +97,13 @@ export class BandComponent implements OnInit, OnDestroy {
     loadPage(page) {
         this.page = page;
         this.loadAll();
+    }
+    byteSize(field) {
+        return this.dataUtils.byteSize(field);
+    }
+
+    openFile(contentType, field) {
+        return this.dataUtils.openFile(contentType, field);
     }
 
     clear() {

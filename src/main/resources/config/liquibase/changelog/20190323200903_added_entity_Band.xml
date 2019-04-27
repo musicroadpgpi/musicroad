@@ -30,7 +30,11 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="cover_picture" type="varchar(255)">
+            <column name="cover_picture" type="longblob">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="cover_picture_content_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 

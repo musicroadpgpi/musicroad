@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, Renderer, ElementRef } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiLanguageService } from 'ng-jhipster';
+import { JhiLanguageService, JhiDataUtils } from 'ng-jhipster';
 import { IBand } from 'app/shared/model/band.model';
 import { ICity } from 'app/shared/model/city.model';
 import { ActivatedRoute } from '@angular/router';
@@ -28,6 +28,8 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     cities: ICity[];
     band: IBand;
     constructor(
+        protected dataUtils: JhiDataUtils,
+        protected elementRef2: ElementRef,
         protected jhiAlertService: JhiAlertService,
         private languageService: JhiLanguageService,
         private loginModalService: LoginModalService,
@@ -107,5 +109,20 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         } else {
             this.error = 'ERROR';
         }
+    }
+    byteSize(field) {
+        return this.dataUtils.byteSize(field);
+    }
+
+    openFile(contentType, field) {
+        return this.dataUtils.openFile(contentType, field);
+    }
+
+    setFileData(event, entity, field, isImage) {
+        this.dataUtils.setFileData(event, entity, field, isImage);
+    }
+
+    clearInputImage(field: string, fieldContentType: string, idInput: string) {
+        this.dataUtils.clearInputImage(this.registerAccount, this.elementRef2, field, fieldContentType, idInput);
     }
 }

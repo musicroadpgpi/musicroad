@@ -24,8 +24,20 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.coverPicture" for="field_coverPicture">Cover Picture</label>
-                    <input type="text" class="form-control" name="coverPicture" id="field_coverPicture"
+                    <div>
+                        <img [src]="'data:' + band.coverPictureContentType + ';base64,' + band.coverPicture" style="max-height: 100px;" *ngIf="band.coverPicture" alt="band image"/>
+                        <div *ngIf="band.coverPicture" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{band.coverPictureContentType}}, {{byteSize(band.coverPicture)}}</span>
+                            <button type="button" (click)="clearInputImage('coverPicture', 'coverPictureContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_coverPicture" (change)="setFileData($event, band, 'coverPicture', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="coverPicture" id="field_coverPicture"
                         [(ngModel)]="band.coverPicture" />
+                    <input type="hidden" class="form-control" name="coverPictureContentType" id="field_coverPictureContentType"
+                        [(ngModel)]="band.coverPictureContentType" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.componentNumber" for="field_componentNumber">Component Number</label>

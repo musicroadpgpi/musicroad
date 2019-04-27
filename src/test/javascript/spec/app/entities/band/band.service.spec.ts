@@ -21,7 +21,7 @@ describe('Service Tests', () => {
             service = injector.get(BandService);
             httpMock = injector.get(HttpTestingController);
 
-            elemDefault = new Band(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 0, 0, Genre.Rock);
+            elemDefault = new Band(0, 'AAAAAAA', 'AAAAAAA', 'image/png', 'AAAAAAA', 0, 0, Genre.Pop);
         });
 
         describe('Service methods', async () => {

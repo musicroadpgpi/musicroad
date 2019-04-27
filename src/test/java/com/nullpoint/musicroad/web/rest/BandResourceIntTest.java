@@ -24,6 +24,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
@@ -56,8 +57,10 @@ public class BandResourceIntTest {
     private static final String DEFAULT_BIO = "AAAAAAAAAA";
     private static final String UPDATED_BIO = "BBBBBBBBBB";
 
-    private static final String DEFAULT_COVER_PICTURE = "AAAAAAAAAA";
-    private static final String UPDATED_COVER_PICTURE = "BBBBBBBBBB";
+    private static final byte[] DEFAULT_COVER_PICTURE = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_COVER_PICTURE = TestUtil.createByteArray(1, "1");
+    private static final String DEFAULT_COVER_PICTURE_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_COVER_PICTURE_CONTENT_TYPE = "image/png";
 
     private static final Integer DEFAULT_COMPONENT_NUMBER = 1;
     private static final Integer UPDATED_COMPONENT_NUMBER = 2;
@@ -130,6 +133,7 @@ public class BandResourceIntTest {
             .bandName(DEFAULT_BAND_NAME)
             .bio(DEFAULT_BIO)
             .coverPicture(DEFAULT_COVER_PICTURE)
+            .coverPictureContentType(DEFAULT_COVER_PICTURE_CONTENT_TYPE)
             .componentNumber(DEFAULT_COMPONENT_NUMBER)
             .creationYear(DEFAULT_CREATION_YEAR)
             .genre(DEFAULT_GENRE);
@@ -159,6 +163,7 @@ public class BandResourceIntTest {
         assertThat(testBand.getBandName()).isEqualTo(DEFAULT_BAND_NAME);
         assertThat(testBand.getBio()).isEqualTo(DEFAULT_BIO);
         assertThat(testBand.getCoverPicture()).isEqualTo(DEFAULT_COVER_PICTURE);
+        assertThat(testBand.getCoverPictureContentType()).isEqualTo(DEFAULT_COVER_PICTURE_CONTENT_TYPE);
         assertThat(testBand.getComponentNumber()).isEqualTo(DEFAULT_COMPONENT_NUMBER);
         assertThat(testBand.getCreationYear()).isEqualTo(DEFAULT_CREATION_YEAR);
         assertThat(testBand.getGenre()).isEqualTo(DEFAULT_GENRE);
@@ -202,8 +207,8 @@ public class BandResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(band.getId().intValue())))
             .andExpect(jsonPath("$.[*].bandName").value(hasItem(DEFAULT_BAND_NAME.toString())))
             .andExpect(jsonPath("$.[*].bio").value(hasItem(DEFAULT_BIO.toString())))
-            .andExpect(jsonPath("$.[*].coverPicture").value(hasItem(DEFAULT_COVER_PICTURE.toString())))
-            .andExpect(jsonPath("$.[*].componentNumber").value(hasItem(DEFAULT_COMPONENT_NUMBER)))
+            .andExpect(jsonPath("$.[*].coverPictureContentType").value(hasItem(DEFAULT_COVER_PICTURE_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].coverPicture").value(hasItem(Base64Utils.encodeToString(DEFAULT_COVER_PICTURE))))            .andExpect(jsonPath("$.[*].componentNumber").value(hasItem(DEFAULT_COMPONENT_NUMBER)))
             .andExpect(jsonPath("$.[*].creationYear").value(hasItem(DEFAULT_CREATION_YEAR)))
             .andExpect(jsonPath("$.[*].genre").value(hasItem(DEFAULT_GENRE.toString())));
     }
@@ -254,8 +259,8 @@ public class BandResourceIntTest {
             .andExpect(jsonPath("$.id").value(band.getId().intValue()))
             .andExpect(jsonPath("$.bandName").value(DEFAULT_BAND_NAME.toString()))
             .andExpect(jsonPath("$.bio").value(DEFAULT_BIO.toString()))
-            .andExpect(jsonPath("$.coverPicture").value(DEFAULT_COVER_PICTURE.toString()))
-            .andExpect(jsonPath("$.componentNumber").value(DEFAULT_COMPONENT_NUMBER))
+            .andExpect(jsonPath("$.coverPictureContentType").value(DEFAULT_COVER_PICTURE_CONTENT_TYPE))
+            .andExpect(jsonPath("$.coverPicture").value(Base64Utils.encodeToString(DEFAULT_COVER_PICTURE)))            .andExpect(jsonPath("$.componentNumber").value(DEFAULT_COMPONENT_NUMBER))
             .andExpect(jsonPath("$.creationYear").value(DEFAULT_CREATION_YEAR))
             .andExpect(jsonPath("$.genre").value(DEFAULT_GENRE.toString()));
     }
@@ -286,6 +291,7 @@ public class BandResourceIntTest {
             .bandName(UPDATED_BAND_NAME)
             .bio(UPDATED_BIO)
             .coverPicture(UPDATED_COVER_PICTURE)
+            .coverPictureContentType(UPDATED_COVER_PICTURE_CONTENT_TYPE)
             .componentNumber(UPDATED_COMPONENT_NUMBER)
             .creationYear(UPDATED_CREATION_YEAR)
             .genre(UPDATED_GENRE);
@@ -302,6 +308,7 @@ public class BandResourceIntTest {
         assertThat(testBand.getBandName()).isEqualTo(UPDATED_BAND_NAME);
         assertThat(testBand.getBio()).isEqualTo(UPDATED_BIO);
         assertThat(testBand.getCoverPicture()).isEqualTo(UPDATED_COVER_PICTURE);
+        assertThat(testBand.getCoverPictureContentType()).isEqualTo(UPDATED_COVER_PICTURE_CONTENT_TYPE);
         assertThat(testBand.getComponentNumber()).isEqualTo(UPDATED_COMPONENT_NUMBER);
         assertThat(testBand.getCreationYear()).isEqualTo(UPDATED_CREATION_YEAR);
         assertThat(testBand.getGenre()).isEqualTo(UPDATED_GENRE);
@@ -366,8 +373,8 @@ public class BandResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(band.getId().intValue())))
             .andExpect(jsonPath("$.[*].bandName").value(hasItem(DEFAULT_BAND_NAME)))
             .andExpect(jsonPath("$.[*].bio").value(hasItem(DEFAULT_BIO)))
-            .andExpect(jsonPath("$.[*].coverPicture").value(hasItem(DEFAULT_COVER_PICTURE)))
-            .andExpect(jsonPath("$.[*].componentNumber").value(hasItem(DEFAULT_COMPONENT_NUMBER)))
+            .andExpect(jsonPath("$.[*].coverPictureContentType").value(hasItem(DEFAULT_COVER_PICTURE_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].coverPicture").value(hasItem(Base64Utils.encodeToString(DEFAULT_COVER_PICTURE))))            .andExpect(jsonPath("$.[*].componentNumber").value(hasItem(DEFAULT_COMPONENT_NUMBER)))
             .andExpect(jsonPath("$.[*].creationYear").value(hasItem(DEFAULT_CREATION_YEAR)))
             .andExpect(jsonPath("$.[*].genre").value(hasItem(DEFAULT_GENRE.toString())));
     }

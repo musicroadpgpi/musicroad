@@ -4,6 +4,7 @@ import { HttpResponse } from '@angular/common/http';
 
 import { User, AccountService } from 'app/core';
 import { IBand } from 'app/shared/model/band.model';
+import { JhiDataUtils } from 'ng-jhipster';
 
 @Component({
     selector: 'jhi-band-detail',
@@ -13,7 +14,7 @@ export class BandDetailComponent implements OnInit {
     band: IBand;
     @Input() user: User;
 
-    constructor(protected activatedRoute: ActivatedRoute, protected accountService: AccountService) {}
+    constructor(protected dataUtils: JhiDataUtils, protected activatedRoute: ActivatedRoute, protected accountService: AccountService) {}
 
     ngOnInit() {
         this.activatedRoute.data.subscribe(({ band }) => {
@@ -26,7 +27,13 @@ export class BandDetailComponent implements OnInit {
             });
         }
     }
+    byteSize(field) {
+        return this.dataUtils.byteSize(field);
+    }
 
+    openFile(contentType, field) {
+        return this.dataUtils.openFile(contentType, field);
+    }
     previousState() {
         window.history.back();
     }

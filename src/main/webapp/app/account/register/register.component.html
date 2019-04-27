@@ -138,8 +138,20 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.coverPicture" for="field_coverPicture">Cover Picture</label>
-                    <input type="text" class="form-control" name="coverPicture" id="field_coverPicture"
+                    <div>
+                        <img [src]="'data:' + registerAccount.coverPictureContentType + ';base64,' + registerAccount.coverPicture" style="max-height: 100px;" *ngIf="registerAccount.coverPicture" alt="band image"/>
+                        <div *ngIf="registerAccount.coverPicture" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{registerAccount.coverPictureContentType}}, {{byteSize(registerAccount.coverPicture)}}</span>
+                            <button type="button" (click)="clearInputImage('coverPicture', 'coverPictureContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_coverPicture" (change)="setFileData($event, registerAccount, 'coverPicture', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="coverPicture" id="field_coverPicture"
                         [(ngModel)]="registerAccount.coverPicture" />
+                    <input type="hidden" class="form-control" name="coverPictureContentType" id="field_coverPictureContentType"
+                        [(ngModel)]="registerAccount.coverPictureContentType" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.genre" for="field_genre">Genre</label>

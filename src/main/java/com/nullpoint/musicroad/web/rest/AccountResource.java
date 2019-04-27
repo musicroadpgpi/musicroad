@@ -60,7 +60,7 @@ public class AccountResource {
         }
         User user = userService.registerUser(managedUserVM,managedUserVM.getBandName(), managedUserVM.getPassword(),
         managedUserVM.getComponentNumber(), managedUserVM.getCreationYear(), managedUserVM.getGenre(),
-        managedUserVM.getCity(),managedUserVM.getCoverPicture(),managedUserVM.getBio());
+        managedUserVM.getCity(),managedUserVM.getCoverPicture(),managedUserVM.getCoverPictureContentType(),managedUserVM.getBio());
         mailService.sendActivationEmail(user);
     }
 

@@ -24,9 +24,16 @@
 				<div class="text-center">
                     <h2>{{band.bandName}}</h2>
                 <br>
-				</div>
-				<div class='img-round'>
-					<img src='{{band.coverPicture}}'>
+                </div>
+                <div class='img-round' *ngIf="band.coverPicture">
+                    <div *ngIf="band.coverPicture">
+                        <a (click)="openFile(band.coverPictureContentType, band.coverPicture)">
+                            <img [src]="'data:' + band.coverPictureContentType + ';base64,' + band.coverPicture" style="max-width: 100%;" alt="band image"/>
+                        </a>
+                    </div>      
+                
+                
+                    
       </div>
        
       

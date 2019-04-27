@@ -35,7 +35,7 @@
                 <th *ngIf="isTablet" jhiSortBy="creationYear"><span jhiTranslate="musicroadApp.band.creationYear">Creation Year</span> <fa-icon [icon]="'sort'"></fa-icon></th>
                 <th *ngIf="isDesktop" jhiSortBy="genre"><span jhiTranslate="musicroadApp.band.genre">Genre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
                 <th *ngIf="isTablet" jhiSortBy="description"><span jhiTranslate="musicroadApp.band.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-                <th *ngIf="isDesktop" jhiSortBy="picture"><span jhiTranslate="musicroadApp.band.picture">Picture</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th *ngIf="isDesktop" ><span jhiTranslate="musicroadApp.band.picture">Picture</span> </th>
                 <th *ngIf="isDesktop" jhiSortBy="city.id"><span jhiTranslate="musicroadApp.band.city">City</span> <fa-icon [icon]="'sort'"></fa-icon></th>
                 <th *ngIf="isDesktop" jhiSortBy="user.id"><span jhiTranslate="musicroadApp.band.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
@@ -49,7 +49,10 @@
                     <td *ngIf="isTablet">{{band.creationYear}}</td>
                     <td *ngIf="isDesktop" jhiTranslate="{{'musicroadApp.Genre.' + band.genre}}">{{band.genre}}</td>
                     <td *ngIf="isTablet">{{band.description}}</td>
-                    <td *ngIf="isDesktop"><img [src]="band.coverPicture" [alt]="band.coverPicture" /></td>
+                   <!-- <td *ngIf="isDesktop"><img [src]="band.coverPicture" [alt]="band.coverPicture" /></td>-->
+                   <td *ngIf="isDesktop">
+                        <img [src]="'data:' + band.coverPictureContentType + ';base64,' + band.coverPicture" style="max-height: 80px;" alt=""/>
+                </td>
                     <td *ngIf="isDesktop">
                         <div *ngIf="band.city">
                             <a [routerLink]="['../city', band.city?.id, 'view' ]" >{{band.city?.name}}</a>
