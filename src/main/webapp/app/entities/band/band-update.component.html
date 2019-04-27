@@ -39,25 +39,39 @@
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.genre" for="field_genre">Genre</label>
-                    <select class="form-control" name="genre" [(ngModel)]="band.genre" id="field_genre" >
+                    <select class="form-control" name="genre" [(ngModel)]="band.genre" id="field_genre" required>
                         <option value="Rock">{{'musicroadApp.Genre.Rock' | translate}}</option>
                         <option value="RandB">{{'musicroadApp.Genre.RandB' | translate}}</option>
                         <option value="Soul">{{'musicroadApp.Genre.Soul' | translate}}</option>
                         <option value="Pop">{{'musicroadApp.Genre.Pop' | translate}}</option>
-                        <option value="Latin">{{'musicroadApp.Genre.Latin' | translate}}</option>
                         <option value="Jazz">{{'musicroadApp.Genre.Jazz' | translate}}</option>
-                        <option value="HipHop">{{'musicroadApp.Genre.HipHop' | translate}}</option>
                         <option value="Folk">{{'musicroadApp.Genre.Folk' | translate}}</option>
                         <option value="Electronic">{{'musicroadApp.Genre.Electronic' | translate}}</option>
                         <option value="Country">{{'musicroadApp.Genre.Country' | translate}}</option>
                         <option value="Blues">{{'musicroadApp.Genre.Blues' | translate}}</option>
                         <option value="Flamenco">{{'musicroadApp.Genre.Flamenco' | translate}}</option>
+                        <option value="Rap">{{'musicroadApp.Genre.Rap' | translate}}</option>
+                        <option value="Reggaeton">{{'musicroadApp.Genre.Reggaeton' | translate}}</option>
+                        <option value="Reggae">{{'musicroadApp.Genre.Reggae' | translate}}</option>
+                        <option value="HeavyMetal">{{'musicroadApp.Genre.HeavyMetal' | translate}}</option>
+                        <option value="HardRock">{{'musicroadApp.Genre.HardRock' | translate}}</option>
+                        <option value="Classic">{{'musicroadApp.Genre.Classic' | translate}}</option>
+                        <option value="Dance">{{'musicroadApp.Genre.Dance' | translate}}</option>
+                        <option value="AlternativeRock">{{'musicroadApp.Genre.AlternativeRock' | translate}}</option>
+                        <option value="PopLatino">{{'musicroadApp.Genre.PopLatino' | translate}}</option>
+                        <option value="Punk">{{'musicroadApp.Genre.Punk' | translate}}</option>
+                        <option value="Techno">{{'musicroadApp.Genre.Techno' | translate}}</option>
+                        <option value="Grunge">{{'musicroadApp.Genre.Grunge' | translate}}</option>
+                        <option value="House">{{'musicroadApp.Genre.House' | translate}}</option>
+                        <option value="IndieRock">{{'musicroadApp.Genre.IndieRock' | translate}}</option>
+                        <option value="Funk">{{'musicroadApp.Genre.Funk' | translate}}</option>
+
                     </select>
                 </div>
                 <ng-container *jhiHasAnyAuthority="'ROLE_ADMIN'">
                 <div class="form-group" >
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.user" for="field_user">User</label>
-                    <select class="form-control" id="field_user" name="user" [(ngModel)]="band.user" >
+                    <select class="form-control" id="field_user" name="user" [(ngModel)]="band.user" required>
                         <option [ngValue]="null"></option>
                         <option [ngValue]="userOption.id === band.user?.id ? band.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.firstName}}</option>
                     </select>
@@ -65,7 +79,7 @@
                 </ng-container>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.city" for="field_city">City</label>
-                    <select class="form-control" id="field_city" name="city" [(ngModel)]="band.city" >
+                    <select class="form-control" id="field_city" name="city" [(ngModel)]="band.city" required>
                         <option [ngValue]="null"></option>
                         <option [ngValue]="cityOption.id === band.city?.id ? band.city : cityOption" *ngFor="let cityOption of cities; trackBy: trackCityById">{{cityOption.name}}</option>
                     </select>

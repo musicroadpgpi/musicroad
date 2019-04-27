@@ -2,18 +2,31 @@
     "musicroadApp": {
         "Genre": {
             "null": "",
-            "Rock": "Rock",
-            "RandB": "RandB",
-            "Soul": "Soul",
             "Pop": "Pop",
-            "Latin": "Latin",
-            "Jazz": "Jazz",
-            "HipHop": "HipHop",
-            "Folk": "Folk",
             "Electronic": "Electronic",
-            "Country": "Country",
+            "Rock": "Rock",
+            "Rap": "Rap",
+            "Reggaeton": "Reggaeton",
+            "Reggae": "Reggae",
+            "HeavyMetal": "HeavyMetal",
+            "HardRock": "HardRock",
+            "Classic": "Classic",
+            "Dance": "Dance",
             "Blues": "Blues",
-            "Flamenco": "Flamenco"
+            "AlternativeRock": "AlternativeRock",
+            "Jazz": "Jazz",
+            "PopLatino": "PopLatino",
+            "Punk": "Punk",
+            "Techno": "Techno",
+            "Grunge": "Grunge",
+            "House": "House",
+            "IndieRock": "IndieRock",
+            "Flamenco": "Flamenco",
+            "RandB": "RandB",
+            "Country": "Country",
+            "Folk": "Folk",
+            "Soul": "Soul",
+            "Funk": "Funk"
         }
     }
 }

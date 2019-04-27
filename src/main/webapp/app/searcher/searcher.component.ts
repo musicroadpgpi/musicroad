@@ -25,7 +25,33 @@ export class SearcherComponent implements OnInit {
     links: any;
     totalItems: number;
     title = 'app';
-    genres = ['Rock', 'RandB', 'Soul', 'Pop', 'Latin', 'Jazz', 'HipHop', 'Folk', 'Electronic', 'Country', 'Blues', 'Flamenco'];
+    genres = [
+        'Pop',
+        'Electronic',
+        'Rock',
+        'Rap',
+        'Reggaeton',
+        'Reggae',
+        'HeavyMetal',
+        'HardRock',
+        'Classic',
+        'Dance',
+        'Blues',
+        'AlternativeRock',
+        'Jazz',
+        'PopLatino',
+        'Punk',
+        'Techno',
+        'Grunge',
+        'House',
+        'IndieRock',
+        'Flamenco',
+        'RandB',
+        'Country',
+        'Folk',
+        'Soul',
+        'Funk'
+    ];
     // cities: string[] = ['Madrid' , 'Sevilla' , 'Malaga' , 'Huelva' , 'Valladolid' , 'Granada' , 'Barcelona' , 'Jaén' , 'A Coruña' , 'Guadalajara' , 'Huesca' , 'Lugo' , 'La Rioja' , 'Gipuzkoa' , 'Pontevedra' , 'Teruel'];
     cities: ICity[] = [];
     city: City;

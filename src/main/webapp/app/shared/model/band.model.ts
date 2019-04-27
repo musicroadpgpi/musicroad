@@ -7,14 +7,27 @@ export const enum Genre {
     RandB = 'RandB',
     Soul = 'Soul',
     Pop = 'Pop',
-    Latin = 'Latin',
     Jazz = 'Jazz',
-    HipHop = 'HipHop',
     Folk = 'Folk',
     Electronic = 'Electronic',
     Country = 'Country',
     Blues = 'Blues',
-    Flamenco = 'Flamenco'
+    Flamenco = 'Flamenco',
+    Rap = 'Rap',
+    Reggaeton = 'Reggaeton',
+    Reggae = 'Reggae',
+    HeavyMetal = 'HeavyMetal',
+    HardRock = 'HardRock',
+    Classic = 'Classic',
+    Dance = 'Dance',
+    AlternativeRock = 'AlternativeRock',
+    PopLatino = 'PopLatino',
+    Punk = 'Punk',
+    Techno = 'Techno',
+    Grunge = 'Grunge',
+    House = 'House',
+    IndieRock = 'IndieRock',
+    Funk = 'Funk'
 }
 
 export interface IBand {
