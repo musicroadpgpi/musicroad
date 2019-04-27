@@ -23,6 +23,7 @@
         "frankie": "Encargado de Base de datos.",
         "title": "Musicroad",
         "browsehappy": "Está usando un navegador <strong>no actualizado</strong>. Por favor, <a href=\"http://browsehappy.com/?locale=en\">actualice su navegador</a> para mejorar su experiencia.",
+        "exercise": "Si quieres borrar tus datos o acceder a ellos por favor, ponte en contacto con nostros a traves del email info@musicroad.app",
         "menu": {
             "search": "Buscador",
             "home": "Inicio",
@@ -75,7 +76,8 @@
             "confirmpassword": "Confirmación de la nueva contraseña",
             "confirmpassword.placeholder": "Confirmación de la nueva contraseña",
             "email": "Correo electrónico",
-            "email.placeholder": "Su correo electrónico"
+            "email.placeholder": "Su correo electrónico",
+            "terms": "He leido y acepto los terminos especificados en la página GDPR"
         },
         "messages": {
             "info": {

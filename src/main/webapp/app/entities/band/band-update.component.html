@@ -1,5 +1,6 @@
 <div class="row justify-content-center">
     <div class="col-8">
+
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
             <h2 id="jhi-band-heading" jhiTranslate="musicroadApp.band.home.createOrEditLabel">Create or edit a Band</h2>
             <div>
@@ -80,6 +81,8 @@
 
                     </select>
                 </div>
+
+
                 <ng-container *jhiHasAnyAuthority="'ROLE_ADMIN'">
                 <div class="form-group" >
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.user" for="field_user">User</label>
@@ -114,5 +117,10 @@
                 </button>
             </div>
         </form>
+        <br>
+        <div class="alert alert-warning">
+            <span jhiTranslate="global.exercise">If you want to delete your account or extract the data, please contact us through email at info@musicroad.app</span>
+        </div>
+
     </div>
 </div>
