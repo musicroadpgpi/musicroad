@@ -1,5 +1,12 @@
 {
     "global": {
+        "stripe": {
+            "cardNumber": "Credit Card Number",
+            "expMonth": "Exp Month",
+            "expYear": "Exp Year",
+            "cvc": "CVC",
+            "pay": "Pay 9.95€"
+        },
         "david": "Team leader & DevOps Engineer.",
         "josemary": "Data Architect &  UI / UX designer.",
         "pablo": "Web-Server Technologies Manager.",

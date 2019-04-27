@@ -1,5 +1,12 @@
 {
     "global": {
+        "stripe": {
+            "cardNumber": "Número Tarjeta de Crédito",
+            "expMonth": "Exp Month",
+            "expYear": "Exp Year",
+            "cvc": "CVC",
+            "pay": "Pagar 9.95€"
+        },
         "gpdr": "RGPD",
         "david": "Lider del equipo e Ingeniero de DevOps.",
         "josemary": "Arquitecto de datos y encargado de UI / UX.",

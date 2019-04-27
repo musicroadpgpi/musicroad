@@ -1,16 +1,51 @@
 <jhi-alert></jhi-alert>
 <jhi-alert-error></jhi-alert-error>
 
-<div>
+<!--<div>
     <form>
-        <input type="text" placeholder="Credit Card #" name="cardNumber">
-        <input type="text" placeholder="Expiration Month" name="expMonth">
-        <input type="text" placeholder="Expiration Year" name="expYear">
-        <input type="text" placeholder="CVC" name="cvc">
-        <button (click)="chargeCreditCard()">Submit</button>
+        <div id="card-element">
+            <input type="text" placeholder="Credit Card #" name="cardNumber" >
+            <input type="text" placeholder="Expiration Month" name="expMonth">
+            <input type="text" placeholder="Expiration Year" name="expYear">
+            <input type="text" placeholder="CVC" name="cvc">
+            <button (click)="chargeCreditCard()">Submit</button>
+        </div>
     </form>
-</div>
+</div>-->
 
+<div class="row justify-content-center">
+        <div class="col-md-8">
+                <div align="center">
+
+                <img src="images/logo-stripe.png" width="500" height="150">
+                </div>
+<form name="form" role="form">
+        <div class="form-group">
+                <label class="form-control-label" jhiTranslate="global.stripe.cardNumber" for="cardNumber">Card Number</label>
+                <input type="text" class="form-control" name="cardNumber" id="cardNumber"/>
+            </div>
+
+            <div class="form-group">
+                <label class="form-control-label" jhiTranslate="global.stripe.expMonth" for="expMonth">Exp Month</label>
+                <input type="number" class="form-control" name="expMonth" id="expMonth" />
+            </div>
+            <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="global.stripe.expYear" for="expYear">Exp Year</label>
+                    <input type="text" class="form-control" name="expYear" id="expYear"/>
+                </div>
+
+            <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="global.stripe.cvc" for="cvc"> CVC
+                    </label>
+                    <input type="number" class="form-control" name="cvc" id="cvc" />
+            </div>
+            <div class="row justify-content-center">
+            <button type="submit" class="btn btn-primary"  (click)="chargeCreditCard()"jhiTranslate="global.stripe.pay">Pay 9.95€</button>
+        </div>
+
+</form>
+        </div>
+</div>
 
 <!--
 <form action="/charge" method="post" id="payment-form">
