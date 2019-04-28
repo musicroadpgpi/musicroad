@@ -10,6 +10,7 @@ import { ICity, City } from 'app/shared/model/city.model';
 import { SERVER_API_URL } from 'app/app.constants';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ITEMS_PER_PAGE } from 'app/shared';
+import { IUser, AccountService } from 'app/core';
 
 @Component({
     selector: 'jhi-searcher',
@@ -59,6 +60,7 @@ export class SearcherComponent implements OnInit {
     cityes: ICity[];
     formSearch: FormGroup;
     fromSearcher = true;
+    user: IUser;
 
     constructor(
         protected activatedRoute: ActivatedRoute,
@@ -67,6 +69,7 @@ export class SearcherComponent implements OnInit {
         protected client: HttpClient,
         protected parseLinks: JhiParseLinks,
         protected jhiAlertService: JhiAlertService,
+        protected accountService: AccountService,
         private titleService: Title
     ) {
         this.currentSearch =
@@ -121,11 +124,15 @@ export class SearcherComponent implements OnInit {
         };
         this.predicate = 'id';
         this.reverse = true;
-        this.loadAll();
+        this.accountService.fetch().subscribe((response: HttpResponse<IUser>) => {
+            this.user = response.body;
+            this.loadAll();
+        });
         this.titleService.setTitle('Search');
     }
 
     loadAll() {
+        let resultBands: IBand[] = [];
         if (this.currentSearch) {
             this.bandService
                 .search({
@@ -135,7 +142,16 @@ export class SearcherComponent implements OnInit {
                     sort: this.sort()
                 })
                 .subscribe(
-                    (res: HttpResponse<IBand[]>) => this.paginateBands(res.body, res.headers),
+                    (res: HttpResponse<IBand[]>) => {
+                        resultBands = res.body.filter((filterBand: IBand) => {
+                            if (filterBand.user.id === this.user.id) {
+                                return false;
+                            } else {
+                                return true;
+                            }
+                        });
+                        this.paginateBands(resultBands, res.headers);
+                    },
                     (res: HttpErrorResponse) => this.onError(res.message)
                 );
             return;
@@ -147,7 +163,16 @@ export class SearcherComponent implements OnInit {
                 sort: this.sort()
             })
             .subscribe(
-                (res: HttpResponse<IBand[]>) => this.paginateBands(res.body, res.headers),
+                (res: HttpResponse<IBand[]>) => {
+                    resultBands = res.body.filter((filterBand: IBand) => {
+                        if (filterBand.user.id === this.user.id) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    });
+                    this.paginateBands(resultBands, res.headers);
+                },
                 (res: HttpErrorResponse) => this.onError(res.message)
             );
     }
