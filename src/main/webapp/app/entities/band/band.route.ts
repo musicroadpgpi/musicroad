@@ -50,18 +50,18 @@ export const bandRoute: Routes = [
         },
         canActivate: [UserRouteAccessService]
     },
-    {
-        path: 'new',
-        component: BandUpdateComponent,
-        resolve: {
-            band: BandResolve
-        },
-        data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'musicroadApp.band.home.title'
-        },
-        canActivate: [UserRouteAccessService]
-    },
+    // {
+    //     path: 'new',
+    //     component: BandUpdateComponent,
+    //     resolve: {
+    //         band: BandResolve
+    //     },
+    //     data: {
+    //         authorities: ['ROLE_USER'],
+    //         pageTitle: 'musicroadApp.band.home.title'
+    //     },
+    //     canActivate: [UserRouteAccessService]
+    // },
     {
         path: ':id/edit',
         component: BandUpdateComponent,
@@ -78,6 +78,9 @@ export const bandRoute: Routes = [
     {
         path: 'edit-my-band',
         component: BandUpdateComponent,
+        resolve: {
+            band: BandResolve
+        },
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'musicroadApp.band.home.title'

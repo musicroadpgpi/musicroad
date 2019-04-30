@@ -1,10 +1,10 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { JhiAlertService, JhiDataUtils } from 'ng-jhipster';
-import { IBand } from 'app/shared/model/band.model';
+import { IBand, Band } from 'app/shared/model/band.model';
 import { BandService } from './band.service';
 import { IUser, UserService, AccountService } from 'app/core';
 import { ICity } from 'app/shared/model/city.model';
@@ -26,6 +26,9 @@ export class BandUpdateComponent implements OnInit {
 
     collaborations: ICollaboration[];
 
+    user: IUser;
+    canEdit = false;
+
     constructor(
         protected dataUtils: JhiDataUtils,
         protected jhiAlertService: JhiAlertService,
@@ -41,16 +44,43 @@ export class BandUpdateComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.activatedRoute.data.subscribe(({ band }) => {
-            this.band = band;
-            if (this.band === undefined) {
-                this.accountService.fetch().subscribe((fetchResponse: HttpResponse<IUser>) => {
+            console.log(band);
+            this.accountService.fetch().subscribe((fetchResponse: HttpResponse<IUser>) => {
+                this.user = fetchResponse.body;
+                this.activatedRoute.url.subscribe((urlSegments: UrlSegment[]) => {
                     this.bandService
                         .search({ query: 'login.equals=' + fetchResponse.body.login })
                         .subscribe((searchBandResponse: HttpResponse<IBand[]>) => {
-                            this.band = searchBandResponse.body[0];
+                            console.log('searchRes: ' + searchBandResponse.body[0]);
+                            if (searchBandResponse.body[0] !== undefined) {
+                                console.log('NOOOOOOOOOOOOO');
+                                this.band = searchBandResponse.body[0];
+                            }
+                            const inEditMyBand: boolean = urlSegments.some((urlSegment: UrlSegment) => {
+                                if (urlSegment.path.includes('edit-my-band')) {
+                                    return true;
+                                } else {
+                                    return false;
+                                }
+                            });
+                            if (inEditMyBand) {
+                                this.canEdit = true;
+                            } else {
+                                if (this.band !== undefined) {
+                                    if (this.band.user !== undefined) {
+                                        if (this.band.user.id === this.user.id) {
+                                            this.canEdit = true;
+                                        }
+                                    }
+                                }
+                            }
+                            if (this.band === undefined) {
+                                this.band = band;
+                            }
+                            console.log('Finally : ' + this.band);
                         });
                 });
-            }
+            });
         });
         this.userService
             .query()
