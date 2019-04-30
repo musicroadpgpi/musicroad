@@ -11,6 +11,7 @@ import { ICity } from 'app/shared/model/city.model';
 import { CityService } from 'app/entities/city';
 import { ICollaboration } from 'app/shared/model/collaboration.model';
 import { CollaborationService } from 'app/entities/collaboration';
+import { thisExpression } from '@babel/types';
 
 @Component({
     selector: 'jhi-band-update',
@@ -27,7 +28,6 @@ export class BandUpdateComponent implements OnInit {
     collaborations: ICollaboration[];
 
     user: IUser;
-    canEdit = false;
 
     constructor(
         protected dataUtils: JhiDataUtils,
@@ -44,41 +44,20 @@ export class BandUpdateComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.activatedRoute.data.subscribe(({ band }) => {
-            console.log(band);
             this.accountService.fetch().subscribe((fetchResponse: HttpResponse<IUser>) => {
                 this.user = fetchResponse.body;
                 this.activatedRoute.url.subscribe((urlSegments: UrlSegment[]) => {
-                    this.bandService
-                        .search({ query: 'login.equals=' + fetchResponse.body.login })
-                        .subscribe((searchBandResponse: HttpResponse<IBand[]>) => {
-                            console.log('searchRes: ' + searchBandResponse.body[0]);
-                            if (searchBandResponse.body[0] !== undefined) {
-                                console.log('NOOOOOOOOOOOOO');
-                                this.band = searchBandResponse.body[0];
-                            }
-                            const inEditMyBand: boolean = urlSegments.some((urlSegment: UrlSegment) => {
-                                if (urlSegment.path.includes('edit-my-band')) {
-                                    return true;
-                                } else {
-                                    return false;
+                    if (band.user !== undefined) {
+                        this.band = band;
+                    } else {
+                        this.bandService
+                            .search({ query: 'login.equals=' + fetchResponse.body.login })
+                            .subscribe((searchBandResponse: HttpResponse<IBand[]>) => {
+                                if (searchBandResponse.body[0] !== undefined) {
+                                    this.band = searchBandResponse.body[0];
                                 }
                             });
-                            if (inEditMyBand) {
-                                this.canEdit = true;
-                            } else {
-                                if (this.band !== undefined) {
-                                    if (this.band.user !== undefined) {
-                                        if (this.band.user.id === this.user.id) {
-                                            this.canEdit = true;
-                                        }
-                                    }
-                                }
-                            }
-                            if (this.band === undefined) {
-                                this.band = band;
-                            }
-                            console.log('Finally : ' + this.band);
-                        });
+                    }
                 });
             });
         });
@@ -111,11 +90,14 @@ export class BandUpdateComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-        if (this.band.id !== undefined) {
-            this.subscribeToSaveResponse(this.bandService.update(this.band));
-        } else {
-            this.subscribeToSaveResponse(this.bandService.create(this.band));
-        }
+        this.accountService.fetch().subscribe((response: HttpResponse<IUser>) => {
+            this.band.user = response.body;
+            if (this.band.id !== undefined) {
+                this.subscribeToSaveResponse(this.bandService.update(this.band));
+            } else {
+                this.subscribeToSaveResponse(this.bandService.create(this.band));
+            }
+        });
     }
 
     protected subscribeToSaveResponse(result: Observable<HttpResponse<IBand>>) {

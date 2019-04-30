@@ -1,7 +1,7 @@
 <div class="row justify-content-center" >
     <div class="col-8">
 
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm" *ngIf="band.user.id === user.id">
             <h2 id="jhi-band-heading" jhiTranslate="musicroadApp.band.home.createOrEditLabel">Create or edit a Band</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
@@ -83,7 +83,7 @@
                 </div>
 
 
-                <ng-container *jhiHasAnyAuthority="'ROLE_ADMIN'">
+                <ng-container *ngIf="false">
                 <div class="form-group" >
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.user" for="field_user">User</label>
                     <select class="form-control" id="field_user" name="user" [(ngModel)]="band.user" required>
@@ -99,7 +99,7 @@
                         <option [ngValue]="cityOption.id === band.city?.id ? band.city : cityOption" *ngFor="let cityOption of cities; trackBy: trackCityById">{{cityOption.name}}</option>
                     </select>
                 </div>
-                <ng-container *jhiHasAnyAuthority="'ROLE_ADMIN'">
+                <ng-container *ngIf="false">
                 <div class="form-group">
                     <label jhiTranslate="musicroadApp.band.collaborations" for="field_collaborations">Collaborations</label>
                     <select class="form-control" id="field_collaborations" multiple name="collaborations" [(ngModel)]="band.collaborations">
@@ -118,13 +118,16 @@
             </div>
         </form>
         <br>
-        <div class="alert alert-warning">
+        <div class="alert alert-warning" *ngIf="band.user.id === user.id">
             <span jhiTranslate="global.exercise">If you want to delete your account or extract the data, please contact us through email at info@musicroad.app</span>
         </div>
 
+
+
+
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()" *ngIf="band.user.id !== user.id">
+            <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
     </div>
 </div>
-
-<button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()" *ngIf="!canEdit">
-    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-</button>

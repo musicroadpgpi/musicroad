@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
     }
 
     chargeCreditCard() {
-        let form = document.getElementsByTagName('form')[0];
+        const form = document.getElementsByTagName('form')[0];
         (<any>window).Stripe.card.createToken(
             {
                 number: form.cardNumber.value,
@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
             },
             (status: number, response: any) => {
                 if (status === 200) {
-                    let token = response.id;
+                    const token = response.id;
                     this.chargeCard(token);
                 } else {
                     console.log(response.error.message);
