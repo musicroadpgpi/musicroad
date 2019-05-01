@@ -1,0 +1,31 @@
+{
+    "bandName": "TestBand",
+    "bio": "",
+    "city": {
+        "id": 2,
+        "name": "Bilbao",
+        "country": "ES"
+    },
+    "collaborations": [],
+    "componentNumber": 2,
+    "coverPicture": "",
+    "coverPictureContentType": "",
+    "creationYear": 1996,
+    "genre": "Pop",
+    "id": null,
+    "user": {
+        "id": 4,
+        "login": "user",
+        "firstName": "User",
+        "lastName": "User",
+        "email": "user@localhost",
+        "imageUrl": "",
+        "activated": true,
+        "langKey": "en",
+        "createdBy": "system",
+        "createdDate": null,
+        "lastModifiedBy": "system",
+        "lastModifiedDate": null,
+        "authorities": ["ROLE_USER"]
+    }
+}

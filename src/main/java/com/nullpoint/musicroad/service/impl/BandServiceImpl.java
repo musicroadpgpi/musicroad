@@ -12,6 +12,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.nullpoint.musicroad.security.SecurityUtils;
+import org.springframework.util.Assert;
+
 import java.util.Optional;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
@@ -43,6 +46,8 @@ public class BandServiceImpl implements BandService {
     @Override
     public Band save(Band band) {
         log.debug("Request to save Band : {}", band);
+        String principalUsername = SecurityUtils.getCurrentUserLogin().get();
+        Assert.isTrue(band.getUser().getLogin().equals(principalUsername));
         Band result = bandRepository.save(band);
         bandSearchRepository.save(result);
         return result;
