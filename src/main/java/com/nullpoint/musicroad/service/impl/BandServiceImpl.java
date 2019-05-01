@@ -16,6 +16,7 @@ import com.nullpoint.musicroad.security.SecurityUtils;
 import org.springframework.util.Assert;
 
 import java.util.Optional;
+import com.nullpoint.musicroad.domain.User;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
@@ -46,7 +47,12 @@ public class BandServiceImpl implements BandService {
     @Override
     public Band save(Band band) {
         log.debug("Request to save Band : {}", band);
+        Band storedBand = this.findOne(band.getId()).get();
         String principalUsername = SecurityUtils.getCurrentUserLogin().get();
+        if ( storedBand != null ) {
+            String storedUsername = storedBand.getUser().getLogin();
+            Assert.isTrue(storedUsername.equals(principalUsername));
+        }
         Assert.isTrue(band.getUser().getLogin().equals(principalUsername));
         Band result = bandRepository.save(band);
         bandSearchRepository.save(result);
