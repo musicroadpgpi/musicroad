@@ -61,7 +61,7 @@ public class Band implements Serializable {
     @ManyToOne
     private City city;
 
-    @ManyToMany
+    @ManyToMany()
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "band_collaborations",
                joinColumns = @JoinColumn(name = "band_id", referencedColumnName = "id"),

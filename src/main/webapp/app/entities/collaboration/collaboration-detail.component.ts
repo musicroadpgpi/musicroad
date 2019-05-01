@@ -53,15 +53,6 @@ export class CollaborationDetailComponent implements OnInit {
             this.bandService
                 .search({ query: 'id.equals=' + this.collaboration.id })
                 .subscribe((responseSearchBand: HttpResponse<IBand[]>) => {
-                    this.collaboration.bands = responseSearchBand.body.filter((filtBand, filtInd, filtBands) => {
-                        return filtBand.collaborations.some((someCollab, someInd, someCollabs) => {
-                            if (someCollab !== null) {
-                                return someCollab.id === this.collaboration.id;
-                            } else {
-                                return false;
-                            }
-                        });
-                    });
                     this.collaboration.bands.forEach((band: IBand) => {
                         if (band.user.id !== this.user.id) {
                             this.idOtherBand = band.id;
@@ -87,15 +78,6 @@ export class CollaborationDetailComponent implements OnInit {
             console.log(collaboration);
         });
         this.bandService.search({ query: 'id.equals=' + this.collaboration.id }).subscribe((responseSearchBand: HttpResponse<IBand[]>) => {
-            this.collaboration.bands = responseSearchBand.body.filter((filtBand, filtInd, filtBands) => {
-                return filtBand.collaborations.some((someCollab, someInd, someCollabs) => {
-                    if (someCollab !== null) {
-                        return someCollab.id === this.collaboration.id;
-                    } else {
-                        return false;
-                    }
-                });
-            });
             this.collaboration.bands.forEach((band: IBand) => {
                 if (band.user.id !== this.user.id) {
                     this.idOtherBand = band.id;
