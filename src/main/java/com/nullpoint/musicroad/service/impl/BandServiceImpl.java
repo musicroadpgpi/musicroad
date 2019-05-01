@@ -103,6 +103,12 @@ public class BandServiceImpl implements BandService {
     @Override
     public void delete(Long id) {
         log.debug("Request to delete Band : {}", id);
+        Band storedBand = this.findOne(id).get();
+        String principalUsername = SecurityUtils.getCurrentUserLogin().get();
+        if ( storedBand != null ) {
+            String storedUsername = storedBand.getUser().getLogin();
+            Assert.isTrue(storedUsername.equals(principalUsername));
+        }
         bandRepository.deleteById(id);
         bandSearchRepository.deleteById(id);
     }
