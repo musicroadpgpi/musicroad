@@ -14,11 +14,11 @@
     "genre": "Pop",
     "id": null,
     "user": {
-        "id": 4,
-        "login": "user",
-        "firstName": "User",
-        "lastName": "User",
-        "email": "user@localhost",
+        "id": 3,
+        "login": "admin",
+        "firstName": "Administrator",
+        "lastName": "Administrator",
+        "email": "admin@localhost",
         "imageUrl": "",
         "activated": true,
         "langKey": "en",
@@ -26,6 +26,6 @@
         "createdDate": null,
         "lastModifiedBy": "system",
         "lastModifiedDate": null,
-        "authorities": ["ROLE_USER"]
+        "authorities": ["ROLE_USER", "ROLE_ADMIN"]
     }
 }

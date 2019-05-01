@@ -47,13 +47,22 @@ public class BandServiceImpl implements BandService {
     @Override
     public Band save(Band band) {
         log.debug("Request to save Band : {}", band);
-        Band storedBand = this.findOne(band.getId()).get();
+        Band storedBand = null;
+        if (band.getId() != null)
+            storedBand = this.findOne(band.getId()).get();
         String principalUsername = SecurityUtils.getCurrentUserLogin().get();
         if ( storedBand != null ) {
             String storedUsername = storedBand.getUser().getLogin();
             Assert.isTrue(storedUsername.equals(principalUsername));
+            Assert.isTrue(band.getUser().getLogin().equals(principalUsername));
         }
-        Assert.isTrue(band.getUser().getLogin().equals(principalUsername));
+        Band result = bandRepository.save(band);
+        bandSearchRepository.save(result);
+        return result;
+    }
+
+    public Band saveForCollaboration(Band band) {
+        log.debug("Request to save Band : {}", band);
         Band result = bandRepository.save(band);
         bandSearchRepository.save(result);
         return result;

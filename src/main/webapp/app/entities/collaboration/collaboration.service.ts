@@ -21,6 +21,8 @@ export class CollaborationService {
 
     create(collaboration: ICollaboration): Observable<EntityResponseType> {
         const copy = this.convertDateFromClient(collaboration);
+        console.log(collaboration.bands);
+        console.log(copy.bands);
         return this.http
             .post<ICollaboration>(this.resourceUrl, copy, { observe: 'response' })
             .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));

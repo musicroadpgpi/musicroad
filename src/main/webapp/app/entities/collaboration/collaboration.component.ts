@@ -58,16 +58,11 @@ export class CollaborationComponent implements OnInit, OnDestroy {
         this.accountService.fetch().subscribe((response: HttpResponse<IUser>) => {
             this.user = response.body;
             if (this.onlyMyCollaborations) {
-                this.bandService.search({ query: 'login.equals=' + this.user.login }).subscribe((responseQuery: HttpResponse<IBand[]>) => {
-                    this.collaborations = responseQuery.body[0].collaborations;
-                    this.collaborations = this.collaborations.filter((collab: ICollaboration, ind: number, collabs: ICollaboration[]) => {
-                        return collab !== null;
+                this.collaborationService
+                    .search({ query: 'bands.user.login.equals=' + this.user.login })
+                    .subscribe((responseQuery: HttpResponse<ICollaboration[]>) => {
+                        this.collaborations = responseQuery.body;
                     });
-                    if (this.collaborations === null) {
-                        this.collaborations = [];
-                    }
-                    console.log(this.collaborations);
-                });
                 this.currentSearch = '';
             } else {
                 this.currentSearch =

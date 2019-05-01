@@ -68,17 +68,17 @@ public class CollaborationResource {
      * or with status 500 (Internal Server Error) if the collaboration couldn't be updated
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
-    @PutMapping("/collaborations")
-    public ResponseEntity<Collaboration> updateCollaboration(@RequestBody Collaboration collaboration) throws URISyntaxException {
-        log.debug("REST request to update Collaboration : {}", collaboration);
-        if (collaboration.getId() == null) {
-            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
-        }
-        Collaboration result = collaborationService.save(collaboration);
-        return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, collaboration.getId().toString()))
-            .body(result);
-    }
+    // @PutMapping("/collaborations")
+    // public ResponseEntity<Collaboration> updateCollaboration(@RequestBody Collaboration collaboration) throws URISyntaxException {
+    //     log.debug("REST request to update Collaboration : {}", collaboration);
+    //     if (collaboration.getId() == null) {
+    //         throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+    //     }
+    //     Collaboration result = collaborationService.save(collaboration);
+    //     return ResponseEntity.ok()
+    //         .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, collaboration.getId().toString()))
+    //         .body(result);
+    // }
 
     /**
      * GET  /collaborations : get all the collaborations.
@@ -113,12 +113,12 @@ public class CollaborationResource {
      * @param id the id of the collaboration to delete
      * @return the ResponseEntity with status 200 (OK)
      */
-    @DeleteMapping("/collaborations/{id}")
-    public ResponseEntity<Void> deleteCollaboration(@PathVariable Long id) {
-        log.debug("REST request to delete Collaboration : {}", id);
-        collaborationService.delete(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
-    }
+    // @DeleteMapping("/collaborations/{id}")
+    // public ResponseEntity<Void> deleteCollaboration(@PathVariable Long id) {
+    //     log.debug("REST request to delete Collaboration : {}", id);
+    //     collaborationService.delete(id);
+    //     return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    // }
 
     /**
      * SEARCH  /_search/collaborations?query=:query : search for the collaboration corresponding

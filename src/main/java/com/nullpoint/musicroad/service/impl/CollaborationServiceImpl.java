@@ -12,7 +12,18 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.Optional;
+
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Objects;
+
+import com.nullpoint.musicroad.service.impl.BandServiceImpl;
+import com.nullpoint.musicroad.domain.Band;
+import com.nullpoint.musicroad.repository.BandRepository;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
@@ -29,6 +40,9 @@ public class CollaborationServiceImpl implements CollaborationService {
 
     private final CollaborationSearchRepository collaborationSearchRepository;
 
+    @Autowired
+    private BandServiceImpl bandServiceImpl;
+
     public CollaborationServiceImpl(CollaborationRepository collaborationRepository, CollaborationSearchRepository collaborationSearchRepository) {
         this.collaborationRepository = collaborationRepository;
         this.collaborationSearchRepository = collaborationSearchRepository;
@@ -43,8 +57,18 @@ public class CollaborationServiceImpl implements CollaborationService {
     @Override
     public Collaboration save(Collaboration collaboration) {
         log.debug("Request to save Collaboration : {}", collaboration);
+        System.out.println("LA MEHOH COLLAB : " + collaboration.getBands().toString());
         Collaboration result = collaborationRepository.save(collaboration);
         collaborationSearchRepository.save(result);
+        collaborationRepository.flush();
+        for (Band band : collaboration.getBands()) {
+            Set<Collaboration> collaborations = band.getCollaborations();
+            collaborations.add(collaboration);
+            band.setCollaborations(collaborations);
+            Band savedBand = bandServiceImpl.saveForCollaboration(band);
+            System.out.println(savedBand);
+            System.out.println(savedBand.getCollaborations());
+        }
         return result;
     }
 
@@ -72,6 +96,7 @@ public class CollaborationServiceImpl implements CollaborationService {
     @Transactional(readOnly = true)
     public Optional<Collaboration> findOne(Long id) {
         log.debug("Request to get Collaboration : {}", id);
+        System.out.println("Las VANDAS de las collabs : " + collaborationRepository.findById(id).get().getBands().toString());
         return collaborationRepository.findById(id);
     }
 

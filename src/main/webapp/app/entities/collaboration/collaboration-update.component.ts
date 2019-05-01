@@ -80,6 +80,7 @@ export class CollaborationUpdateComponent implements OnInit {
     save() {
         this.isSaving = true;
         this.collaboration.accepted = false;
+        this.collaboration.bands = this.bands;
         if (this.collaboration.id !== undefined) {
             this.subscribeToSaveResponse(this.collaborationService.update(this.collaboration));
         } else {
@@ -91,10 +92,10 @@ export class CollaborationUpdateComponent implements OnInit {
         result.subscribe(
             (res: HttpResponse<ICollaboration>) => {
                 this.onSaveSuccess();
-                this.bands.forEach((band: IBand) => {
-                    band.collaborations.push(res.body);
-                    this.bandService.update(band).subscribe((savedBandResponse: HttpResponse<IBand>) => {});
-                });
+                // this.bands.forEach((band: IBand) => {
+                //     band.collaborations.push(res.body);
+                //     this.bandService.update(band).subscribe((savedBandResponse: HttpResponse<IBand>) => {});
+                // });
             },
             (res: HttpErrorResponse) => this.onSaveError()
         );

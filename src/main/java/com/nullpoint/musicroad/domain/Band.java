@@ -1,6 +1,6 @@
 package com.nullpoint.musicroad.domain;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -59,7 +59,6 @@ public class Band implements Serializable {
     private User user;
 
     @ManyToOne
-    @JsonIgnoreProperties("bands")
     private City city;
 
     @ManyToMany
@@ -67,6 +66,7 @@ public class Band implements Serializable {
     @JoinTable(name = "band_collaborations",
                joinColumns = @JoinColumn(name = "band_id", referencedColumnName = "id"),
                inverseJoinColumns = @JoinColumn(name = "collaborations_id", referencedColumnName = "id"))
+    @JsonIgnore
     private Set<Collaboration> collaborations = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

@@ -1,7 +1,8 @@
+
 <div class="row justify-content-center" >
     <div class="col-8">
 
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm" *ngIf="band.user.id === user.id">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
             <h2 id="jhi-band-heading" jhiTranslate="musicroadApp.band.home.createOrEditLabel">Create or edit a Band</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
@@ -118,16 +119,9 @@
             </div>
         </form>
         <br>
-        <div class="alert alert-warning" *ngIf="band.user.id === user.id">
+        <div class="alert alert-warning">
             <span jhiTranslate="global.exercise">If you want to delete your account or extract the data, please contact us through email at info@musicroad.app</span>
         </div>
-
-
-
-
-        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()" *ngIf="band.user.id !== user.id">
-            <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-        </button>
 
     </div>
 </div>

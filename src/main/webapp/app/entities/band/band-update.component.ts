@@ -47,14 +47,19 @@ export class BandUpdateComponent implements OnInit {
             this.accountService.fetch().subscribe((fetchResponse: HttpResponse<IUser>) => {
                 this.user = fetchResponse.body;
                 this.activatedRoute.url.subscribe((urlSegments: UrlSegment[]) => {
-                    if (band.user !== undefined) {
-                        this.band = band;
+                    if (band === undefined) {
+                        this.band = new Band();
+                        this.band.user = this.user;
                     } else {
                         this.bandService
                             .search({ query: 'login.equals=' + fetchResponse.body.login })
                             .subscribe((searchBandResponse: HttpResponse<IBand[]>) => {
                                 if (searchBandResponse.body[0] !== undefined) {
                                     this.band = searchBandResponse.body[0];
+                                    console.log(this.band);
+                                } else {
+                                    this.band = new Band();
+                                    this.band.user = this.user;
                                 }
                             });
                     }
