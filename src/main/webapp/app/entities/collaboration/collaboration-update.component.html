@@ -4,7 +4,7 @@
             <h2 id="jhi-collaboration-heading" jhiTranslate="musicroadApp.collaboration.home.createOrEditLabel">Create or edit a Collaboration</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
-                <div class="form-group" [hidden]="!collaboration.id">
+                <div class="form-group" [hidden]="!collaboration.id" *ngIf="false">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id"
                         [(ngModel)]="collaboration.id" readonly />

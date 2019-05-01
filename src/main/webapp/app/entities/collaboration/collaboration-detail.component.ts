@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd, RouterEvent } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { ICollaboration } from 'app/shared/model/collaboration.model';
 import { BandService } from '../band';
@@ -25,11 +26,20 @@ export class CollaborationDetailComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.router.events.subscribe((event: RouterEvent) => {
+        let unsubscribe = false;
+        const routerEventsSubscription: Subscription = this.router.events.subscribe((event: RouterEvent) => {
             if (event instanceof NavigationEnd) {
-                this.update();
+                console.log(event.url);
+                if (event.url.includes('collaboration/') && event.url.includes('/view')) {
+                    this.update();
+                } else {
+                    unsubscribe = true;
+                }
             }
         });
+        if (unsubscribe) {
+            routerEventsSubscription.unsubscribe();
+        }
         this.start();
     }
 

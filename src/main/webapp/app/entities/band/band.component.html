@@ -1,7 +1,7 @@
 <div>
     <h2 id="page-heading" *ngIf="!fromSearcher">
         <span jhiTranslate="musicroadApp.band.home.title">Bands</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-band" [routerLink]="['/band/new']">
+        <button *ngIf="false" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-band" [routerLink]="['/band/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span class="hidden-sm-down"  jhiTranslate="musicroadApp.band.home.createLabel">
             Create new Band
@@ -72,7 +72,7 @@
                         <button type="submit"
                                 [routerLink]="['/band', band.id, 'edit']"
                                 class="btn btn-primary btn-sm"
-                                *ngIf="user.authorities.includes('ROLE_ADMIN') || user.id === band.user.id">
+                                *ngIf="false">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
@@ -81,7 +81,7 @@
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm"
-                                *ngIf="user.authorities.includes('ROLE_ADMIN') || user.id === band.user.id">
+                                *ngIf="false">
                             <fa-icon [icon]="'times'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                         </button>
