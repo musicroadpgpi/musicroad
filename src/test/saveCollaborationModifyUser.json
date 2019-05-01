@@ -1,0 +1,60 @@
+{
+    "id": null,
+    "message": "CollabTest2",
+    "proposedDate": "2019-04-20",
+    "accepted": false,
+    "bands": [
+        {
+            "id": 1,
+            "bandName": "admin band",
+            "bio": null,
+            "coverPicture": null,
+            "coverPictureContentType": null,
+            "componentNumber": null,
+            "creationYear": null,
+            "genre": "Dance",
+            "user": {
+                "id": 3,
+                "login": "admin",
+                "firstName": "Administrator",
+                "lastName": "Administrator",
+                "email": "admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "imageUrl": "",
+                "resetDate": null
+            },
+            "city": {
+                "id": 7,
+                "name": "Palma de Mallorca",
+                "country": "ES"
+            }
+        },
+        {
+            "id": 2,
+            "bandName": "User band",
+            "bio": null,
+            "coverPicture": null,
+            "coverPictureContentType": null,
+            "componentNumber": null,
+            "creationYear": null,
+            "genre": "Rock",
+            "user": {
+                "id": 4,
+                "login": "user",
+                "firstName": "Pepito el de los Palotes",
+                "lastName": "XD",
+                "email": "user@localhost",
+                "activated": true,
+                "langKey": "en",
+                "imageUrl": "",
+                "resetDate": null
+            },
+            "city": {
+                "id": 8,
+                "name": "Sevilla",
+                "country": "ES"
+            }
+        }
+    ]
+}

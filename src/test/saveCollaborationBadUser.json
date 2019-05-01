@@ -1,0 +1,60 @@
+{
+    "id": null,
+    "message": "CollabTest",
+    "proposedDate": "2019-04-20",
+    "accepted": false,
+    "bands": [
+        {
+            "id": 3,
+            "bandName": "caballero band",
+            "bio": null,
+            "coverPicture": null,
+            "coverPictureContentType": null,
+            "componentNumber": null,
+            "creationYear": null,
+            "genre": "Folk",
+            "user": {
+                "id": 5,
+                "login": "caballero",
+                "firstName": null,
+                "lastName": null,
+                "email": "caballero@gmail.com",
+                "activated": true,
+                "langKey": "en",
+                "imageUrl": null,
+                "resetDate": null
+            },
+            "city": {
+                "id": 4,
+                "name": "Madrid",
+                "country": "ES"
+            }
+        },
+        {
+            "id": 2,
+            "bandName": "User band",
+            "bio": null,
+            "coverPicture": null,
+            "coverPictureContentType": null,
+            "componentNumber": null,
+            "creationYear": null,
+            "genre": "Rock",
+            "user": {
+                "id": 4,
+                "login": "user",
+                "firstName": "User",
+                "lastName": "User",
+                "email": "user@localhost",
+                "activated": true,
+                "langKey": "en",
+                "imageUrl": "",
+                "resetDate": null
+            },
+            "city": {
+                "id": 8,
+                "name": "Sevilla",
+                "country": "ES"
+            }
+        }
+    ]
+}

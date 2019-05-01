@@ -38,7 +38,7 @@ public class Collaboration implements Serializable {
     @Column(name = "accepted")
     private Boolean accepted;
 
-    @ManyToMany(mappedBy = "collaborations")
+    @ManyToMany(mappedBy = "collaborations", fetch = FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     //@JsonIgnore
     private Set<Band> bands = new HashSet<>();
