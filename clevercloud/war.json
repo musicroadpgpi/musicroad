@@ -4,7 +4,6 @@
        "goal": "package -Pprod -DskipTests"
     },
     "deploy": {
-       "jarName": "target git remote add clever git+ssh://git@push-par-clevercloud-customers.services.clever-cloud.com/app_1ff85344-55c7-4786-9b53-bc34652464b0.git
-       git push -u clever master/musicroad-0.0.1-SNAPSHOT.war"
+       "jarName": "target/musicroad-0.0.1-SNAPSHOT.war"
     }
  }
