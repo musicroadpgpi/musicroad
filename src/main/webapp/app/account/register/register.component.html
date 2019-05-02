@@ -188,7 +188,8 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.genre" for="field_genre">Genre</label>
-                    <select class="form-control" name="genre" [(ngModel)]="registerAccount.genre" id="field_genre" >
+                    <select class="form-control" name="genre" [(ngModel)]="registerAccount.genre" id="field_genre"
+                    required #genre="ngModel" >
                         <option value="Rock">{{'musicroadApp.Genre.Rock' | translate}}</option>
                         <option value="RandB">{{'musicroadApp.Genre.RandB' | translate}}</option>
                         <option value="Soul">{{'musicroadApp.Genre.Soul' | translate}}</option>
@@ -215,13 +216,24 @@
                         <option value="IndieRock">{{'musicroadApp.Genre.IndieRock' | translate}}</option>
                         <option value="Funk">{{'musicroadApp.Genre.Funk' | translate}}</option>
                     </select>
+                    <div *ngIf="genre.dirty && genre.invalid">
+                        <small class="form-text text-danger" *ngIf="genre.errors.required" jhiTranslate="register.messages.validate.genre.required">
+                            A genre is required.
+                        </small>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.city" for="field_city">City</label>
-                    <select class="form-control" id="field_city" name="city" [(ngModel)]="registerAccount.city">
+                    <select class="form-control" id="field_city" name="city" [(ngModel)]="registerAccount.city"
+                    required #city="ngModel">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="cityOption.id === registerAccount.city?.id ? registerAccount.city : cityOption" *ngFor="let cityOption of cities; trackBy: trackCityById">{{cityOption.name}}</option>
                     </select>
+                    <div *ngIf="city.dirty && city.invalid">
+                        <small class="form-text text-danger" *ngIf="city.errors.required" jhiTranslate="register.messages.validate.city.required">
+                            A city is required.
+                        </small>
+                    </div>
                 </div>
                 <div class="form-group" data-toggle="buttons">
                     <label >

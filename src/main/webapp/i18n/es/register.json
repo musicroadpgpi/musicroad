@@ -15,6 +15,9 @@
                 "bandName": {
                     "required": "Su nombre de banda es obligatorio."
                 },
+                "city": {
+                    "required": "Se requiere una ciudad."
+                },
                 "componentNumber": {
                     "required": "Su número de componentes es obligatorio.",
                     "pattern": "Su número de componentes sólo puede contener dígitos."
@@ -28,6 +31,9 @@
                 },
                 "coverPicture": {
                     "required": "Su foto de portada es obligatoria."
+                },
+                "genre": {
+                    "required": "Se requiere un género."
                 }
             },
             "success": "<strong>¡Registro guardado!</strong> Por favor, revise su correo electrónico para confirmar.",

@@ -8,7 +8,7 @@
                 <jhi-alert-error></jhi-alert-error>
                 <ng-container *jhiHasAnyAuthority="'ROLE_ADMIN'">
 
-                <div class="form-group" [hidden]="!band.id">
+                <div class="form-group" [hidden]="true">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id"
                         [(ngModel)]="band.id" readonly />
@@ -17,7 +17,7 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.bandName" for="field_bandName">Band Name</label>
                     <input type="text" class="form-control" name="bandName" id="field_bandName"
-                        [(ngModel)]="band.bandName" />
+                        [(ngModel)]="band.bandName" required />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.bio" for="field_bio">Bio</label>

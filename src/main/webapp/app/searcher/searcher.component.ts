@@ -109,8 +109,8 @@ export class SearcherComponent implements OnInit {
     ngOnInit() {
         const fBuilder: FormBuilder = new FormBuilder();
         this.formSearch = fBuilder.group({
-            genre: ['', Validators.required],
-            city: ['', Validators.required]
+            genre: [''],
+            city: ['']
         });
         this.client.get(SERVER_API_URL.concat('/api/cities')).subscribe((cityes: ICity[]) => {
             cityes.forEach(element => {
@@ -213,9 +213,18 @@ export class SearcherComponent implements OnInit {
     }
 
     onSubmit() {
+        let query = '';
         const cityName: string = this.formSearch.get('city').value;
         const genre: string = this.formSearch.get('genre').value;
-        this.search('genre.equals=' + genre + ' AND ' + 'name.equals=' + cityName);
+        if (cityName !== '' && genre !== '') {
+            query = 'genre.equals=' + genre + ' AND ' + 'name.equals=' + cityName;
+        } else if (cityName !== '' && genre === '') {
+            query = 'name.equals=' + cityName;
+        } else if (cityName === '' && genre !== '') {
+            query = 'genre.equals=' + genre;
+        }
+        console.log(query);
+        this.search(query);
     }
 
     protected paginateBands(data: IBand[], headers: HttpHeaders) {
