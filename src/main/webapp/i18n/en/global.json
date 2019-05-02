@@ -119,10 +119,6 @@
             "componentNumber.placeholder": "Your component number",
             "creationYear.placeholder": "Your creation year",
             "bio.placeholder": "Write your biography..."
-
-
-
-
         },
         "messages": {
             "info": {
@@ -137,7 +133,9 @@
                 }
             },
             "error": {
-                "dontmatch": "The password and its confirmation do not match!"
+                "dontmatch": "The password and its confirmation do not match!",
+                "bandName": "The band name can't be blank.",
+                "year": "The creation year must be prior to the current one."
             },
             "validate": {
                 "newpassword": {

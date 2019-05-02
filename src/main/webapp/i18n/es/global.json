@@ -136,7 +136,9 @@
                 }
             },
             "error": {
-                "dontmatch": "¡La contraseña y la confirmación de contraseña no coinciden!"
+                "dontmatch": "¡La contraseña y la confirmación de contraseña no coinciden!",
+                "bandName": "El nombre de la banda no puede estar en blanco.",
+                "year": "El año de creación debe ser anterior al actual."
             },
             "validate": {
                 "newpassword": {

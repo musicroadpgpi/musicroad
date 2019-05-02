@@ -22,6 +22,15 @@
             <div class="alert alert-danger" *ngIf="doNotMatch" jhiTranslate="global.messages.error.dontmatch">
                 The password and its confirmation do not match!
             </div>
+            <div class="alert alert-danger" *ngIf="errorBandName" jhiTranslate="global.messages.error.bandName">
+                The band name can't be blank.
+            </div>
+            <div class="alert alert-danger" *ngIf="errorYear" jhiTranslate="global.messages.error.year">
+                The creation year must be prior that current one.
+            </div>
+            <div class="alert alert-danger" *ngIf="errorImage" jhiTranslate="global.messages.error.year">
+                The creation year must be prior that current one.
+            </div>
         </div>
     </div>
     <div class="row justify-content-center">
@@ -127,7 +136,7 @@
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.bandName"
                         for="field_bandName">Band Name</label>
                     <input type="text" class="form-control" name="bandName" id="field_bandName" required
-                        #bandName="ngModel" pattern="^.*[\S]+.*$" [(ngModel)]="registerAccount.bandName" placeholder="{{'global.form.bandName.placeholder' | translate}}"/>
+                        #bandName="ngModel"  pattern="^.*[\S]+.*$" [(ngModel)]="registerAccount.bandName" placeholder="{{'global.form.bandName.placeholder' | translate}}"/>
                     <div *ngIf="bandName.dirty && bandName.invalid">
                         <small class="form-text text-danger" *ngIf="bandName.errors.required"
                             jhiTranslate="register.messages.validate.bandName.required">
@@ -210,9 +219,9 @@
                                 <fa-icon [icon]="'times'"></fa-icon>
                             </button>
                         </div>
-                        <input type="file" id="file_coverPicture"
+                        <input type="file" id="file_coverPicture" class="form-control" 
                             (change)="setFileData($event, registerAccount, 'coverPicture', true)" accept="image/*"
-                            jhiTranslate="entity.action.addimage" />
+                            jhiTranslate="entity.action.addimage" required/>
                     </div>
 
                     <input type="hidden" class="form-control" name="coverPicture" id="field_coverPicture"
