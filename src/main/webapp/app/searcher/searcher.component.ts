@@ -7,7 +7,7 @@ import { JhiParseLinks, JhiAlertService } from 'ng-jhipster';
 import { Title } from '@angular/platform-browser';
 import { IBand } from 'app/shared/model/band.model';
 import { ICity, City } from 'app/shared/model/city.model';
-import { SERVER_API_URL } from 'app/app.constants';
+import { SERVER_API_URL, APPLICATION_DOMAIN } from 'app/app.constants';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ITEMS_PER_PAGE } from 'app/shared';
 import { IUser, AccountService } from 'app/core';
@@ -112,7 +112,7 @@ export class SearcherComponent implements OnInit {
             genre: [''],
             city: ['']
         });
-        this.client.get(this.cityService.resourceUrl).subscribe((cityes: ICity[]) => {
+        this.client.get(SERVER_API_URL.concat(APPLICATION_DOMAIN).concat('/api/cities')).subscribe((cityes: ICity[]) => {
             cityes.forEach(element => {
                 this.cities[this.cities.length] = element;
             });
