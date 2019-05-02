@@ -76,7 +76,7 @@ public class CollaborationServiceImpl implements CollaborationService {
         for (Band band : collaboration.getBands()) {
             Band storedBand = this.bandServiceImpl.findOne(band.getId()).get();
             Set<Collaboration> collaborations = storedBand.getCollaborations();
-            collaborations.add(collaboration);
+            collaborations.add(result);
             storedBand.setCollaborations(collaborations);
             Band savedBand = bandServiceImpl.saveForCollaboration(storedBand);
         }
