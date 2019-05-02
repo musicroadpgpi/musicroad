@@ -6,7 +6,15 @@ import { IBand } from 'app/shared/model/band.model';
 import { ICity } from 'app/shared/model/city.model';
 import { ActivatedRoute } from '@angular/router';
 import { CityService } from 'app/entities/city';
-import { EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } from 'app/shared';
+import {
+    EMAIL_ALREADY_USED_TYPE,
+    LOGIN_ALREADY_USED_TYPE,
+    INVALID_PASSWORD_TYPE,
+    CONSTRAINT_VIOLATION_TYPE,
+    YEAR_ERROR,
+    IMAGE_ERROR,
+    BANDNAME_ERROR
+} from 'app/shared';
 import { LoginModalService } from 'app/core';
 import { Register } from './register.service';
 import { filter, map } from 'rxjs/operators';
@@ -22,11 +30,14 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     error: string;
     errorEmailExists: string;
     errorUserExists: string;
+    errorBandName: string;
+    errorYear: string;
     registerAccount: any;
     success: boolean;
     modalRef: NgbModalRef;
     cities: ICity[];
     band: IBand;
+    errorImage: string;
     constructor(
         protected dataUtils: JhiDataUtils,
         protected elementRef2: ElementRef,
@@ -68,6 +79,9 @@ export class RegisterComponent implements OnInit, AfterViewInit {
             this.error = null;
             this.errorUserExists = null;
             this.errorEmailExists = null;
+            this.errorBandName = null;
+            this.errorYear = null;
+            this.errorImage = null;
             this.languageService.getCurrent().then(key => {
                 this.registerAccount.langKey = key;
                 this.registerService.save(this.registerAccount).subscribe(
@@ -106,6 +120,10 @@ export class RegisterComponent implements OnInit, AfterViewInit {
             this.errorUserExists = 'ERROR';
         } else if (response.status === 400 && response.error.type === EMAIL_ALREADY_USED_TYPE) {
             this.errorEmailExists = 'ERROR';
+        } else if (response.status === 400 && response.error.type === YEAR_ERROR) {
+            this.errorYear = 'ERROR';
+            /*} else if ((response.status === 400 && response.error.type === CONSTRAINT_VIOLATION_TYPE && this.registerAccount.coverPicture === null)) {
+            this.errorImage = 'ERROR';*/
         } else {
             this.error = 'ERROR';
         }

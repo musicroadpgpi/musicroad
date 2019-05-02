@@ -114,7 +114,11 @@
             "confirmpassword.placeholder": "Confirm the new password",
             "email": "Email",
             "email.placeholder": "Your email",
-            "terms": "I have read I accept the terms and conditions specefied in GDPR page"
+            "terms": "I have read I accept the terms and conditions specefied in GDPR page",
+            "bandName.placeholder": "Your band name",
+            "componentNumber.placeholder": "Your component number",
+            "creationYear.placeholder": "Your creation year",
+            "bio.placeholder": "Write your biography..."
         },
         "messages": {
             "info": {
@@ -129,7 +133,9 @@
                 }
             },
             "error": {
-                "dontmatch": "The password and its confirmation do not match!"
+                "dontmatch": "The password and its confirmation do not match!",
+                "bandName": "The band name can't be blank.",
+                "year": "The creation year must be prior to the current one."
             },
             "validate": {
                 "newpassword": {

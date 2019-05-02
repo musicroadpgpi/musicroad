@@ -29,6 +29,8 @@ import java.util.*;
 @RequestMapping("/api")
 public class AccountResource {
 
+    private static final String ENTITY_NAME = "BAND";
+
     private final Logger log = LoggerFactory.getLogger(AccountResource.class);
 
     private final UserRepository userRepository;
@@ -58,6 +60,15 @@ public class AccountResource {
         if (!checkPasswordLength(managedUserVM.getPassword())) {
             throw new InvalidPasswordException();
         }
+        /*if (managedUserVM.getBandName() == " ") {
+            throw new BandNameException();
+        }*/
+        if(checkYear(managedUserVM.getCreationYear()) == false){
+            throw new YearException();
+        }
+        /*if(managedUserVM.getCoverPicture() == null){
+            throw new ImageException();
+        }*/
         User user = userService.registerUser(managedUserVM,managedUserVM.getBandName(), managedUserVM.getPassword(),
         managedUserVM.getComponentNumber(), managedUserVM.getCreationYear(), managedUserVM.getGenre(),
         managedUserVM.getCity(),managedUserVM.getCoverPicture(),managedUserVM.getCoverPictureContentType(),managedUserVM.getBio());
@@ -177,5 +188,14 @@ public class AccountResource {
         return !StringUtils.isEmpty(password) &&
             password.length() >= ManagedUserVM.PASSWORD_MIN_LENGTH &&
             password.length() <= ManagedUserVM.PASSWORD_MAX_LENGTH;
+    }
+    @Deprecated
+    private static boolean checkYear(int year) {
+        boolean res = true;
+        Date fechaActual = new GregorianCalendar().getTime();
+        if(year > ((fechaActual.getYear()) + 1900)){
+            res = false;
+        }
+        return res;
     }
 }

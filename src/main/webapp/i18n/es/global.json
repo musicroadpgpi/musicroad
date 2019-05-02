@@ -117,7 +117,11 @@
             "confirmpassword.placeholder": "Confirmación de la nueva contraseña",
             "email": "Correo electrónico",
             "email.placeholder": "Su correo electrónico",
-            "terms": "He leido y acepto los terminos especificados en la página GDPR"
+            "terms": "He leido y acepto los terminos especificados en la página GDPR",
+            "bandName.placeholder": "Su nombre de banda",
+            "componentNumber.placeholder": "Su número de componentes",
+            "creationYear.placeholder": "Su año de creación",
+            "bio.placeholder": "Escribe su biografía..."
         },
         "messages": {
             "info": {
@@ -132,7 +136,9 @@
                 }
             },
             "error": {
-                "dontmatch": "¡La contraseña y la confirmación de contraseña no coinciden!"
+                "dontmatch": "¡La contraseña y la confirmación de contraseña no coinciden!",
+                "bandName": "El nombre de la banda no puede estar en blanco.",
+                "year": "El año de creación debe ser anterior al actual."
             },
             "validate": {
                 "newpassword": {

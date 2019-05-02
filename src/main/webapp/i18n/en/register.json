@@ -13,7 +13,9 @@
                     "pattern": "Your username can only contain letters and digits."
                 },
                 "bandName": {
-                    "required": "Your band name is required."
+                    "required": "Your band name is required.",
+                    "pattern": "Your band name can't be blank."
+
                 },
                 "componentNumber": {
                     "required": "Your component number is required.",
@@ -24,10 +26,14 @@
                 },
                 "creationYear": {
                     "required": "Your creation year is required.",
-                    "pattern": "Your component number can only contain digits."
+                    "pattern": "Your creation year can only contain digits."
                 },
                 "bio": {
-                    "required": "Your bio is required."
+                    "required": "Your bio is required.",
+                    "pattern": "Your bio can't be blank.",
+                    "minlength": "Your bio is required to be at least 140 character."
+
+
                 },
                 "coverPicture": {
                     "required": "Your cover picture is required."
