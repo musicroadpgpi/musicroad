@@ -112,7 +112,7 @@ export class SearcherComponent implements OnInit {
             genre: [''],
             city: ['']
         });
-        this.client.get(SERVER_API_URL.concat('/api/cities')).subscribe((cityes: ICity[]) => {
+        this.client.get(this.cityService.resourceUrl).subscribe((cityes: ICity[]) => {
             cityes.forEach(element => {
                 this.cities[this.cities.length] = element;
             });

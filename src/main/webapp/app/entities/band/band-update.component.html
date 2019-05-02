@@ -15,75 +15,125 @@
                 </div>
                 </ng-container>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="musicroadApp.band.bandName" for="field_bandName">Band Name</label>
-                    <input type="text" class="form-control" name="bandName" id="field_bandName"
-                        [(ngModel)]="band.bandName" required />
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="musicroadApp.band.bio" for="field_bio">Bio</label>
-                    <input type="text" class="form-control" name="bio" id="field_bio"
-                        [(ngModel)]="band.bio" />
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="musicroadApp.band.coverPicture" for="field_coverPicture">Cover Picture</label>
-                    <div>
-                        <img [src]="'data:' + band.coverPictureContentType + ';base64,' + band.coverPicture" style="max-height: 100px;" *ngIf="band.coverPicture" alt="band image"/>
-                        <div *ngIf="band.coverPicture" class="form-text text-danger clearfix">
-                            <span class="pull-left">{{band.coverPictureContentType}}, {{byteSize(band.coverPicture)}}</span>
-                            <button type="button" (click)="clearInputImage('coverPicture', 'coverPictureContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
-                                <fa-icon [icon]="'times'"></fa-icon>
-                            </button>
-                        </div>
-                        <input type="file" id="file_coverPicture" (change)="setFileData($event, band, 'coverPicture', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                        <label class="form-control-label" jhiTranslate="musicroadApp.band.bandName" for="field_bandName">Band Name</label>
+                        <input type="text" class="form-control" name="bandName" id="field_bandName" required #bandName="ngModel"
+                            [(ngModel)]="band.bandName" />
+                            <div *ngIf="bandName.dirty && bandName.invalid">
+                                <small class="form-text text-danger" *ngIf="bandName.errors.required" jhiTranslate="register.messages.validate.bandName.required">
+                                    Your band name is required.
+                                </small>
+                            </div>
                     </div>
-                    <input type="hidden" class="form-control" name="coverPicture" id="field_coverPicture"
-                        [(ngModel)]="band.coverPicture" />
-                    <input type="hidden" class="form-control" name="coverPictureContentType" id="field_coverPictureContentType"
-                        [(ngModel)]="band.coverPictureContentType" />
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="musicroadApp.band.componentNumber" for="field_componentNumber">Component Number</label>
-                    <input type="number" class="form-control" name="componentNumber" id="field_componentNumber"
-                        [(ngModel)]="band.componentNumber" />
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="musicroadApp.band.creationYear" for="field_creationYear">Creation Year</label>
-                    <input type="number" class="form-control" name="creationYear" id="field_creationYear" [(ngModel)]="band.creationYear" />
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="musicroadApp.band.genre" for="field_genre">Genre</label>
-                    <select class="form-control" name="genre" [(ngModel)]="band.genre" id="field_genre" required>
-                        <option value="Rock">{{'musicroadApp.Genre.Rock' | translate}}</option>
-                        <option value="RandB">{{'musicroadApp.Genre.RandB' | translate}}</option>
-                        <option value="Soul">{{'musicroadApp.Genre.Soul' | translate}}</option>
-                        <option value="Pop">{{'musicroadApp.Genre.Pop' | translate}}</option>
-                        <option value="Jazz">{{'musicroadApp.Genre.Jazz' | translate}}</option>
-                        <option value="Folk">{{'musicroadApp.Genre.Folk' | translate}}</option>
-                        <option value="Electronic">{{'musicroadApp.Genre.Electronic' | translate}}</option>
-                        <option value="Country">{{'musicroadApp.Genre.Country' | translate}}</option>
-                        <option value="Blues">{{'musicroadApp.Genre.Blues' | translate}}</option>
-                        <option value="Flamenco">{{'musicroadApp.Genre.Flamenco' | translate}}</option>
-                        <option value="Rap">{{'musicroadApp.Genre.Rap' | translate}}</option>
-                        <option value="Reggaeton">{{'musicroadApp.Genre.Reggaeton' | translate}}</option>
-                        <option value="Reggae">{{'musicroadApp.Genre.Reggae' | translate}}</option>
-                        <option value="HeavyMetal">{{'musicroadApp.Genre.HeavyMetal' | translate}}</option>
-                        <option value="HardRock">{{'musicroadApp.Genre.HardRock' | translate}}</option>
-                        <option value="Classic">{{'musicroadApp.Genre.Classic' | translate}}</option>
-                        <option value="Dance">{{'musicroadApp.Genre.Dance' | translate}}</option>
-                        <option value="AlternativeRock">{{'musicroadApp.Genre.AlternativeRock' | translate}}</option>
-                        <option value="PopLatino">{{'musicroadApp.Genre.PopLatino' | translate}}</option>
-                        <option value="Punk">{{'musicroadApp.Genre.Punk' | translate}}</option>
-                        <option value="Techno">{{'musicroadApp.Genre.Techno' | translate}}</option>
-                        <option value="Grunge">{{'musicroadApp.Genre.Grunge' | translate}}</option>
-                        <option value="House">{{'musicroadApp.Genre.House' | translate}}</option>
-                        <option value="IndieRock">{{'musicroadApp.Genre.IndieRock' | translate}}</option>
-                        <option value="Funk">{{'musicroadApp.Genre.Funk' | translate}}</option>
-
-                    </select>
-                </div>
-
-
+    
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="musicroadApp.band.componentNumber" for="field_componentNumber">Component Number</label>
+                        <input type="text" class="form-control" name="componentNumber" id="field_componentNumber" required #componentNumber="ngModel" pattern="[0-9]*"
+                            [(ngModel)]="band.componentNumber" />
+    
+                            <div *ngIf="componentNumber.dirty && componentNumber.invalid">
+                                <small class="form-text text-danger" *ngIf="componentNumber.errors.required" jhiTranslate="register.messages.validate.componentNumber.required">
+                                    Your component number is required.
+                                </small>
+                                <small class="form-text text-danger" *ngIf="componentNumber.errors.pattern"
+                                jhiTranslate="register.messages.validate.componentNumber.pattern">
+                                    Your component number can only contain digits.
+                                </small>
+                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="musicroadApp.band.creationYear" for="field_creationYear">Creation Year</label>
+                        <input type="text" class="form-control" name="creationYear" id="field_creationYear" required #creationYear="ngModel" pattern="[0-9]*"
+                            [(ngModel)]="band.creationYear" />
+                            
+                            <div *ngIf="creationYear.dirty && creationYear.invalid">
+                                <small class="form-text text-danger" *ngIf="creationYear.errors.required" jhiTranslate="register.messages.validate.creationYear.required">
+                                    Your creation year is required.
+                                </small>
+                                <small class="form-text text-danger" *ngIf="creationYear.errors.pattern"
+                                jhiTranslate="register.messages.validate.creationYear.pattern">
+                                    Your component number can only contain digits.
+                                </small>
+                            </div>
+                            
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="musicroadApp.band.bio" for="field_bio">Bio</label>
+                        <textarea type="text" class="form-control" name="bio" id="field_bio" required #bio="ngModel"
+                            [(ngModel)]="band.bio" ></textarea>
+    
+                            <div *ngIf="bio.dirty && bio.invalid">
+                                <small class="form-text text-danger" *ngIf="bio.errors.required" jhiTranslate="register.messages.validate.bio.required">
+                                    Your bio is required.
+                                </small>
+                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="musicroadApp.band.coverPicture" for="field_coverPicture">Cover Picture</label>
+                        <div>
+                            <img [src]="'data:' + band.coverPictureContentType + ';base64,' + band.coverPicture" style="max-height: 100px;" *ngIf="band.coverPicture" alt="band image"/>
+                            <div *ngIf="band.coverPicture" class="form-text text-danger clearfix">
+                                <span class="pull-left">{{band.coverPictureContentType}}, {{byteSize(band.coverPicture)}}</span>
+                                <button type="button" (click)="clearInputImage('coverPicture', 'coverPictureContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                    <fa-icon [icon]="'times'"></fa-icon>
+                                </button>
+                            </div>
+                            <input type="file" id="file_coverPicture" (change)="setFileData($event, band, 'coverPicture', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                        </div>
+    
+                        <input type="hidden" class="form-control" name="coverPicture" id="field_coverPicture"
+                            [(ngModel)]="band.coverPicture" />
+                        <input type="hidden" class="form-control" name="coverPictureContentType" id="field_coverPictureContentType"
+                            [(ngModel)]="band.coverPictureContentType" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="musicroadApp.band.genre" for="field_genre">Genre</label>
+                        <select class="form-control" name="genre" [(ngModel)]="band.genre" id="field_genre"
+                        required #genre="ngModel" >
+                            <option value="Rock">{{'musicroadApp.Genre.Rock' | translate}}</option>
+                            <option value="RandB">{{'musicroadApp.Genre.RandB' | translate}}</option>
+                            <option value="Soul">{{'musicroadApp.Genre.Soul' | translate}}</option>
+                            <option value="Pop">{{'musicroadApp.Genre.Pop' | translate}}</option>
+                            <option value="Jazz">{{'musicroadApp.Genre.Jazz' | translate}}</option>
+                            <option value="Folk">{{'musicroadApp.Genre.Folk' | translate}}</option>
+                            <option value="Electronic">{{'musicroadApp.Genre.Electronic' | translate}}</option>
+                            <option value="Country">{{'musicroadApp.Genre.Country' | translate}}</option>
+                            <option value="Blues">{{'musicroadApp.Genre.Blues' | translate}}</option>
+                            <option value="Flamenco">{{'musicroadApp.Genre.Flamenco' | translate}}</option>
+                            <option value="Rap">{{'musicroadApp.Genre.Rap' | translate}}</option>
+                            <option value="Reggaeton">{{'musicroadApp.Genre.Reggaeton' | translate}}</option>
+                            <option value="Reggae">{{'musicroadApp.Genre.Reggae' | translate}}</option>
+                            <option value="HeavyMetal">{{'musicroadApp.Genre.HeavyMetal' | translate}}</option>
+                            <option value="HardRock">{{'musicroadApp.Genre.HardRock' | translate}}</option>
+                            <option value="Classic">{{'musicroadApp.Genre.Classic' | translate}}</option>
+                            <option value="Dance">{{'musicroadApp.Genre.Dance' | translate}}</option>
+                            <option value="AlternativeRock">{{'musicroadApp.Genre.AlternativeRock' | translate}}</option>
+                            <option value="PopLatino">{{'musicroadApp.Genre.PopLatino' | translate}}</option>
+                            <option value="Punk">{{'musicroadApp.Genre.Punk' | translate}}</option>
+                            <option value="Techno">{{'musicroadApp.Genre.Techno' | translate}}</option>
+                            <option value="Grunge">{{'musicroadApp.Genre.Grunge' | translate}}</option>
+                            <option value="House">{{'musicroadApp.Genre.House' | translate}}</option>
+                            <option value="IndieRock">{{'musicroadApp.Genre.IndieRock' | translate}}</option>
+                            <option value="Funk">{{'musicroadApp.Genre.Funk' | translate}}</option>
+                        </select>
+                        <div *ngIf="genre.dirty && genre.invalid">
+                            <small class="form-text text-danger" *ngIf="genre.errors.required" jhiTranslate="register.messages.validate.genre.required">
+                                A genre is required.
+                            </small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="musicroadApp.band.city" for="field_city">City</label>
+                        <select class="form-control" id="field_city" name="city" [(ngModel)]="band.city"
+                        required #city="ngModel">
+                            <option [ngValue]="null"></option>
+                            <option [ngValue]="cityOption.id === band.city?.id ? band.city : cityOption" *ngFor="let cityOption of cities; trackBy: trackCityById">{{cityOption.name}}</option>
+                        </select>
+                        <div *ngIf="city.dirty && city.invalid">
+                            <small class="form-text text-danger" *ngIf="city.errors.required" jhiTranslate="register.messages.validate.city.required">
+                                A city is required.
+                            </small>
+                        </div>
+                    </div>
                 <ng-container *ngIf="false">
                 <div class="form-group" >
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.user" for="field_user">User</label>
@@ -93,13 +143,6 @@
                     </select>
                 </div>
                 </ng-container>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="musicroadApp.band.city" for="field_city">City</label>
-                    <select class="form-control" id="field_city" name="city" [(ngModel)]="band.city" required>
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="cityOption.id === band.city?.id ? band.city : cityOption" *ngFor="let cityOption of cities; trackBy: trackCityById">{{cityOption.name}}</option>
-                    </select>
-                </div>
                 <ng-container *ngIf="false">
                 <div class="form-group">
                     <label jhiTranslate="musicroadApp.band.collaborations" for="field_collaborations">Collaborations</label>
