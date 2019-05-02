@@ -1,9 +1,0 @@
-{
-    "build": {
-       "type": "maven",
-       "goal": "package -DskipTests"
-    },
-    "deploy": {
-       "jarName": "target/musicroad-0.0.1-SNAPSHOT.war"
-    }
- }
