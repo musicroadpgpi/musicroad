@@ -24,28 +24,76 @@
                 <label class="form-control-label" jhiTranslate="global.stripe.cardNumber" for="cardNumber">Card Number</label>
                 <input type="text" class="form-control" name="cardNumber" id="cardNumber"/>
             </div>
+            <small class="form-text text-danger" *ngIf="numberCardBlank" jhiTranslate="global.stripe.cardNumberRequired">
+                A card number is required
+            </small>
+            <small class="form-text text-danger" *ngIf="numberCardNotNumber" jhiTranslate="global.stripe.cardNumberMustBeNumber">
+                The credit card number must be an integer
+            </small>
+            <small class="form-text text-danger" *ngIf="numberCardNotValid" jhiTranslate="global.stripe.cardNumberMustBeValid">
+                The credit card number is not valid. Please use one of the numbers we provide.
+            </small>
 
             <div class="form-group">
                 <label class="form-control-label" jhiTranslate="global.stripe.expMonth" for="expMonth">Exp Month</label>
                 <input type="number" class="form-control" name="expMonth" id="expMonth" />
             </div>
+            <small class="form-text text-danger" *ngIf="expirationMonthBlank" jhiTranslate="global.stripe.expirationMonthRequired">
+                An expiration month is required
+            </small>
+            <small class="form-text text-danger" *ngIf="expirationMonthNotNumber" jhiTranslate="global.stripe.expirationMonthMustBeNumber">
+                The expiration month must be an integer between 1 and 12
+            </small>
+            <small class="form-text text-danger" *ngIf="expirationDateIsPast" jhiTranslate="global.stripe.expirationDateIsPast">
+                The credit card has expired
+            </small>
+
             <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="global.stripe.expYear" for="expYear">Exp Year</label>
-                    <input type="text" class="form-control" name="expYear" id="expYear"/>
-                </div>
+                <label class="form-control-label" jhiTranslate="global.stripe.expYear" for="expYear">Exp Year</label>
+                <input type="text" class="form-control" name="expYear" id="expYear"/>
+            </div>
+            <small class="form-text text-danger" *ngIf="expirationYearBlank" jhiTranslate="global.stripe.expirationYearRequired">
+                An expiration year is required
+            </small>
+            <small class="form-text text-danger" *ngIf="expirationYearNotNumber" jhiTranslate="global.stripe.expirationYearMustBeNumber">
+                The expiration year must be an integer
+            </small>
+            <small class="form-text text-danger" *ngIf="expirationDateIsPast" jhiTranslate="global.stripe.expirationDateIsPast">
+                The credit card has expired
+            </small>
 
             <div class="form-group">
                     <label class="form-control-label" jhiTranslate="global.stripe.cvc" for="cvc"> CVC
                     </label>
                     <input type="number" class="form-control" name="cvc" id="cvc" />
             </div>
+            <small class="form-text text-danger" *ngIf="cvcBlank" jhiTranslate="global.stripe.cvcRequired">
+                A cvc is required
+            </small>
+            <small class="form-text text-danger" *ngIf="cvcNotNumber" jhiTranslate="global.stripe.cvcMustBeNumber">
+                The cvc must be an integer
+            </small>
+            <small class="form-text text-danger" *ngIf="cvcNotInRange" jhiTranslate="global.stripe.cvcNotInRange">
+                The cvc must be an integer between 100 and 999
+            </small>
+
+
             <div class="row justify-content-center">
             <button type="submit" class="btn btn-primary"  (click)="chargeCreditCard()"jhiTranslate="global.stripe.pay">Pay 9.95€</button>
         </div>
 
 </form>
+
+<fieldset><legend jhiTranslate="global.stripe.providedNumbers">Credit Card Numbers</legend>
+    <ul>
+        <li *ngFor="let creditCardNumber of validCreditCardNumbers">{{creditCardNumber}}</li>
+    </ul>
+</fieldset>
+
         </div>
 </div>
+
+
 
 <!--
 <form action="/charge" method="post" id="payment-form">

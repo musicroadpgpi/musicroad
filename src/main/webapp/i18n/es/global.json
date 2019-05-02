@@ -5,7 +5,19 @@
             "expMonth": "Exp Month",
             "expYear": "Exp Year",
             "cvc": "CVC",
-            "pay": "Pagar 9.95€"
+            "pay": "Pagar 9.95€",
+            "cardNumberRequired": "Se requiere un número de tarjeta de crédito",
+            "cardNumberMustBeNumber": "El número de tarjeta de crédito debe ser un entero.",
+            "cardNumberMustBeValid": "El número de tarjeta de crédito no es válido. Por favor, use uno de los números que proveemos.",
+            "expirationMonthRequired": "Se requiere un mes de caducidad.",
+            "expirationMonthMustBeNumber": "El mes de caducidad debe ser un entero entre 1 y 12.",
+            "expirationYearRequired": "Se requiere un año de caducidad.",
+            "expirationYearMustBeNumber": "El año de caducidad debe ser un entero.",
+            "expirationDateIsPast": "La tarjeta de crédito ha caducado.",
+            "cvcRequired": "Se requiere un cvc.",
+            "cvcMustBeNumber": "El cvc debe ser un entero.",
+            "cvcNotInRange": "El cvc debe ser un entero entre 100 y 999.",
+            "providedNumbers": "Números de tarjeta de crédito válidos para pagar. Por favor, úselos."
         },
         "gdpr": {
             "1": "Política de privacidad de Null Pointer Software",

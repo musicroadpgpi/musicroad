@@ -5,7 +5,19 @@
             "expMonth": "Exp Month",
             "expYear": "Exp Year",
             "cvc": "CVC",
-            "pay": "Pay 9.95€"
+            "pay": "Pay 9.95€",
+            "cardNumberRequired": "A credit card number is required.",
+            "cardNumberMustBeNumber": "The credit card number must be an integer.",
+            "cardNumberMustBeValid": "The credit card number is not valid. Please, use one of the numbers we provide.",
+            "expirationMonthRequired": "An expiration month is required.",
+            "expirationMonthMustBeNumber": "The expiration month must be an integer between 1 and 12.",
+            "expirationYearRequired": "An expiration year is required.",
+            "expirationYearMustBeNumber": "The expiration year must be an integer.",
+            "expirationDateIsPast": "The credit card has expired.",
+            "cvcRequired": "A cvc is required.",
+            "cvcMustBeNumber": "The cvc must be an integer.",
+            "cvcNotInRange": "The cvc must be an integer between 100 and 999.",
+            "providedNumbers": "Valid credit card numbers for payment. Please, use them."
         },
         "gdpr": {
             "1": "Privacy Policy for Null Pointer Software",
