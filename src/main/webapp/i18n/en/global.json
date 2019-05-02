@@ -114,7 +114,15 @@
             "confirmpassword.placeholder": "Confirm the new password",
             "email": "Email",
             "email.placeholder": "Your email",
-            "terms": "I have read I accept the terms and conditions specefied in GDPR page"
+            "terms": "I have read I accept the terms and conditions specefied in GDPR page",
+            "bandName.placeholder": "Your band name",
+            "componentNumber.placeholder": "Your component number",
+            "creationYear.placeholder": "Your creation year",
+            "bio.placeholder": "Write your biography..."
+
+
+
+
         },
         "messages": {
             "info": {
