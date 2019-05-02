@@ -62,6 +62,7 @@ export class PaymentComponent {
                     const token = response.id;
                     this.chargeCard(token);
                 } else {
+                    console.log(response);
                     this.jhiAlertService.error('global.menu.account.paymentError', null, null);
                     this.previousState();
                     console.log(response.error.message);

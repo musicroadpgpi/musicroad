@@ -6,14 +6,13 @@
             <h2 id="jhi-band-heading" jhiTranslate="musicroadApp.band.home.createOrEditLabel">Create or edit a Band</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
-                <ng-container *jhiHasAnyAuthority="'ROLE_ADMIN'">
 
                 <div class="form-group" [hidden]="true">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id"
                         [(ngModel)]="band.id" readonly />
                 </div>
-                </ng-container>
+                
                 <div class="form-group">
                         <label class="form-control-label" jhiTranslate="musicroadApp.band.bandName" for="field_bandName">Band Name</label>
                         <input type="text" class="form-control" name="bandName" id="field_bandName" required #bandName="ngModel"
@@ -143,8 +142,8 @@
                     </select>
                 </div>
                 </ng-container>
-                <ng-container *ngIf="false">
-                <div class="form-group">
+                <ng-container>
+                <div class="form-group" [hidden]="true">
                     <label jhiTranslate="musicroadApp.band.collaborations" for="field_collaborations">Collaborations</label>
                     <select class="form-control" id="field_collaborations" multiple name="collaborations" [(ngModel)]="band.collaborations">
                         <option [ngValue]="getSelected(band.collaborations, collaborationOption)" *ngFor="let collaborationOption of collaborations; trackBy: trackCollaborationById">{{collaborationOption.proposedDate}}</option>

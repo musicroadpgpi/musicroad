@@ -53,6 +53,8 @@ public class BandServiceImpl implements BandService {
         String principalUsername = SecurityUtils.getCurrentUserLogin().get();
         if ( storedBand != null ) {
             String storedUsername = storedBand.getUser().getLogin();
+            // No se pueden modificar las collaborations al editar la banda
+            band.setCollaborations(storedBand.getCollaborations());
             Assert.isTrue(storedUsername.equals(principalUsername));
             Assert.isTrue(band.getUser().getLogin().equals(principalUsername));
         }
