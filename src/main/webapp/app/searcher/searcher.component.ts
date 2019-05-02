@@ -112,8 +112,9 @@ export class SearcherComponent implements OnInit {
             genre: [''],
             city: ['']
         });
-        this.client.get(SERVER_API_URL.concat('/api/cities')).subscribe((cityes: ICity[]) => {
-            cityes.forEach(element => {
+        // Cambiar APPLICATION_DOMAIN en app.constants segun se use en dev o prod
+        this.cityService.query().subscribe((response: HttpResponse<ICity[]>) => {
+            response.body.forEach(element => {
                 this.cities[this.cities.length] = element;
             });
         });
