@@ -11,6 +11,23 @@
                     "minlength": "Su nombre de usuario debe tener al menos 1 caracter.",
                     "maxlength": "Su nombre de usuario no puede tener más de 50 caracteres.",
                     "pattern": "Su nombre de usuario sólo puede contener letras minúsculas y dígitos."
+                },
+                "bandName": {
+                    "required": "Su nombre de banda es obligatorio."
+                },
+                "componentNumber": {
+                    "required": "Su número de componentes es obligatorio.",
+                    "pattern": "Su número de componentes sólo puede contener dígitos."
+                },
+                "creationYear": {
+                    "required": "Su año de creación es obligatorio.",
+                    "pattern": "Su año de creación sólo puede contener dígitos."
+                },
+                "bio": {
+                    "required": "Su biografía es obligatoria."
+                },
+                "coverPicture": {
+                    "required": "Su foto de portada es obligatoria."
                 }
             },
             "success": "<strong>¡Registro guardado!</strong> Por favor, revise su correo electrónico para confirmar.",

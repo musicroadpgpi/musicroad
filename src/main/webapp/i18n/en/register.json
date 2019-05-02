@@ -11,6 +11,26 @@
                     "minlength": "Your username is required to be at least 1 character.",
                     "maxlength": "Your username cannot be longer than 50 characters.",
                     "pattern": "Your username can only contain letters and digits."
+                },
+                "bandName": {
+                    "required": "Your band name is required."
+                },
+                "componentNumber": {
+                    "required": "Your component number is required.",
+                    "pattern": "Your component number can only contain digits."
+                },
+                "creationYear": {
+                    "required": "Your creation year is required.",
+                    "pattern": "Your component number can only contain digits."
+                },
+                "bio": {
+                    "required": "Your bio is required."
+                },
+                "coverPicture": {
+                    "required": "Your cover picture is required."
+                },
+                "genre": {
+                    "required": "Your genre is required."
                 }
             },
             "success": "<strong>Registration saved!</strong> Please check your email for confirmation.",
