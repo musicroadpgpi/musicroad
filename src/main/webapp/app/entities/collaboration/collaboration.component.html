@@ -29,7 +29,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th *ngIf="false"><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="musicroadApp.collaboration.message">Message</span></th>
             <th><span jhiTranslate="musicroadApp.collaboration.proposedDate">Proposed Date</span></th>
             <th *ngIf="false"><span jhiTranslate="musicroadApp.collaboration.accepted">Accepted</span></th>
@@ -38,7 +38,7 @@
             </thead>
             <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
             <tr *ngFor="let collaboration of collaborations ;trackBy: trackId">
-                <td><a [routerLink]="['/collaboration', collaboration.id, 'view' ]">{{collaboration.id}}</a></td>
+                <td *ngIf="false"><a [routerLink]="['/collaboration', collaboration.id, 'view' ]">{{collaboration.id}}</a></td>
                 <td>{{collaboration.message}}</td>
                 <td>{{collaboration.proposedDate | date:'mediumDate'}}</td>
                 <td *ngIf="false">{{collaboration.accepted}}</td>

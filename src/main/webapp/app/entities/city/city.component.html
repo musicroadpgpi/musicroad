@@ -29,7 +29,7 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="id" *ngIf="false"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="name"><span jhiTranslate="musicroadApp.city.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="country"><span jhiTranslate="musicroadApp.city.country">Country</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
@@ -37,7 +37,7 @@
             </thead>
             <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
             <tr *ngFor="let city of cities ;trackBy: trackId">
-                <td><a [routerLink]="['/city', city.id, 'view' ]">{{city.id}}</a></td>
+                <td *ngIf="false"><a [routerLink]="['/city', city.id, 'view' ]">{{city.id}}</a></td>
                 <td>{{city.name}}</td>
                 <td>{{city.country}}</td>
                 <td class="text-right">
