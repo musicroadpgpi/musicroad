@@ -28,16 +28,16 @@
     <div class="table-responsive" *ngIf="bands">
         <table class="table table-striped">
             <thead>
-            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
-            <th jhiSortBy="id" *ngIf="false"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="bandName"><span jhiTranslate="musicroadApp.band.bandName">Band Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-                <th *ngIf="isDesktop" jhiSortBy="componentNumber"><span jhiTranslate="musicroadApp.band.componentNumber">Component Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-                <th *ngIf="isTablet" jhiSortBy="creationYear"><span jhiTranslate="musicroadApp.band.creationYear">Creation Year</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-                <th *ngIf="isDesktop" jhiSortBy="genre"><span jhiTranslate="musicroadApp.band.genre">Genre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-                <th *ngIf="isTablet" jhiSortBy="description"><span jhiTranslate="musicroadApp.band.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <tr>
+            <th *ngIf="false"><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="musicroadApp.band.bandName">Band Name</span></th>
+                <th *ngIf="isDesktop" ><span jhiTranslate="musicroadApp.band.componentNumber">Component Number</span></th>
+                <th *ngIf="isTablet" ><span jhiTranslate="musicroadApp.band.creationYear">Creation Year</span></th>
+                <th *ngIf="isDesktop" ><span jhiTranslate="musicroadApp.band.genre">Genre</span></th>
+                <th *ngIf="isTablet" ><span jhiTranslate="musicroadApp.band.description">Description</span></th>
                 <th *ngIf="isDesktop" ><span jhiTranslate="musicroadApp.band.picture">Picture</span> </th>
-                <th *ngIf="isDesktop" jhiSortBy="city.id"><span jhiTranslate="musicroadApp.band.city">City</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-                <th *ngIf="isDesktop" jhiSortBy="user.id"><span jhiTranslate="musicroadApp.band.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th *ngIf="isDesktop" ><span jhiTranslate="musicroadApp.band.city">City</span></th>
+                <th *ngIf="isDesktop" ><span jhiTranslate="musicroadApp.band.user">User</span></th>
             <th></th>
             </tr>
             </thead>

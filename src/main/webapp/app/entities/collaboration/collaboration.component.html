@@ -28,11 +28,11 @@
     <div class="table-responsive" *ngIf="collaborations">
         <table class="table table-striped">
             <thead>
-            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="message"><span jhiTranslate="musicroadApp.collaboration.message">Message</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="proposedDate"><span jhiTranslate="musicroadApp.collaboration.proposedDate">Proposed Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="accepted" *ngIf="false"><span jhiTranslate="musicroadApp.collaboration.accepted">Accepted</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="musicroadApp.collaboration.message">Message</span></th>
+            <th><span jhiTranslate="musicroadApp.collaboration.proposedDate">Proposed Date</span></th>
+            <th *ngIf="false"><span jhiTranslate="musicroadApp.collaboration.accepted">Accepted</span></th>
             <th></th>
             </tr>
             </thead>

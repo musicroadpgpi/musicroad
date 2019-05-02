@@ -19,6 +19,9 @@
                     "required": "Your component number is required.",
                     "pattern": "Your component number can only contain digits."
                 },
+                "city": {
+                    "required": "A city is required."
+                },
                 "creationYear": {
                     "required": "Your creation year is required.",
                     "pattern": "Your component number can only contain digits."
@@ -30,7 +33,7 @@
                     "required": "Your cover picture is required."
                 },
                 "genre": {
-                    "required": "Your genre is required."
+                    "required": "A genre is required."
                 }
             },
             "success": "<strong>Registration saved!</strong> Please check your email for confirmation.",

@@ -7,7 +7,7 @@ import { JhiParseLinks, JhiAlertService } from 'ng-jhipster';
 import { Title } from '@angular/platform-browser';
 import { IBand } from 'app/shared/model/band.model';
 import { ICity, City } from 'app/shared/model/city.model';
-import { SERVER_API_URL } from 'app/app.constants';
+import { SERVER_API_URL, APPLICATION_DOMAIN } from 'app/app.constants';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ITEMS_PER_PAGE } from 'app/shared';
 import { IUser, AccountService } from 'app/core';
@@ -109,11 +109,12 @@ export class SearcherComponent implements OnInit {
     ngOnInit() {
         const fBuilder: FormBuilder = new FormBuilder();
         this.formSearch = fBuilder.group({
-            genre: ['', Validators.required],
-            city: ['', Validators.required]
+            genre: [''],
+            city: ['']
         });
-        this.client.get(SERVER_API_URL.concat('/api/cities')).subscribe((cityes: ICity[]) => {
-            cityes.forEach(element => {
+        // Cambiar APPLICATION_DOMAIN en app.constants segun se use en dev o prod
+        this.cityService.query().subscribe((response: HttpResponse<ICity[]>) => {
+            response.body.forEach(element => {
                 this.cities[this.cities.length] = element;
             });
         });
@@ -213,9 +214,18 @@ export class SearcherComponent implements OnInit {
     }
 
     onSubmit() {
+        let query = '';
         const cityName: string = this.formSearch.get('city').value;
         const genre: string = this.formSearch.get('genre').value;
-        this.search('genre.equals=' + genre + ' AND ' + 'name.equals=' + cityName);
+        if (cityName !== '' && genre !== '') {
+            query = 'genre.equals=' + genre + ' AND ' + 'name.equals=' + cityName;
+        } else if (cityName !== '' && genre === '') {
+            query = 'name.equals=' + cityName;
+        } else if (cityName === '' && genre !== '') {
+            query = 'genre.equals=' + genre;
+        }
+        console.log(query);
+        this.search(query);
     }
 
     protected paginateBands(data: IBand[], headers: HttpHeaders) {
