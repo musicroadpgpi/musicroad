@@ -11,13 +11,33 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.city.name" for="field_name">Name</label>
-                    <input type="text" class="form-control" name="name" id="field_name"
+                    <input type="text" class="form-control" name="name" id="field_name" required #name = "ngModel" pattern="[A-Za-z]*"
                         [(ngModel)]="city.name" />
+                        <div *ngIf="name.dirty && name.invalid">
+                            <small class="form-text text-danger" *ngIf="name.errors.required"
+                                jhiTranslate="musicroadApp.city.messages.validate.name.required">
+                                Your city name is required.
+                            </small>
+                            <small class="form-text text-danger" *ngIf="name.errors.pattern"
+                                jhiTranslate="musicroadApp.city.messages.validate.name.pattern">
+                                Your city name can only contain letters.
+                            </small>
+                        </div>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.city.country" for="field_country">Country</label>
-                    <input type="text" class="form-control" name="country" id="field_country"
+                    <input type="text" class="form-control" name="country" id="field_country" required #country="ngModel" pattern="[A-Z]*"
                         [(ngModel)]="city.country" />
+                        <div *ngIf="country.dirty && country.invalid">
+                            <small class="form-text text-danger" *ngIf="country.errors.required"
+                                jhiTranslate="musicroadApp.city.messages.validate.country.required">
+                                Your ccountry is required.
+                            </small>
+                            <small class="form-text text-danger" *ngIf="country.errors.pattern"
+                                jhiTranslate="musicroadApp.city.messages.validate.country.pattern">
+                                Your country can only contain letters.
+                            </small>
+                        </div>
                 </div>
 
             </div>
