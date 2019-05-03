@@ -1,6 +1,5 @@
 package com.nullpoint.musicroad.web.rest;
 
-
 import com.nullpoint.musicroad.domain.User;
 import com.nullpoint.musicroad.repository.UserRepository;
 import com.nullpoint.musicroad.security.SecurityUtils;
@@ -16,11 +15,14 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.net.ssl.SSLEngineResult.Status;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * REST controller for managing the current user's account.
@@ -28,8 +30,6 @@ import java.util.*;
 @RestController
 @RequestMapping("/api")
 public class AccountResource {
-
-    private static final String ENTITY_NAME = "BAND";
 
     private final Logger log = LoggerFactory.getLogger(AccountResource.class);
 
@@ -47,12 +47,15 @@ public class AccountResource {
     }
 
     /**
-     * POST  /register : register the user.
+     * POST /register : register the user.
      *
      * @param managedUserVM the managed user View Model
-     * @throws InvalidPasswordException 400 (Bad Request) if the password is incorrect
-     * @throws EmailAlreadyUsedException 400 (Bad Request) if the email is already used
-     * @throws LoginAlreadyUsedException 400 (Bad Request) if the login is already used
+     * @throws InvalidPasswordException  400 (Bad Request) if the password is
+     *                                   incorrect
+     * @throws EmailAlreadyUsedException 400 (Bad Request) if the email is already
+     *                                   used
+     * @throws LoginAlreadyUsedException 400 (Bad Request) if the login is already
+     *                                   used
      */
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
@@ -60,26 +63,28 @@ public class AccountResource {
         if (!checkPasswordLength(managedUserVM.getPassword())) {
             throw new InvalidPasswordException();
         }
-        /*if (managedUserVM.getBandName() == " ") {
-            throw new BandNameException();
-        }*/
-        if(checkYear(managedUserVM.getCreationYear()) == false){
+
+        if (checkYear(managedUserVM.getCreationYear()) == false) {
             throw new YearException();
         }
-        /*if(managedUserVM.getCoverPicture() == null){
+
+        if (managedUserVM.getCoverPicture() == null) {
             throw new ImageException();
-        }*/
-        User user = userService.registerUser(managedUserVM,managedUserVM.getBandName(), managedUserVM.getPassword(),
-        managedUserVM.getComponentNumber(), managedUserVM.getCreationYear(), managedUserVM.getGenre(),
-        managedUserVM.getCity(),managedUserVM.getCoverPicture(),managedUserVM.getCoverPictureContentType(),managedUserVM.getBio());
-        mailService.sendActivationEmail(user);
+        } else {
+            User user = userService.registerUser(managedUserVM, managedUserVM.getBandName(),
+                    managedUserVM.getPassword(), managedUserVM.getComponentNumber(), managedUserVM.getCreationYear(),
+                    managedUserVM.getGenre(), managedUserVM.getCity(), managedUserVM.getCoverPicture(),
+                    managedUserVM.getCoverPictureContentType(), managedUserVM.getBio());
+            mailService.sendActivationEmail(user);
+        }
     }
 
     /**
-     * GET  /activate : activate the registered user.
+     * GET /activate : activate the registered user.
      *
      * @param key the activation key
-     * @throws RuntimeException 500 (Internal Server Error) if the user couldn't be activated
+     * @throws RuntimeException 500 (Internal Server Error) if the user couldn't be
+     *                          activated
      */
     @GetMapping("/activate")
     public void activateAccount(@RequestParam(value = "key") String key) {
@@ -90,7 +95,7 @@ public class AccountResource {
     }
 
     /**
-     * GET  /authenticate : check if the user is authenticated, and return its login.
+     * GET /authenticate : check if the user is authenticated, and return its login.
      *
      * @param request the HTTP request
      * @return the login if the user is authenticated
@@ -102,28 +107,31 @@ public class AccountResource {
     }
 
     /**
-     * GET  /account : get the current user.
+     * GET /account : get the current user.
      *
      * @return the current user
-     * @throws RuntimeException 500 (Internal Server Error) if the user couldn't be returned
+     * @throws RuntimeException 500 (Internal Server Error) if the user couldn't be
+     *                          returned
      */
     @GetMapping("/account")
     public UserDTO getAccount() {
-        return userService.getUserWithAuthorities()
-            .map(UserDTO::new)
-            .orElseThrow(() -> new InternalServerErrorException("User could not be found"));
+        return userService.getUserWithAuthorities().map(UserDTO::new)
+                .orElseThrow(() -> new InternalServerErrorException("User could not be found"));
     }
 
     /**
-     * POST  /account : update the current user information.
+     * POST /account : update the current user information.
      *
      * @param userDTO the current user information
-     * @throws EmailAlreadyUsedException 400 (Bad Request) if the email is already used
-     * @throws RuntimeException 500 (Internal Server Error) if the user login wasn't found
+     * @throws EmailAlreadyUsedException 400 (Bad Request) if the email is already
+     *                                   used
+     * @throws RuntimeException          500 (Internal Server Error) if the user
+     *                                   login wasn't found
      */
     @PostMapping("/account")
     public void saveAccount(@Valid @RequestBody UserDTO userDTO) {
-        String userLogin = SecurityUtils.getCurrentUserLogin().orElseThrow(() -> new InternalServerErrorException("Current user login not found"));
+        String userLogin = SecurityUtils.getCurrentUserLogin()
+                .orElseThrow(() -> new InternalServerErrorException("Current user login not found"));
         Optional<User> existingUser = userRepository.findOneByEmailIgnoreCase(userDTO.getEmail());
         if (existingUser.isPresent() && (!existingUser.get().getLogin().equalsIgnoreCase(userLogin))) {
             throw new EmailAlreadyUsedException();
@@ -132,15 +140,16 @@ public class AccountResource {
         if (!user.isPresent()) {
             throw new InternalServerErrorException("User could not be found");
         }
-        userService.updateUser(userDTO.getFirstName(), userDTO.getLastName(), userDTO.getEmail(),
-            userDTO.getLangKey(), userDTO.getImageUrl());
+        userService.updateUser(userDTO.getFirstName(), userDTO.getLastName(), userDTO.getEmail(), userDTO.getLangKey(),
+                userDTO.getImageUrl());
     }
 
     /**
-     * POST  /account/change-password : changes the current user's password
+     * POST /account/change-password : changes the current user's password
      *
      * @param passwordChangeDto current and new password
-     * @throws InvalidPasswordException 400 (Bad Request) if the new password is incorrect
+     * @throws InvalidPasswordException 400 (Bad Request) if the new password is
+     *                                  incorrect
      */
     @PostMapping(path = "/account/change-password")
     public void changePassword(@RequestBody PasswordChangeDTO passwordChangeDto) {
@@ -151,33 +160,36 @@ public class AccountResource {
     }
 
     /**
-     * POST   /account/reset-password/init : Send an email to reset the password of the user
+     * POST /account/reset-password/init : Send an email to reset the password of
+     * the user
      *
      * @param mail the mail of the user
-     * @throws EmailNotFoundException 400 (Bad Request) if the email address is not registered
+     * @throws EmailNotFoundException 400 (Bad Request) if the email address is not
+     *                                registered
      */
     @PostMapping(path = "/account/reset-password/init")
     public void requestPasswordReset(@RequestBody String mail) {
-       mailService.sendPasswordResetMail(
-           userService.requestPasswordReset(mail)
-               .orElseThrow(EmailNotFoundException::new)
-       );
+        mailService
+                .sendPasswordResetMail(userService.requestPasswordReset(mail).orElseThrow(EmailNotFoundException::new));
     }
 
     /**
-     * POST   /account/reset-password/finish : Finish to reset the password of the user
+     * POST /account/reset-password/finish : Finish to reset the password of the
+     * user
      *
      * @param keyAndPassword the generated key and the new password
-     * @throws InvalidPasswordException 400 (Bad Request) if the password is incorrect
-     * @throws RuntimeException 500 (Internal Server Error) if the password could not be reset
+     * @throws InvalidPasswordException 400 (Bad Request) if the password is
+     *                                  incorrect
+     * @throws RuntimeException         500 (Internal Server Error) if the password
+     *                                  could not be reset
      */
     @PostMapping(path = "/account/reset-password/finish")
     public void finishPasswordReset(@RequestBody KeyAndPasswordVM keyAndPassword) {
         if (!checkPasswordLength(keyAndPassword.getNewPassword())) {
             throw new InvalidPasswordException();
         }
-        Optional<User> user =
-            userService.completePasswordReset(keyAndPassword.getNewPassword(), keyAndPassword.getKey());
+        Optional<User> user = userService.completePasswordReset(keyAndPassword.getNewPassword(),
+                keyAndPassword.getKey());
 
         if (!user.isPresent()) {
             throw new InternalServerErrorException("No user was found for this reset key");
@@ -185,15 +197,15 @@ public class AccountResource {
     }
 
     private static boolean checkPasswordLength(String password) {
-        return !StringUtils.isEmpty(password) &&
-            password.length() >= ManagedUserVM.PASSWORD_MIN_LENGTH &&
-            password.length() <= ManagedUserVM.PASSWORD_MAX_LENGTH;
+        return !StringUtils.isEmpty(password) && password.length() >= ManagedUserVM.PASSWORD_MIN_LENGTH
+                && password.length() <= ManagedUserVM.PASSWORD_MAX_LENGTH;
     }
+
     @Deprecated
     private static boolean checkYear(int year) {
         boolean res = true;
         Date fechaActual = new GregorianCalendar().getTime();
-        if(year > ((fechaActual.getYear()) + 1900)){
+        if (year > ((fechaActual.getYear()) + 1900)) {
             res = false;
         }
         return res;

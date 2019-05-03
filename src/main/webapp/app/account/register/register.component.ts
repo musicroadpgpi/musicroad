@@ -122,8 +122,8 @@ export class RegisterComponent implements OnInit, AfterViewInit {
             this.errorEmailExists = 'ERROR';
         } else if (response.status === 400 && response.error.type === YEAR_ERROR) {
             this.errorYear = 'ERROR';
-            /*} else if ((response.status === 400 && response.error.type === CONSTRAINT_VIOLATION_TYPE && this.registerAccount.coverPicture === null)) {
-            this.errorImage = 'ERROR';*/
+        } else if (response.status === 400 && response.error.type === IMAGE_ERROR) {
+            this.errorImage = 'ERROR';
         } else {
             this.error = 'ERROR';
         }
