@@ -1,23 +1,3 @@
-
-    <style>
-	
-		.img-round {
-			position: relative;
-			height: 0;
-			padding-bottom: 100%;
-			overflow: hidden;
-			border-radius: 50%;
-		}
-		.img-round>img {
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			-o-object-fit: cover;
-			object-fit: cover;
-		}
-		
-    </style>
-    
 	<div class="container" style="margin-top:30px">
 		<div class="row">
 			<div class="col-sm-3">
@@ -30,103 +10,71 @@
                         <a (click)="openFile(band.coverPictureContentType, band.coverPicture)">
                             <img [src]="'data:' + band.coverPictureContentType + ';base64,' + band.coverPicture" style="max-width: 100%;" alt="band image"/>
                         </a>
-                    </div>      
-                
-                
-                    
+                    </div>
+
+
+
       </div>
-       
-      
-      
+
+
+
       <div style="margin-top:10px">
-      </ul>
       <hr class="d-sm-none">
       </div>
     </div>
 
      <div class="col-sm-7" style="margin-left:70px">
-      <div class="row">
-                                            <div class="col-md-6" style="margin-top:100px">
-                                                <label><dt><span jhiTranslate="musicroadApp.band.bandName">Band Name</span></dt></label>
-                                            </div>
-                                            <div class="col-md-6" style="margin-top:100px">
-                                                <p><b>{{band.bandName}}</b></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label><dt><span jhiTranslate="musicroadApp.band.city">City</span></dt></label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><b><div *ngIf="band.city">
-                                                    <a [routerLink]="['/city', band.city?.id, 'view']">{{band.city?.name}}</a>
-                                                </div></b></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <dt><span jhiTranslate="musicroadApp.band.genre">Genre</span></dt>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><b><span jhiTranslate="{{'musicroadApp.Genre.' + band.genre}}">{{band.genre}}</span></b></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label> <dt><span jhiTranslate="musicroadApp.band.componentNumber">Component Number</span></dt></label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><b>{{band.componentNumber}}</b></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <label> <dt><span jhiTranslate="musicroadApp.band.bio">Bio</span>:</dt></label>
-                                            
-                                           
-                                                <p>{{band.bio}}</p>
-                                              </div>
-                                            
-                                        </div>
+<div class="row">
+        <div class="col-md-6" style="margin-top:100px">
+            <label><dt><span jhiTranslate="musicroadApp.band.bandName">Band Name</span></dt></label>
+        </div>
+        <div class="col-md-6" style="margin-top:100px">
+            <p><b>{{band.bandName}}</b></p>
+        </div>
     </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label><dt><span jhiTranslate="musicroadApp.band.city">City</span></dt></label>
+        </div>
+        <div class="col-md-6">
+            <p><b><div *ngIf="band.city">
+                <a [routerLink]="['/city', band.city?.id, 'view']">{{band.city?.name}}</a>
+            </div></b></p>
+        </div>
     </div>
-    
-   <div class="row">
-     
-    <div class="col-sm-6"  style="margin-top:40px;margin-bottom:80px; height:400px"  >
-      
-    
-      <h5>Spotify</h5>
-     <iframe src="https://open.spotify.com/embed/album/2WG5BQjzIbxOAu6kSiOtbx" width="100%" height="100%" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-     
-    
-     </div>
-    <div class="col-sm-6" style="margin-top:40px;margin-bottom:80px; height:400px">
-    
-      <h5>Bandcamp</h5>
-     <iframe width="100%" height="100%" frameborder="0" style="border: 0;" src="https://bandcamp.com/EmbeddedPlayer/album=2529800613/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="http://perdidogodot.bandcamp.com/album/acantilados-y-otros-accidentes">Acantilados y otros accidentes by Perdido Godot</a></iframe>
-      
-    
-    
+    <div class="row">
+        <div class="col-md-6">
+            <dt><span jhiTranslate="musicroadApp.band.genre">Genre</span></dt>
+        </div>
+        <div class="col-md-6">
+            <p><b><span jhiTranslate="{{'musicroadApp.Genre.' + band.genre}}">{{band.genre}}</span></b></p>
+        </div>
     </div>
-    
-  </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label> <dt><span jhiTranslate="musicroadApp.band.componentNumber">Component Number</span></dt></label>
+        </div>
+        <div class="col-md-6">
+            <p><b>{{band.componentNumber}}</b></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <label> <dt><span jhiTranslate="musicroadApp.band.bio">Bio</span>:</dt></label>
 
+
+            <p>{{band.bio}}</p>
+            </div>
+
+    </div>
+    </div>
+    </div>
 	</div>
-  
-
-
-  </div>  
-
-
-    
-</div>
-
 
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="band">
-           
+
 
             <button type="submit"
                     (click)="previousState()"
