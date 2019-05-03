@@ -28,8 +28,11 @@
             <div class="alert alert-danger" *ngIf="errorYear" jhiTranslate="global.messages.error.year">
                 The creation year must be prior that current one.
             </div>
-            <div class="alert alert-danger" *ngIf="errorImage" jhiTranslate="global.messages.error.year">
-                The creation year must be prior that current one.
+            <div class="alert alert-danger" *ngIf="errorImage" jhiTranslate="global.messages.error.picture">
+                The cover picture can't be blank.
+            </div>
+            <div class="alert alert-danger" *ngIf="errorTerms" jhiTranslate="global.messages.error.terms">
+                To continue, you must accept the terms and conditions.
             </div>
         </div>
     </div>
@@ -136,7 +139,8 @@
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.bandName"
                         for="field_bandName">Band Name</label>
                     <input type="text" class="form-control" name="bandName" id="field_bandName" required
-                        #bandName="ngModel"  pattern="^.*[\S]+.*$" [(ngModel)]="registerAccount.bandName" placeholder="{{'global.form.bandName.placeholder' | translate}}"/>
+                        #bandName="ngModel" pattern="^.*[\S]+.*$" [(ngModel)]="registerAccount.bandName"
+                        placeholder="{{'global.form.bandName.placeholder' | translate}}" />
                     <div *ngIf="bandName.dirty && bandName.invalid">
                         <small class="form-text text-danger" *ngIf="bandName.errors.required"
                             jhiTranslate="register.messages.validate.bandName.required">
@@ -152,7 +156,8 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.componentNumber"
                         for="field_componentNumber">Component Number</label>
-                    <input type="text" class="form-control" name="componentNumber" id="field_componentNumber" required placeholder="{{'global.form.componentNumber.placeholder' | translate}}"
+                    <input type="text" class="form-control" name="componentNumber" id="field_componentNumber" required
+                        placeholder="{{'global.form.componentNumber.placeholder' | translate}}"
                         #componentNumber="ngModel" pattern="[0-9]*" [(ngModel)]="registerAccount.componentNumber" />
 
                     <div *ngIf="componentNumber.dirty && componentNumber.invalid">
@@ -169,8 +174,9 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.creationYear"
                         for="field_creationYear">Creation Year</label>
-                    <input type="text" class="form-control" name="creationYear" id="field_creationYear" required placeholder="{{'global.form.creationYear.placeholder' | translate}}"
-                        #creationYear="ngModel" pattern="[0-9]*" [(ngModel)]="registerAccount.creationYear" />
+                    <input type="text" class="form-control" name="creationYear" id="field_creationYear" required
+                        placeholder="{{'global.form.creationYear.placeholder' | translate}}" #creationYear="ngModel"
+                        pattern="[0-9]*" [(ngModel)]="registerAccount.creationYear" />
 
                     <div *ngIf="creationYear.dirty && creationYear.invalid">
                         <small class="form-text text-danger" *ngIf="creationYear.errors.required"
@@ -186,8 +192,9 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.bio" for="field_bio">Bio</label>
-                    <textarea type="text" class="form-control" name="bio" id="field_bio" required #bio="ngModel" placeholder="{{'global.form.bio.placeholder' | translate}}"
-                        pattern="^.*[\S]+.*$" minlength=140 [(ngModel)]="registerAccount.bio"></textarea>
+                    <textarea type="text" class="form-control" name="bio" id="field_bio" required #bio="ngModel"
+                        placeholder="{{'global.form.bio.placeholder' | translate}}" pattern="^.*[\S]+.*$" minlength=140
+                        [(ngModel)]="registerAccount.bio"></textarea>
 
                     <div *ngIf="bio.dirty && bio.invalid">
                         <small class="form-text text-danger" *ngIf="bio.errors.required"
@@ -219,9 +226,9 @@
                                 <fa-icon [icon]="'times'"></fa-icon>
                             </button>
                         </div>
-                        <input type="file" id="file_coverPicture" class="form-control" 
+                        <input type="file" id="file_coverPicture" class="form-control"
                             (change)="setFileData($event, registerAccount, 'coverPicture', true)" accept="image/*"
-                            jhiTranslate="entity.action.addimage" required/>
+                            jhiTranslate="entity.action.addimage" required />
                     </div>
 
                     <input type="hidden" class="form-control" name="coverPicture" id="field_coverPicture"
@@ -286,10 +293,11 @@
                 </div>
                 <div class="form-group" data-toggle="buttons">
                     <label>
-                        <input class="form-control" type="radio" data-ng-model="selection" name="options1"
-                            value="option1" />
+                        <input class="form-control" type="radio" data-ng-model="selection" name="terms" id="terms"
+                            value="option1" [(ngModel)]="terms"/>
                         <span jhiTranslate="global.form.terms">I have read I accept the terms and conditions specefied
                             in GDPR page</span>
+
                     </label>
 
                 </div>

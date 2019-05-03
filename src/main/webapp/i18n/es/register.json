@@ -15,7 +15,6 @@
                 "bandName": {
                     "required": "Su nombre de banda es obligatorio.",
                     "pattern": "Su nombre de banda no puede estar vacía."
-
                 },
                 "city": {
                     "required": "Se requiere una ciudad."
@@ -31,9 +30,7 @@
                 "bio": {
                     "required": "Su biografía es obligatoria.",
                     "pattern": "Su biografía no puede estar vacía.",
-                    "minlength": "Su biografía debe tener al menos 1 caracter.."
-
-
+                    "minlength": "Su biografía debe tener al menos 140 caracter.."
                 },
                 "coverPicture": {
                     "required": "Su foto de portada es obligatoria."
