@@ -139,7 +139,8 @@
                 "dontmatch": "¡La contraseña y la confirmación de contraseña no coinciden!",
                 "bandName": "El nombre de la banda no puede estar en blanco.",
                 "year": "El año de creación debe ser anterior al actual.",
-                "picture": "La foto de portada está vacía o no es un formato de imagen correcto."
+                "picture": "La foto de portada está vacía o no es un formato de imagen correcto.",
+                "terms": "Para continuar, debe aceptar los términos y condiciones."
             },
             "validate": {
                 "newpassword": {

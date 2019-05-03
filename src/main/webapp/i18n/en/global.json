@@ -136,7 +136,8 @@
                 "dontmatch": "The password and its confirmation do not match!",
                 "bandName": "The band name can't be blank.",
                 "year": "The creation year must be prior to the current one.",
-                "picture": "The cover picture is empty or not is a correct image format."
+                "picture": "The cover picture is empty or not is a correct image format.",
+                "terms": "To continue, you must accept the terms and conditions."
             },
             "validate": {
                 "newpassword": {
