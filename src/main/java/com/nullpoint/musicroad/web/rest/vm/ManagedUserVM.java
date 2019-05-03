@@ -19,10 +19,8 @@ public class ManagedUserVM extends UserDTO {
 
     @Size(min = PASSWORD_MIN_LENGTH, max = PASSWORD_MAX_LENGTH)
 	private String password;
-	@NotBlank
 	private String bandName;
 	private String bio;
-	@NotNull
 	private byte[] coverPicture;
 	private String coverPictureContentType;
     private Integer componentNumber;

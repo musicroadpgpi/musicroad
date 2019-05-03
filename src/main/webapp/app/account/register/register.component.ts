@@ -26,6 +26,7 @@ import { JhiAlertService } from 'ng-jhipster';
 })
 export class RegisterComponent implements OnInit, AfterViewInit {
     confirmPassword: string;
+    terms: string;
     doNotMatch: string;
     error: string;
     errorEmailExists: string;
@@ -38,6 +39,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     cities: ICity[];
     band: IBand;
     errorImage: string;
+    errorTerms: string;
     constructor(
         protected dataUtils: JhiDataUtils,
         protected elementRef2: ElementRef,
@@ -74,6 +76,9 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     register() {
         if (this.registerAccount.password !== this.confirmPassword) {
             this.doNotMatch = 'ERROR';
+        }
+        if (this.terms !== 'option1') {
+            this.errorTerms = 'ERROR';
         } else {
             this.doNotMatch = null;
             this.error = null;
@@ -122,8 +127,8 @@ export class RegisterComponent implements OnInit, AfterViewInit {
             this.errorEmailExists = 'ERROR';
         } else if (response.status === 400 && response.error.type === YEAR_ERROR) {
             this.errorYear = 'ERROR';
-            /*} else if ((response.status === 400 && response.error.type === CONSTRAINT_VIOLATION_TYPE && this.registerAccount.coverPicture === null)) {
-            this.errorImage = 'ERROR';*/
+        } else if (response.status === 400 && response.error.type === IMAGE_ERROR) {
+            this.errorImage = 'ERROR';
         } else {
             this.error = 'ERROR';
         }
