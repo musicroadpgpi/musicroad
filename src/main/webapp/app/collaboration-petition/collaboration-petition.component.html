@@ -7,7 +7,7 @@
 <br>
 <br>
 
-<jhi-collaboration-update 
+<jhi-collaboration-update *ngIf="band.user.id !== user.id"
     [showingBandDetails] = "true" 
     [collaboration] = "collaboration" >
 </jhi-collaboration-update>
