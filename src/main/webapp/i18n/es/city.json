@@ -1,6 +1,19 @@
 {
     "musicroadApp": {
         "city": {
+            "messages": {
+                "validate": {
+                    "name": {
+                        "required": "Se requiere un nombre de ciudad.",
+                        "pattern": "Su nombre de ciudad sólo puede contener letras.",
+                        "blank": "El nombre de la ciudad no puede estar en blanco."
+                    },
+                    "country": {
+                        "required": "Se requiere un país",
+                        "pattern": "Su país sólo puede contener letras mayúsculas."
+                    }
+                }
+            },
             "home": {
                 "title": "Ciudades",
                 "createLabel": "Crear nueva ciudad",
