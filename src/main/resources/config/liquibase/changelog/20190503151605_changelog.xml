@@ -1,19 +1,22 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
-    <changeSet author="mruwzum (generated)" id="1553376271490-1">
+    <changeSet author="pablo (generated)" id="1556896572239-1">
         <createTable tableName="band">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="bandPK"/>
             </column>
             <column name="band_name" type="VARCHAR(255)"/>
+            <column name="bio" type="VARCHAR(255)"/>
             <column name="component_number" type="INT"/>
+            <column name="cover_picture" type="BLOB"/>
+            <column name="cover_picture_content_type" type="VARCHAR(255)"/>
             <column name="creation_year" type="INT"/>
             <column name="genre" type="VARCHAR(255)"/>
             <column name="city_id" type="BIGINT"/>
             <column name="user_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="mruwzum (generated)" id="1553376271490-2">
+    <changeSet author="pablo (generated)" id="1556896572239-2">
         <createTable tableName="band_collaborations">
             <column name="band_id" type="BIGINT">
                 <constraints nullable="false"/>
@@ -23,7 +26,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="mruwzum (generated)" id="1553376271490-3">
+    <changeSet author="pablo (generated)" id="1556896572239-3">
         <createTable tableName="city">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="cityPK"/>
@@ -32,23 +35,24 @@
             <column name="name" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="mruwzum (generated)" id="1553376271490-4">
+    <changeSet author="pablo (generated)" id="1556896572239-4">
         <createTable tableName="collaboration">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="collaborationPK"/>
             </column>
+            <column name="accepted" type="BOOLEAN"/>
             <column name="message" type="VARCHAR(255)"/>
             <column name="proposed_date" type="BINARY(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="mruwzum (generated)" id="1553376271490-5">
+    <changeSet author="pablo (generated)" id="1556896572239-5">
         <createTable tableName="jhi_authority">
             <column name="name" type="VARCHAR(50)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="mruwzum (generated)" id="1553376271490-6">
+    <changeSet author="pablo (generated)" id="1556896572239-6">
         <createTable tableName="jhi_persistent_audit_event">
             <column autoIncrement="true" name="event_id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="jhi_persistent_audit_eventPK"/>
@@ -60,7 +64,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="mruwzum (generated)" id="1553376271490-7">
+    <changeSet author="pablo (generated)" id="1556896572239-7">
         <createTable tableName="jhi_persistent_audit_evt_data">
             <column name="event_id" type="BIGINT">
                 <constraints nullable="false"/>
@@ -71,7 +75,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="mruwzum (generated)" id="1553376271490-8">
+    <changeSet author="pablo (generated)" id="1556896572239-8">
         <createTable tableName="jhi_user">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="jhi_userPK"/>
@@ -101,7 +105,7 @@
             <column name="reset_key" type="VARCHAR(20)"/>
         </createTable>
     </changeSet>
-    <changeSet author="mruwzum (generated)" id="1553376271490-9">
+    <changeSet author="pablo (generated)" id="1556896572239-9">
         <createTable tableName="jhi_user_authority">
             <column name="user_id" type="BIGINT">
                 <constraints nullable="false"/>
@@ -111,46 +115,46 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="mruwzum (generated)" id="1553376271490-10">
+    <changeSet author="pablo (generated)" id="1556896572239-10">
         <addPrimaryKey columnNames="band_id, collaborations_id" tableName="band_collaborations"/>
     </changeSet>
-    <changeSet author="mruwzum (generated)" id="1553376271490-11">
+    <changeSet author="pablo (generated)" id="1556896572239-11">
         <addPrimaryKey columnNames="event_id, name" tableName="jhi_persistent_audit_evt_data"/>
     </changeSet>
-    <changeSet author="mruwzum (generated)" id="1553376271490-12">
+    <changeSet author="pablo (generated)" id="1556896572239-12">
         <addPrimaryKey columnNames="user_id, authority_name" tableName="jhi_user_authority"/>
     </changeSet>
-    <changeSet author="mruwzum (generated)" id="1553376271490-13">
+    <changeSet author="pablo (generated)" id="1556896572239-13">
         <addPrimaryKey columnNames="name" constraintName="jhi_authorityPK" tableName="jhi_authority"/>
     </changeSet>
-    <changeSet author="mruwzum (generated)" id="1553376271490-14">
+    <changeSet author="pablo (generated)" id="1556896572239-14">
         <addUniqueConstraint columnNames="user_id" constraintName="UC_BANDUSER_ID_COL" tableName="band"/>
     </changeSet>
-    <changeSet author="mruwzum (generated)" id="1553376271490-15">
+    <changeSet author="pablo (generated)" id="1556896572239-15">
         <addUniqueConstraint columnNames="email" constraintName="UC_JHI_USEREMAIL_COL" tableName="jhi_user"/>
     </changeSet>
-    <changeSet author="mruwzum (generated)" id="1553376271490-16">
+    <changeSet author="pablo (generated)" id="1556896572239-16">
         <addUniqueConstraint columnNames="login" constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
     </changeSet>
-    <changeSet author="mruwzum (generated)" id="1553376271490-17">
+    <changeSet author="pablo (generated)" id="1556896572239-17">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="jhi_user_authority" constraintName="FK290okww5jujghp4el5i7mgwu0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
     </changeSet>
-    <changeSet author="mruwzum (generated)" id="1553376271490-18">
+    <changeSet author="pablo (generated)" id="1556896572239-18">
         <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="jhi_persistent_audit_evt_data" constraintName="FK2ehnyx2si4tjd2nt4q7y40v8m" deferrable="false" initiallyDeferred="false" referencedColumnNames="event_id" referencedTableName="jhi_persistent_audit_event"/>
     </changeSet>
-    <changeSet author="mruwzum (generated)" id="1553376271490-19">
+    <changeSet author="pablo (generated)" id="1556896572239-19">
         <addForeignKeyConstraint baseColumnNames="authority_name" baseTableName="jhi_user_authority" constraintName="FK4psxl0jtx6nr7rhqbynr6itoc" deferrable="false" initiallyDeferred="false" referencedColumnNames="name" referencedTableName="jhi_authority"/>
     </changeSet>
-    <changeSet author="mruwzum (generated)" id="1553376271490-20">
+    <changeSet author="pablo (generated)" id="1556896572239-20">
         <addForeignKeyConstraint baseColumnNames="city_id" baseTableName="band" constraintName="FK5qnmfn4gu60fhollhoeglqm98" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="city"/>
     </changeSet>
-    <changeSet author="mruwzum (generated)" id="1553376271490-21">
+    <changeSet author="pablo (generated)" id="1556896572239-21">
         <addForeignKeyConstraint baseColumnNames="collaborations_id" baseTableName="band_collaborations" constraintName="FKgj5l2xxlu8mcp4y4w80yu2mjl" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="collaboration"/>
     </changeSet>
-    <changeSet author="mruwzum (generated)" id="1553376271490-22">
+    <changeSet author="pablo (generated)" id="1556896572239-22">
         <addForeignKeyConstraint baseColumnNames="band_id" baseTableName="band_collaborations" constraintName="FKqnigndqqmn6bkuos19fohqr9w" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="band"/>
     </changeSet>
-    <changeSet author="mruwzum (generated)" id="1553376271490-23">
+    <changeSet author="pablo (generated)" id="1556896572239-23">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="band" constraintName="FKrad0svr24rlhr7s71suj2sf55" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
     </changeSet>
 </databaseChangeLog>
