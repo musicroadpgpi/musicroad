@@ -20,7 +20,19 @@
             "message": "Message",
             "proposedDate": "Proposed Date",
             "accepted": "Accepted",
-            "bands": "Bands"
+            "bands": "Bands",
+            "messages": {
+                "validate": {
+                    "proposedDate": {
+                        "required": "A proposed date is required.",
+                        "notValid": "The proposed date is not a valid date.",
+                        "mustBeFuture": "The proposed date must be future."
+                    },
+                    "message": {
+                        "required": "A message is required."
+                    }
+                }
+            }
         }
     }
 }

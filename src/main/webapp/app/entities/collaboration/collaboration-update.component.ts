@@ -10,6 +10,7 @@ import { CollaborationService } from './collaboration.service';
 import { IBand } from 'app/shared/model/band.model';
 import { BandService } from 'app/entities/band';
 import { IUser, AccountService } from 'app/core';
+import { interfaceTypeAnnotation } from '@babel/types';
 
 @Component({
     selector: 'jhi-collaboration-update',
@@ -21,6 +22,9 @@ export class CollaborationUpdateComponent implements OnInit {
 
     bands: IBand[];
     proposedDateDp: any;
+    now: string;
+
+    dateIsPast = false;
 
     @Input() showingBandDetails: boolean;
     user: IUser;
@@ -78,13 +82,17 @@ export class CollaborationUpdateComponent implements OnInit {
     }
 
     save() {
-        this.isSaving = true;
+        this.dateIsPast = false;
+        this.evaluateDate(this.collaboration.proposedDate);
         this.collaboration.accepted = false;
         this.collaboration.bands = this.bands;
-        if (this.collaboration.id !== undefined) {
-            this.subscribeToSaveResponse(this.collaborationService.update(this.collaboration));
-        } else {
-            this.subscribeToSaveResponse(this.collaborationService.create(this.collaboration));
+        if (!this.dateIsPast) {
+            this.isSaving = true;
+            if (this.collaboration.id !== undefined) {
+                this.subscribeToSaveResponse(this.collaborationService.update(this.collaboration));
+            } else {
+                this.subscribeToSaveResponse(this.collaborationService.create(this.collaboration));
+            }
         }
     }
 
@@ -127,5 +135,24 @@ export class CollaborationUpdateComponent implements OnInit {
             }
         }
         return option;
+    }
+
+    evaluateDate(proposedDate: moment.Moment) {
+        const dateNow: Date = new Date(Date.now());
+        const pDate: Date = proposedDate.toDate();
+        // if (isNaN(year) || isNaN(month) || isNaN(day) || month > 12 || month < 1 || day < 1 || day > 31) {
+        //     this.notValidFormatDate = true;
+        // } else {
+        //     if (year < dateNow.getFullYear()) {
+        //         this.notValidFormatDate = true;
+        //     } else if (year === dateNow.getFullYear() && month < dateNow.getMonth()) {
+        //         this.notValidFormatDate = true;
+        //     } else if(year === dateNow.getFullYear() && month === dateNow.getMonth() && day <= dateNow.getDay()) {
+        //         this.notValidFormatDate = true;
+        //     }
+        // }
+        if (!(pDate > dateNow)) {
+            this.dateIsPast = true;
+        }
     }
 }

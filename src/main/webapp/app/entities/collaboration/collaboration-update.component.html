@@ -12,18 +12,41 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.collaboration.message" for="field_message">Message</label>
                     <input type="text" class="form-control" name="message" id="field_message"
-                        [(ngModel)]="collaboration.message" />
+                        [(ngModel)]="collaboration.message" #message="ngModel" required />
+
+                    <div *ngIf="message.dirty && message.invalid">
+                        <small class="form-text text-danger" *ngIf="message.errors.required" jhiTranslate="musicroadApp.collaboration.messages.validate.message.required">
+                            A message is required.
+                        </small>
+                    </div>
+
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.collaboration.proposedDate" for="field_proposedDate">Proposed Date</label>
                     <div class="input-group">
                         <input id="field_proposedDate" type="text" class="form-control" name="proposedDate" ngbDatepicker  #proposedDateDp="ngbDatepicker" [(ngModel)]="collaboration.proposedDate"
-                        />
+                        #proposedDate="ngModel" required />
                         <span class="input-group-append">
                             <button type="button" class="btn btn-secondary" (click)="proposedDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
                         </span>
                     </div>
+
+                    <div *ngIf="proposedDate.dirty && proposedDate.invalid">
+                        <small class="form-text text-danger" *ngIf="proposedDate.errors.required" jhiTranslate="musicroadApp.collaboration.messages.validate.proposedDate.required">
+                            A proposed date is required.
+                        </small>
+                        <small class="form-text text-danger" *ngIf="!proposedDate.errors.required && !dateIsPast" jhiTranslate="musicroadApp.collaboration.messages.validate.proposedDate.notValid">
+                            The proposed date is not valid.
+                        </small>
+                    </div>
+                    <small class="form-text text-danger" *ngIf="dateIsPast"
+                    jhiTranslate="musicroadApp.collaboration.messages.validate.proposedDate.mustBeFuture">
+                        The proposed date must be future.
+                    </small>
+
                 </div>
+
+
                 <div class="form-group" *ngIf="false">
                     <label class="form-control-label" jhiTranslate="musicroadApp.collaboration.accepted" for="field_accepted">Accepted</label>
                     <input type="checkbox" class="form-control" name="accepted" id="field_accepted"
