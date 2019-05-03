@@ -19,10 +19,10 @@
         <h1 class="display-4 text-center" jhiTranslate="home.title">Welcome, Java Hipster!</h1>
         <p class="lead text-center" jhiTranslate="home.subtitle">This is your homepage</p>
         <ul class="justify-content-md-center align-items-center float-right">
-            <li class="list-inline-item">
+            <li class="list-inline-item" *ngIf="!isAuthenticated()">
                 <button type="button" class="btn btn-primary text-center"  (click)="login()" id="login" jhiTranslate="global.menu.account.login">Login</button>
             </li>
-            <li class="list-inline-item">
+            <li class="list-inline-item" *ngIf="!isAuthenticated()">
                 <button type="button" class="btn btn-secondary text-center" routerLink="register"  routerLinkActive="active" jhiTranslate="global.menu.account.register">Sign Up</button>
             </li>
         </ul>
@@ -68,7 +68,7 @@
     <div class="col-md-6">
         <h1 class="display-3 text-center" jhiTranslate="home.showtime">It's Showtime</h1>
         <p class="lead text-center mb-5" jhiTranslate="home.showtimesubtitle">subtitle</p>
-        <button type="button" class="btn btn-block btn-warning" routerLink="register"  routerLinkActive="active" jhiTranslate="global.menu.account.register2">Sign Up</button>
+        <button *ngIf="!isAuthenticated()" type="button" class="btn btn-block btn-warning" routerLink="register"  routerLinkActive="active" jhiTranslate="global.menu.account.register2">Sign Up</button>
     </div>
 
     <div class="col-md-3">
