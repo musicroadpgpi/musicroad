@@ -18,7 +18,6 @@
         Added the entity Band.
     -->
     <changeSet id="20190323200903-1" author="jhipster">
-        <validCheckSum>7:94c3709ee3dd7c0a994fd3762ff2200a</validCheckSum>
         <createTable tableName="band">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
