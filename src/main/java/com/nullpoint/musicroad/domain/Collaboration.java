@@ -38,9 +38,9 @@ public class Collaboration implements Serializable {
     @Column(name = "accepted")
     private Boolean accepted;
 
-    @ManyToMany(mappedBy = "collaborations", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "collaborations")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    //@JsonIgnore
+    @JsonIgnore
     private Set<Band> bands = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
