@@ -29,6 +29,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.nullpoint.musicroad.MusicroadApp;
 import com.nullpoint.musicroad.domain.Band;
+import com.nullpoint.musicroad.domain.City;
 import com.nullpoint.musicroad.domain.Collaboration;
 import com.nullpoint.musicroad.domain.User;
 import com.nullpoint.musicroad.service.impl.BandServiceImpl;
@@ -126,6 +127,24 @@ public class CollaborationServiceTest {
 			System.out.println("¡Fallo," + e.getMessage() + "!");
 		}
 
+	}
+
+	@Test
+	public void testFindAll() {
+		Page<Collaboration> collaborations = collaborationService.findAll(new PageRequest(1, 100));
+		if (collaborations.hasContent())
+			for (Collaboration collaboration : collaborations) {
+				System.out.println("Collaboration" + collaboration.getId() + ": " + collaboration.getProposedDate());
+			}
+	}
+
+	@Test
+	public void testSearch() {
+		Page<Collaboration> collaborations = collaborationService.search("", new PageRequest(1, 100));
+		if (collaborations.hasContent())
+		for (Collaboration collaboration : collaborations) {
+			System.out.println("Collaboration" + collaboration.getId() + ": " + collaboration.getProposedDate());
+		}
 	}
 
 }

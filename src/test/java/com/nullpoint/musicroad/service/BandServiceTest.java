@@ -15,7 +15,6 @@ import org.springframework.data.domain.Page;
 
 import java.util.Optional;
 
-
 import com.nullpoint.musicroad.MusicroadApp;
 import com.nullpoint.musicroad.domain.Band;
 import com.nullpoint.musicroad.domain.City;
@@ -77,6 +76,36 @@ public class BandServiceTest {
 
 		Assert.assertTrue(bands2.getContent().contains(band));
 
+	}
+
+	@Test
+	public void testFindAll() {
+		Page<Band> bands = bandService.findAll(new PageRequest(1, 100));
+
+		if (bands.hasContent())
+			for (Band band : bands) {
+				System.out.println("Band" + band.getId() + ": " + band.getBandName());
+			}
+	}
+
+	@Test
+	public void testFindAllWithEagerRelationships() {
+		Page<Band> bands = bandService.findAllWithEagerRelationships(new PageRequest(1, 100));
+
+		if (bands.hasContent())
+			for (Band band : bands) {
+				System.out.println("Band" + band.getId() + ": " + band.getBandName());
+			}
+	}
+
+	@Test
+	public void testSearch() {
+		Page<Band> bands = bandService.search("banda", new PageRequest(1, 100));
+
+		if (bands.hasContent())
+			for (Band band : bands) {
+				System.out.println("Band" + band.getId() + ": " + band.getBandName());
+			}
 	}
 
 }

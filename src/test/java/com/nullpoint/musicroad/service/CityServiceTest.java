@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.nullpoint.musicroad.MusicroadApp;
+import com.nullpoint.musicroad.domain.Band;
 import com.nullpoint.musicroad.domain.City;
 import com.nullpoint.musicroad.service.impl.CityServiceImpl;
 
@@ -47,6 +48,25 @@ public class CityServiceTest {
 
 		Assert.assertTrue(cities2.getContent().contains(city));
 
+	}
+
+	@Test
+	public void testFindAll() {
+		Page<City> cities = cityService.findAll(new PageRequest(1, 100));
+		if (cities.hasContent())
+		for (City city : cities) {
+			System.out.println("City" + city.getId() + ": " + city.getName());
+		}
+	}
+
+	@Test
+	public void testSearch() {
+		Page<City> cities = cityService.search("Sevilla", new PageRequest(1, 100));
+		
+		if (cities.hasContent())
+			for (City city : cities) {
+			System.out.println("City" + city.getId() + ": " + city.getName());
+		}
 	}
 
 }
