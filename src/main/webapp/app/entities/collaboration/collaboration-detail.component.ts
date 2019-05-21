@@ -108,4 +108,17 @@ export class CollaborationDetailComponent implements OnInit {
             });
         });
     }
+
+    checkUserCollaborations(user: IUser, collaboration: ICollaboration) {
+        let res = false;
+        for (let band of collaboration.bands) {
+            if (band.user.id === user.id) {
+                res = true;
+            }
+            if (res) {
+                break;
+            }
+        }
+        return res;
+    }
 }

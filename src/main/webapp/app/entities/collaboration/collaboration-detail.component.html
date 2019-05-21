@@ -4,7 +4,7 @@
     <div class="col-8">
         <div *ngIf="collaboration">
             <div *ngIf="collaboration.bands">
-                <div *ngIf="collaboration.bands.includes(userBand)">
+                <div *ngIf="checkUserCollaborations(user, collaboration)">
                     <h2><span jhiTranslate="musicroadApp.collaboration.detail.title">Collaboration</span> {{collaboration.id}}</h2>
                     <hr>
                     <jhi-alert-error></jhi-alert-error>
