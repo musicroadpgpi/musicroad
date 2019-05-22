@@ -7,11 +7,12 @@
 <br>
 <br>
 
-<jhi-collaboration-update *ngIf="band.user.id !== user.id"
-    [showingBandDetails] = "true" 
-    [collaboration] = "collaboration" >
-</jhi-collaboration-update>
-
+<ng-container *jhiHasAnyAuthority="'ROLE_USER'">
+    <jhi-collaboration-update *ngIf="band.user.id !== user.id"
+        [showingBandDetails] = "true" 
+        [collaboration] = "collaboration" >
+    </jhi-collaboration-update>
+</ng-container>
 <br>
 
 

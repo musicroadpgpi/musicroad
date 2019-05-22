@@ -45,7 +45,7 @@ export const cityRoute: Routes = [
             city: CityResolve
         },
         data: {
-            authorities: ['ROLE_ADMIN'],
+            authorities: ['ROLE_ADMIN', 'ROLE_USER'],
             pageTitle: 'musicroadApp.city.home.title'
         },
         canActivate: [UserRouteAccessService]

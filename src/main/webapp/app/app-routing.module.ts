@@ -43,7 +43,7 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
                         band: BandResolve
                     },
                     data: {
-                        authorities: ['ROLE_USER'],
+                        authorities: ['ROLE_USER', 'ROLE_ADMIN'],
                         pageTitle: 'musicroadApp.band.home.title'
                     },
                     canActivate: [UserRouteAccessService]
