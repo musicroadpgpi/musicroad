@@ -20,11 +20,11 @@
                 "createOrEditLabel": "Crear o editar ciudad",
                 "search": "Buscar una cuidad"
             },
-            "created": "Un nuevo City ha sido creado con el identificador {{ param }}",
-            "updated": "Un City ha sido actualizado con el identificador {{ param }}",
-            "deleted": "Un City ha sido eliminado con el identificador {{ param }}",
+            "created": "Una nueva Ciudad ha sido creada",
+            "updated": "La Ciudad ha sido actualizado",
+            "deleted": "La Ciudad ha sido eliminado",
             "delete": {
-                "question": "¿Seguro que quiere eliminar la cuidad {{ id }}?"
+                "question": "¿Seguro que quiere eliminar esta ciudad ?"
             },
             "detail": {
                 "title": "Ciudad"

@@ -7,11 +7,11 @@
                 "createOrEditLabel": "Crear o editar banda",
                 "search": "Buscar bandas"
             },
-            "created": "Un nuevo Band ha sido creado con el identificador {{ param }}",
-            "updated": "Un Band ha sido actualizado con el identificador {{ param }}",
-            "deleted": "Un Band ha sido eliminado con el identificador {{ param }}",
+            "created": "Una nuevo Band ha sido creada",
+            "updated": "La Banda ha sido actualizada",
+            "deleted": "La Banda ha sido eliminada",
             "delete": {
-                "question": "¿Seguro que quiere eliminar la banda {{ id }}?"
+                "question": "¿Seguro que quiere eliminar esta banda ?"
             },
             "detail": {
                 "title": "Banda"

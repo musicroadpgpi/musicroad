@@ -7,11 +7,11 @@
                 "createOrEditLabel": "Create or edit a band",
                 "search": "Search for bands"
             },
-            "created": "A new Band is created with identifier {{ param }}",
-            "updated": "A Band is updated with identifier {{ param }}",
-            "deleted": "A Band is deleted with identifier {{ param }}",
+            "created": "A new Band is created",
+            "updated": "The Band is updated",
+            "deleted": "The Band is deleted",
             "delete": {
-                "question": "Are you sure you want to delete the band {{ id }}?"
+                "question": "Are you sure you want to delete this band ?"
             },
             "detail": {
                 "title": "Band"

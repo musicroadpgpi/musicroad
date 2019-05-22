@@ -20,11 +20,11 @@
                 "createOrEditLabel": "Create or edit a City",
                 "search": "Search for City"
             },
-            "created": "A new City is created with identifier {{ param }}",
-            "updated": "A City is updated with identifier {{ param }}",
-            "deleted": "A City is deleted with identifier {{ param }}",
+            "created": "A new City is created",
+            "updated": "The City is updated",
+            "deleted": "The City is deleted",
             "delete": {
-                "question": "Are you sure you want to delete City {{ id }}?"
+                "question": "Are you sure you want to delete this City ?"
             },
             "detail": {
                 "title": "City"

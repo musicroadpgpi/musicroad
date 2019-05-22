@@ -8,11 +8,11 @@
                 "search": "Buscar una colaboración",
                 "mycollaborations": "Mis Colaboraciones"
             },
-            "created": "Un nuevo Collaboration ha sido creado con el identificador {{ param }}",
-            "updated": "Un Collaboration ha sido actualizado con el identificador {{ param }}",
-            "deleted": "Un Collaboration ha sido eliminado con el identificador {{ param }}",
+            "created": "Una nueva Colaboración ha sido creada",
+            "updated": "La Colaboración ha sido actualizada",
+            "deleted": "La Colaboración ha sido eliminada",
             "delete": {
-                "question": "¿Seguro que quiere eliminar la colaboración {{ id }}?"
+                "question": "¿Seguro que quiere eliminar esta colaboración ?"
             },
             "detail": {
                 "title": "Colaboración"
