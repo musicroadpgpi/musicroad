@@ -41,6 +41,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     errorImage: string;
     errorTerms: string;
     errorCNumber: string;
+    cargando: boolean;
     constructor(
         protected dataUtils: JhiDataUtils,
         protected elementRef2: ElementRef,
@@ -75,8 +76,10 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     }
 
     register() {
+        this.ngAfterViewInit();
         if (this.registerAccount.password !== this.confirmPassword) {
             this.doNotMatch = 'ERROR';
+            this.cargando = false;
         } else if (this.terms !== 'option1') {
             this.errorTerms = 'ERROR';
         } else {

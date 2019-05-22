@@ -30,7 +30,8 @@
                 "bio": {
                     "required": "Su biografía es obligatoria.",
                     "pattern": "Su biografía no puede estar vacía.",
-                    "minlength": "Su biografía debe tener al menos 140 caracter.."
+                    "maxlength": "Su biografía no puede tener más de 250 caracteres.",
+                    "minlength": "Su biografía debe tener al menos 140 caracter."
                 },
                 "coverPicture": {
                     "required": "Su foto de portada es obligatoria."

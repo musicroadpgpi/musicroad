@@ -1,7 +1,11 @@
 package com.nullpoint.musicroad.web.rest;
+
 import com.nullpoint.musicroad.domain.Band;
 import com.nullpoint.musicroad.service.BandService;
 import com.nullpoint.musicroad.web.rest.errors.BadRequestAlertException;
+import com.nullpoint.musicroad.web.rest.errors.ImageException;
+import com.nullpoint.musicroad.web.rest.errors.NumberException;
+import com.nullpoint.musicroad.web.rest.errors.YearException;
 import com.nullpoint.musicroad.web.rest.util.HeaderUtil;
 import com.nullpoint.musicroad.web.rest.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -16,7 +20,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
@@ -73,6 +78,16 @@ public class BandResource {
         log.debug("REST request to update Band : {}", band);
         if (band.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+        }
+        if (checkYear(band.getCreationYear()) == false) {
+            throw new YearException();
+        }
+
+        if (band.getCoverPicture() == null) {
+            throw new ImageException();
+        }
+        if (band.getComponentNumber() < 1) {
+            throw new NumberException();
         }
         Band result = bandService.save(band);
         return ResponseEntity.ok()
@@ -140,6 +155,16 @@ public class BandResource {
         Page<Band> page = bandService.search(query, pageable);
         HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/bands");
         return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    @Deprecated
+    private static boolean checkYear(int year) {
+        boolean res = true;
+        Date fechaActual = new GregorianCalendar().getTime();
+        if (year > ((fechaActual.getYear()) + 1900)) {
+            res = false;
+        }
+        return res;
     }
 
 }

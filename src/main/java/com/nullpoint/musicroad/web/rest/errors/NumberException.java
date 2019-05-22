@@ -5,6 +5,6 @@ public class NumberException extends BadRequestAlertException {
     private static final long serialVersionUID = 1L;
 
     public NumberException() {
-        super(ErrorConstants.NUMBER_ERROR, "Component number more than 0", "band", "numbererror");
+        super(ErrorConstants.NUMBER_ERROR, "Component number more than 0", "band", "messages.error.CNumber");
     }
 }

@@ -12,6 +12,7 @@ import { CityService } from 'app/entities/city';
 import { ICollaboration } from 'app/shared/model/collaboration.model';
 import { CollaborationService } from 'app/entities/collaboration';
 import { thisExpression } from '@babel/types';
+import { YEAR_ERROR, IMAGE_ERROR, NUMBER_ERROR } from 'app/shared';
 
 @Component({
     selector: 'jhi-band-update',
@@ -28,6 +29,11 @@ export class BandUpdateComponent implements OnInit {
     collaborations: ICollaboration[];
 
     user: IUser;
+    success: any;
+    errorYear: string;
+    errorImage: string;
+    errorCNumber: string;
+    error: string;
 
     constructor(
         protected dataUtils: JhiDataUtils,
@@ -106,7 +112,7 @@ export class BandUpdateComponent implements OnInit {
     }
 
     protected subscribeToSaveResponse(result: Observable<HttpResponse<IBand>>) {
-        result.subscribe((res: HttpResponse<IBand>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
+        result.subscribe((res: HttpResponse<IBand>) => this.onSaveSuccess(), response => this.processError(response));
     }
 
     protected onSaveSuccess() {
@@ -116,6 +122,19 @@ export class BandUpdateComponent implements OnInit {
 
     protected onSaveError() {
         this.isSaving = false;
+    }
+
+    private processError(response: HttpErrorResponse) {
+        this.isSaving = false;
+        if (response.status === 400 && response.error.type === YEAR_ERROR) {
+            this.errorYear = 'ERROR';
+        } else if (response.status === 400 && response.error.type === IMAGE_ERROR) {
+            this.errorImage = 'ERROR';
+        } else if (response.status === 400 && response.error.type === NUMBER_ERROR) {
+            this.errorCNumber = 'ERROR';
+        } else {
+            this.error = 'ERROR';
+        }
     }
 
     protected onError(errorMessage: string) {

@@ -14,7 +14,10 @@
             "diskSpace": "Disk space",
             "mail": "Email",
             "elasticsearch": "Elasticsearch",
-            "db": "Database"
+            "db": "Database",
+            "refreshScope": "Refresh Scope",
+            "configServer": "Configuration Server",
+            "hystrix": "Hystrix"
         },
         "table": {
             "service": "Service name",
