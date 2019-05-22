@@ -18,6 +18,8 @@ public final class ErrorConstants {
     public static final URI YEAR_ERROR = URI.create(PROBLEM_BASE_URL + "/year-error");
     public static final URI IMAGE_ERROR = URI.create(PROBLEM_BASE_URL + "/image-error");
     public static final URI BANDNAME_ERROR = URI.create(PROBLEM_BASE_URL + "/name-error");
+    public static final URI NUMBER_ERROR = URI.create(PROBLEM_BASE_URL + "/number-error");
+
 
 
 

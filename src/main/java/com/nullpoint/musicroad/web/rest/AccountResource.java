@@ -70,6 +70,9 @@ public class AccountResource {
 
         if (managedUserVM.getCoverPicture() == null) {
             throw new ImageException();
+        }
+        if (managedUserVM.getComponentNumber() < 1) {
+            throw new NumberException();
         } else {
             User user = userService.registerUser(managedUserVM, managedUserVM.getBandName(),
                     managedUserVM.getPassword(), managedUserVM.getComponentNumber(), managedUserVM.getCreationYear(),
