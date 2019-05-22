@@ -15,7 +15,6 @@
                 "bandName": {
                     "required": "Your band name is required.",
                     "pattern": "Your band name can't be blank."
-
                 },
                 "componentNumber": {
                     "required": "Your component number is required.",
@@ -31,9 +30,8 @@
                 "bio": {
                     "required": "Your bio is required.",
                     "pattern": "Your bio can't be blank.",
+                    "maxlength": "Your bio cannot be longer than 250 characters.",
                     "minlength": "Your bio is required to be at least 140 character."
-
-
                 },
                 "coverPicture": {
                     "required": "Your cover picture is required."

@@ -9,6 +9,13 @@
             "500": "Internal server error."
         },
         "concurrencyFailure": "Another user modified this data at the same time as you. Your changes were rejected.",
-        "validation": "Validation error on the server."
+        "validation": "Validation error on the server.",
+        "messages": {
+            "error": {
+                "picture": "The cover picture is empty or not is a correct image format.",
+                "year": "The creation year must be prior to the current one.",
+                "CNumber": "The component number must be more or equals than 1."
+            }
+        }
     }
 }

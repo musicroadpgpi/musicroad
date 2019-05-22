@@ -9,6 +9,13 @@
             "500": "Error interno del servidor."
         },
         "concurrencyFailure": "Otro usuario ha modificado esta data al mismo tiempo que tú. Tus cambios fueron rechazados.",
-        "validation": "Error de validación en el servidor."
+        "validation": "Error de validación en el servidor.",
+        "messages": {
+            "error": {
+                "year": "El año de creación debe ser anterior al actual.",
+                "picture": "La foto de portada está vacía o no es un formato de imagen correcto.",
+                "CNumber": "El número de componentes debe ser mayor o igual a 1."
+            }
+        }
     }
 }
