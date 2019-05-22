@@ -13,7 +13,7 @@ import {
     CONSTRAINT_VIOLATION_TYPE,
     YEAR_ERROR,
     IMAGE_ERROR,
-    BANDNAME_ERROR
+    NUMBER_ERROR
 } from 'app/shared';
 import { LoginModalService } from 'app/core';
 import { Register } from './register.service';
@@ -40,6 +40,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     band: IBand;
     errorImage: string;
     errorTerms: string;
+    errorCNumber: string;
     constructor(
         protected dataUtils: JhiDataUtils,
         protected elementRef2: ElementRef,
@@ -76,17 +77,18 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     register() {
         if (this.registerAccount.password !== this.confirmPassword) {
             this.doNotMatch = 'ERROR';
-        }
-        if (this.terms !== 'option1') {
+        } else if (this.terms !== 'option1') {
             this.errorTerms = 'ERROR';
         } else {
             this.doNotMatch = null;
+            this.errorTerms = null;
             this.error = null;
             this.errorUserExists = null;
             this.errorEmailExists = null;
             this.errorBandName = null;
             this.errorYear = null;
             this.errorImage = null;
+            this.errorCNumber = null;
             this.languageService.getCurrent().then(key => {
                 this.registerAccount.langKey = key;
                 this.registerService.save(this.registerAccount).subscribe(
@@ -129,6 +131,8 @@ export class RegisterComponent implements OnInit, AfterViewInit {
             this.errorYear = 'ERROR';
         } else if (response.status === 400 && response.error.type === IMAGE_ERROR) {
             this.errorImage = 'ERROR';
+        } else if (response.status === 400 && response.error.type === NUMBER_ERROR) {
+            this.errorCNumber = 'ERROR';
         } else {
             this.error = 'ERROR';
         }

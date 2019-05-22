@@ -34,6 +34,9 @@
             <div class="alert alert-danger" *ngIf="errorTerms" jhiTranslate="global.messages.error.terms">
                 To continue, you must accept the terms and conditions.
             </div>
+            <div class="alert alert-danger" *ngIf="errorCNumber" jhiTranslate="global.messages.error.CNumber">
+                The creation year must be prior that current one.
+            </div>
         </div>
     </div>
     <div class="row justify-content-center">
@@ -170,6 +173,9 @@
                             Your component number can only contain digits.
                         </small>
                     </div>
+                    <small class="form-text text-danger" *ngIf="errorCNumber" jhiTranslate="global.messages.error.CNumber">
+                        The creation year must be prior that current one.
+                    </small>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.creationYear"
@@ -187,7 +193,11 @@
                             jhiTranslate="register.messages.validate.creationYear.pattern">
                             Your creation year can only contain digits.
                         </small>
+                        
                     </div>
+                    <small class="form-text text-danger" *ngIf="errorYear" jhiTranslate="global.messages.error.year">
+                        The creation year must be prior that current one.
+                    </small>
 
                 </div>
                 <div class="form-group">
@@ -299,8 +309,12 @@
                             in GDPR page</span>
 
                     </label>
+                    
 
                 </div>
+                <small class="form-text text-danger" *ngIf="errorTerms" jhiTranslate="global.messages.error.terms">
+                    To continue, you must accept the terms and conditions.
+                </small>
 
                 <button type="submit" [disabled]="registerForm.form.invalid" class="btn btn-primary"
                     jhiTranslate="register.form.button">Register</button>
