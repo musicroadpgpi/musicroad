@@ -17,6 +17,7 @@ import org.springframework.util.Assert;
 
 import java.util.Optional;
 import com.nullpoint.musicroad.domain.User;
+import com.nullpoint.musicroad.domain.Authority;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
@@ -58,6 +59,8 @@ public class BandServiceImpl implements BandService {
             Assert.isTrue(storedUsername.equals(principalUsername));
             Assert.isTrue(band.getUser().getLogin().equals(principalUsername));
         }
+        System.out.println(band.getUser().getAuthorities());
+        Assert.isTrue(!SecurityUtils.isCurrentUserInRole("ROLE_ADMIN"));
         Band result = bandRepository.save(band);
         bandSearchRepository.save(result);
         return result;
