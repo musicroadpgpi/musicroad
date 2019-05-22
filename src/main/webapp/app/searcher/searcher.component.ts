@@ -217,12 +217,19 @@ export class SearcherComponent implements OnInit {
         let query = '';
         const cityName: string = this.formSearch.get('city').value;
         const genre: string = this.formSearch.get('genre').value;
+        // if (cityName !== '' && genre !== '') {
+        //     query = 'genre.equals=' + genre + ' AND ' + 'name.equals=' + cityName;
+        // } else if (cityName !== '' && genre === '') {
+        //     query = 'name.equals=' + cityName;
+        // } else if (cityName === '' && genre !== '') {
+        //     query = 'genre.equals=' + genre;
+        // }
         if (cityName !== '' && genre !== '') {
-            query = 'genre.equals=' + genre + ' AND ' + 'name.equals=' + cityName;
+            query = query + 'genre:(' + genre + ') AND ' + 'city.name:(' + cityName + ')';
         } else if (cityName !== '' && genre === '') {
-            query = 'name.equals=' + cityName;
+            query = query + 'city.name:(' + cityName + ')';
         } else if (cityName === '' && genre !== '') {
-            query = 'genre.equals=' + genre;
+            query = query + 'genre:(' + genre + ')';
         }
         console.log(query);
         this.search(query);

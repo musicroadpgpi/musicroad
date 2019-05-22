@@ -47,17 +47,17 @@ public class CityResource {
      * @return the ResponseEntity with status 201 (Created) and with body the new city, or with status 400 (Bad Request) if the city has already an ID
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
-    @PostMapping("/cities")
-    public ResponseEntity<City> createCity(@RequestBody City city) throws URISyntaxException {
-        log.debug("REST request to save City : {}", city);
-        if (city.getId() != null) {
-            throw new BadRequestAlertException("A new city cannot already have an ID", ENTITY_NAME, "idexists");
-        }
-        City result = cityService.save(city);
-        return ResponseEntity.created(new URI("/api/cities/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
-            .body(result);
-    }
+    // @PostMapping("/cities")
+    // public ResponseEntity<City> createCity(@RequestBody City city) throws URISyntaxException {
+    //     log.debug("REST request to save City : {}", city);
+    //     if (city.getId() != null) {
+    //         throw new BadRequestAlertException("A new city cannot already have an ID", ENTITY_NAME, "idexists");
+    //     }
+    //     City result = cityService.save(city);
+    //     return ResponseEntity.created(new URI("/api/cities/" + result.getId()))
+    //         .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+    //         .body(result);
+    // }
 
     /**
      * PUT  /cities : Updates an existing city.
@@ -68,17 +68,17 @@ public class CityResource {
      * or with status 500 (Internal Server Error) if the city couldn't be updated
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
-    @PutMapping("/cities")
-    public ResponseEntity<City> updateCity(@RequestBody City city) throws URISyntaxException {
-        log.debug("REST request to update City : {}", city);
-        if (city.getId() == null) {
-            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
-        }
-        City result = cityService.save(city);
-        return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, city.getId().toString()))
-            .body(result);
-    }
+    // @PutMapping("/cities")
+    // public ResponseEntity<City> updateCity(@RequestBody City city) throws URISyntaxException {
+    //     log.debug("REST request to update City : {}", city);
+    //     if (city.getId() == null) {
+    //         throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+    //     }
+    //     City result = cityService.save(city);
+    //     return ResponseEntity.ok()
+    //         .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, city.getId().toString()))
+    //         .body(result);
+    // }
 
     /**
      * GET  /cities : get all the cities.
@@ -113,12 +113,12 @@ public class CityResource {
      * @param id the id of the city to delete
      * @return the ResponseEntity with status 200 (OK)
      */
-    @DeleteMapping("/cities/{id}")
-    public ResponseEntity<Void> deleteCity(@PathVariable Long id) {
-        log.debug("REST request to delete City : {}", id);
-        cityService.delete(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
-    }
+    // @DeleteMapping("/cities/{id}")
+    // public ResponseEntity<Void> deleteCity(@PathVariable Long id) {
+    //     log.debug("REST request to delete City : {}", id);
+    //     cityService.delete(id);
+    //     return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    // }
 
     /**
      * SEARCH  /_search/cities?query=:query : search for the city corresponding

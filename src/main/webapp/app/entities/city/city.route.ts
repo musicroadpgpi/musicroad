@@ -49,45 +49,45 @@ export const cityRoute: Routes = [
             pageTitle: 'musicroadApp.city.home.title'
         },
         canActivate: [UserRouteAccessService]
-    },
-    {
-        path: 'new',
-        component: CityUpdateComponent,
-        resolve: {
-            city: CityResolve
-        },
-        data: {
-            authorities: ['ROLE_ADMIN'],
-            pageTitle: 'musicroadApp.city.home.title'
-        },
-        canActivate: [UserRouteAccessService]
-    },
-    {
-        path: ':id/edit',
-        component: CityUpdateComponent,
-        resolve: {
-            city: CityResolve
-        },
-        data: {
-            authorities: ['ROLE_ADMIN'],
-            pageTitle: 'musicroadApp.city.home.title'
-        },
-        canActivate: [UserRouteAccessService]
     }
+    // {
+    //     path: 'new',
+    //     component: CityUpdateComponent,
+    //     resolve: {
+    //         city: CityResolve
+    //     },
+    //     data: {
+    //         authorities: ['ROLE_ADMIN'],
+    //         pageTitle: 'musicroadApp.city.home.title'
+    //     },
+    //     canActivate: [UserRouteAccessService]
+    // },
+    // {
+    //     path: ':id/edit',
+    //     component: CityUpdateComponent,
+    //     resolve: {
+    //         city: CityResolve
+    //     },
+    //     data: {
+    //         authorities: ['ROLE_ADMIN'],
+    //         pageTitle: 'musicroadApp.city.home.title'
+    //     },
+    //     canActivate: [UserRouteAccessService]
+    // }
 ];
 
 export const cityPopupRoute: Routes = [
-    {
-        path: ':id/delete',
-        component: CityDeletePopupComponent,
-        resolve: {
-            city: CityResolve
-        },
-        data: {
-            authorities: ['ROLE_ADMIN'],
-            pageTitle: 'musicroadApp.city.home.title'
-        },
-        canActivate: [UserRouteAccessService],
-        outlet: 'popup'
-    }
+    // {
+    //     path: ':id/delete',
+    //     component: CityDeletePopupComponent,
+    //     resolve: {
+    //         city: CityResolve
+    //     },
+    //     data: {
+    //         authorities: ['ROLE_ADMIN'],
+    //         pageTitle: 'musicroadApp.city.home.title'
+    //     },
+    //     canActivate: [UserRouteAccessService],
+    //     outlet: 'popup'
+    // }
 ];
