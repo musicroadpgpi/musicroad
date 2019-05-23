@@ -16,7 +16,7 @@
             "elasticsearch": "Elasticsearch",
             "db": "Database",
             "refreshScope": "Refresh Scope",
-            "configServer": "Configuracin Servidor",
+            "configServer": "Configuración Servidor",
             "hystrix": "Hystrix"
         },
         "table": {

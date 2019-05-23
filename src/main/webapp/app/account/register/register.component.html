@@ -250,6 +250,9 @@
                         [(ngModel)]="registerAccount.coverPicture" />
                     <input type="hidden" class="form-control" name="coverPictureContentType"
                         id="field_coverPictureContentType" [(ngModel)]="registerAccount.coverPictureContentType" />
+                        <small class="alert alert-danger" *ngIf="errorImage" jhiTranslate="global.messages.error.picture">
+                            The cover picture can't be blank.
+                        </small>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.genre"

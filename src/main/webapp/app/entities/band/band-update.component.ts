@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer } from '@angular/core';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -44,7 +44,9 @@ export class BandUpdateComponent implements OnInit {
         protected collaborationService: CollaborationService,
         protected accountService: AccountService,
         protected elementRef: ElementRef,
-        protected activatedRoute: ActivatedRoute
+        protected elementRef2: ElementRef,
+        protected activatedRoute: ActivatedRoute,
+        private renderer: Renderer
     ) {}
 
     ngOnInit() {
@@ -98,8 +100,12 @@ export class BandUpdateComponent implements OnInit {
     previousState() {
         window.history.back();
     }
+    up() {
+        this.renderer.invokeElementMethod(this.elementRef2.nativeElement.querySelector('#field_bandName'), 'focus', []);
+    }
 
     save() {
+        this.up();
         this.isSaving = true;
         this.accountService.fetch().subscribe((response: HttpResponse<IUser>) => {
             this.band.user = response.body;
