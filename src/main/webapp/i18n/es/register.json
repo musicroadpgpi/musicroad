@@ -21,7 +21,7 @@
                 },
                 "componentNumber": {
                     "required": "Su número de componentes es obligatorio.",
-                    "pattern": "Su número de componentes sólo puede contener dígitos."
+                    "pattern": "Su número de componentes no puede ser 0."
                 },
                 "creationYear": {
                     "required": "Su año de creación es obligatorio.",

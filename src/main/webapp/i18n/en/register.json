@@ -18,7 +18,7 @@
                 },
                 "componentNumber": {
                     "required": "Your component number is required.",
-                    "pattern": "Your component number can only contain digits."
+                    "pattern": "Your component number can't be 0."
                 },
                 "city": {
                     "required": "A city is required."

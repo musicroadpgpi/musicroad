@@ -34,6 +34,7 @@ export class BandUpdateComponent implements OnInit {
     errorImage: string;
     errorCNumber: string;
     error: string;
+    load: boolean;
 
     constructor(
         protected dataUtils: JhiDataUtils,
@@ -105,6 +106,7 @@ export class BandUpdateComponent implements OnInit {
     }
 
     save() {
+        this.load = true;
         this.up();
         this.isSaving = true;
         this.accountService.fetch().subscribe((response: HttpResponse<IUser>) => {
@@ -123,6 +125,7 @@ export class BandUpdateComponent implements OnInit {
 
     protected onSaveSuccess() {
         this.isSaving = false;
+        this.load = false;
         this.previousState();
     }
 
@@ -132,6 +135,7 @@ export class BandUpdateComponent implements OnInit {
 
     private processError(response: HttpErrorResponse) {
         this.isSaving = false;
+        this.load = false;
         if (response.status === 400 && response.error.type === YEAR_ERROR) {
             this.errorYear = 'ERROR';
         } else if (response.status === 400 && response.error.type === IMAGE_ERROR) {

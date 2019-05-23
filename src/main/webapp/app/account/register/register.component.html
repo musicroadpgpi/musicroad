@@ -1,8 +1,15 @@
 
 <div>
     <div class="row justify-content-center">
+
         <div class="col-md-8">
+
             <h1 jhiTranslate="register.title">Registration</h1>
+
+            <div align="center">
+
+                    <img *ngIf="load" src="images/loading-26.gif" width="250" height="100">
+                    </div>
 
             <div class="alert alert-success" *ngIf="success" jhiTranslate="register.messages.success">
                 <strong>Registration saved!</strong>
@@ -160,9 +167,9 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.componentNumber"
                         for="field_componentNumber">Component Number</label>
-                    <input type="text" class="form-control" name="componentNumber" id="field_componentNumber" required
+                    <input type="number" class="form-control" name="componentNumber" id="field_componentNumber" required
                         placeholder="{{'global.form.componentNumber.placeholder' | translate}}"
-                        #componentNumber="ngModel" pattern="[0-9]*" [(ngModel)]="registerAccount.componentNumber" />
+                        #componentNumber="ngModel" pattern="[1-9]+[0-9]*" [(ngModel)]="registerAccount.componentNumber" />
 
                     <div *ngIf="componentNumber.dirty && componentNumber.invalid">
                         <small class="form-text text-danger" *ngIf="componentNumber.errors.required"
@@ -250,7 +257,7 @@
                         [(ngModel)]="registerAccount.coverPicture" />
                     <input type="hidden" class="form-control" name="coverPictureContentType"
                         id="field_coverPictureContentType" [(ngModel)]="registerAccount.coverPictureContentType" />
-                        <small class="alert alert-danger" *ngIf="errorImage" jhiTranslate="global.messages.error.picture">
+                        <small class="form-text text-danger" *ngIf="errorImage" jhiTranslate="global.messages.error.picture">
                             The cover picture can't be blank.
                         </small>
                 </div>
