@@ -13,6 +13,7 @@
         "messages": {
             "error": {
                 "picture": "The cover picture is empty or not is a correct image format.",
+                "pictureB": "The cover picture is so heavy (max: 1 MB).",
                 "year": "The creation year must be prior to the current one.",
                 "CNumber": "The component number must be more or equals than 1."
             }

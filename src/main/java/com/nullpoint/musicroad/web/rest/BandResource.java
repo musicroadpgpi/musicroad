@@ -3,6 +3,7 @@ package com.nullpoint.musicroad.web.rest;
 import com.nullpoint.musicroad.domain.Band;
 import com.nullpoint.musicroad.service.BandService;
 import com.nullpoint.musicroad.web.rest.errors.BadRequestAlertException;
+import com.nullpoint.musicroad.web.rest.errors.ByteException;
 import com.nullpoint.musicroad.web.rest.errors.ImageException;
 import com.nullpoint.musicroad.web.rest.errors.NumberException;
 import com.nullpoint.musicroad.web.rest.errors.YearException;
@@ -85,6 +86,9 @@ public class BandResource {
 
         if (band.getCoverPicture() == null) {
             throw new ImageException();
+        }
+        if(band.getCoverPicture().length > 1048500){
+            throw new ByteException();
         }
         if (band.getComponentNumber() < 1) {
             throw new NumberException();

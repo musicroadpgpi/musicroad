@@ -13,7 +13,8 @@ import {
     CONSTRAINT_VIOLATION_TYPE,
     YEAR_ERROR,
     IMAGE_ERROR,
-    NUMBER_ERROR
+    NUMBER_ERROR,
+    BYTE_ERROR
 } from 'app/shared';
 import { LoginModalService } from 'app/core';
 import { Register } from './register.service';
@@ -43,6 +44,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     errorCNumber: string;
     cargando: boolean;
     load: boolean;
+    errorImageB: string;
     constructor(
         protected dataUtils: JhiDataUtils,
         protected elementRef2: ElementRef,
@@ -141,6 +143,8 @@ export class RegisterComponent implements OnInit, AfterViewInit {
             this.errorYear = 'ERROR';
         } else if (response.status === 400 && response.error.type === IMAGE_ERROR) {
             this.errorImage = 'ERROR';
+        } else if (response.status === 400 && response.error.type === BYTE_ERROR) {
+            this.errorImageB = 'ERROR';
         } else if (response.status === 400 && response.error.type === NUMBER_ERROR) {
             this.errorCNumber = 'ERROR';
         } else {
