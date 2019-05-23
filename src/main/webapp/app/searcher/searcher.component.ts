@@ -1,5 +1,5 @@
 import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BandService } from 'app/entities/band/band.service';
 import { CityService } from 'app/entities/city/city.service';
 import { HttpErrorResponse, HttpHeaders, HttpResponse, HttpClient } from '@angular/common/http';
@@ -26,6 +26,7 @@ export class SearcherComponent implements OnInit {
     links: any;
     totalItems: number;
     title = 'app';
+    previousPage: number;
     genres = [
         'Pop',
         'Electronic',
@@ -70,7 +71,8 @@ export class SearcherComponent implements OnInit {
         protected parseLinks: JhiParseLinks,
         protected jhiAlertService: JhiAlertService,
         protected accountService: AccountService,
-        private titleService: Title
+        private titleService: Title,
+        private router: Router
     ) {
         this.currentSearch =
             this.activatedRoute.snapshot && this.activatedRoute.snapshot.params['search']
@@ -127,6 +129,7 @@ export class SearcherComponent implements OnInit {
         this.reverse = true;
         this.accountService.fetch().subscribe((response: HttpResponse<IUser>) => {
             this.user = response.body;
+            this.currentSearch = '!user.login:(' + this.user.login + ')';
             this.loadAll();
         });
         this.titleService.setTitle('Search');
@@ -138,7 +141,7 @@ export class SearcherComponent implements OnInit {
             this.bandService
                 .search({
                     query: this.currentSearch,
-                    page: this.page,
+                    page: this.page - 1,
                     size: this.itemsPerPage,
                     sort: this.sort()
                 })
@@ -159,7 +162,7 @@ export class SearcherComponent implements OnInit {
         }
         this.bandService
             .query({
-                page: this.page,
+                page: this.page - 1,
                 size: this.itemsPerPage,
                 sort: this.sort()
             })
@@ -214,7 +217,7 @@ export class SearcherComponent implements OnInit {
     }
 
     onSubmit() {
-        let query = '';
+        let query = '!user.login:(' + this.user.login + ')';
         const cityName: string = this.formSearch.get('city').value;
         const genre: string = this.formSearch.get('genre').value;
         // if (cityName !== '' && genre !== '') {
@@ -225,22 +228,42 @@ export class SearcherComponent implements OnInit {
         //     query = 'genre.equals=' + genre;
         // }
         if (cityName !== '' && genre !== '') {
-            query = query + 'genre:(' + genre + ') AND ' + 'city.name:(' + cityName + ')';
+            query = query + ' AND genre:(' + genre + ') AND ' + 'city.name:(' + cityName + ')';
         } else if (cityName !== '' && genre === '') {
-            query = query + 'city.name:(' + cityName + ')';
+            query = query + ' AND city.name:(' + cityName + ')';
         } else if (cityName === '' && genre !== '') {
-            query = query + 'genre:(' + genre + ')';
+            query = query + ' AND genre:(' + genre + ')';
         }
-        console.log(query);
-        this.search(query);
+        this.currentSearch = query;
+        this.transition();
     }
 
     protected paginateBands(data: IBand[], headers: HttpHeaders) {
         this.links = this.parseLinks.parse(headers.get('link'));
         this.totalItems = parseInt(headers.get('X-Total-Count'), 10);
+        this.bands = [];
         for (let i = 0; i < data.length; i++) {
             this.bands.push(data[i]);
         }
+    }
+
+    loadPage(page: number) {
+        if (page !== this.previousPage) {
+            this.previousPage = page;
+            this.transition();
+        }
+    }
+
+    transition() {
+        this.router.navigate(['/searcher'], {
+            queryParams: {
+                query: this.currentSearch,
+                page: this.page,
+                size: this.itemsPerPage,
+                sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
+            }
+        });
+        this.loadAll();
     }
 
     protected onError(errorMessage: string) {
