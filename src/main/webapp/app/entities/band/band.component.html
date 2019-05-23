@@ -34,7 +34,7 @@
                 <th *ngIf="isDesktop" ><span jhiTranslate="musicroadApp.band.componentNumber">Component Number</span></th>
                 <th *ngIf="isTablet" ><span jhiTranslate="musicroadApp.band.creationYear">Creation Year</span></th>
                 <th *ngIf="isDesktop" ><span jhiTranslate="musicroadApp.band.genre">Genre</span></th>
-                <th *ngIf="isTablet" ><span jhiTranslate="musicroadApp.band.description">Description</span></th>
+                <!-- <th *ngIf="isDesktop" ><span jhiTranslate="musicroadApp.band.bio">Bio</span></th> -->
                 <th *ngIf="isDesktop" ><span jhiTranslate="musicroadApp.band.picture">Picture</span> </th>
                 <th *ngIf="isDesktop" ><span jhiTranslate="musicroadApp.band.city">City</span></th>
                 <th *ngIf="isDesktop" ><span jhiTranslate="musicroadApp.band.user">User</span></th>
@@ -48,7 +48,7 @@
                     <td *ngIf="isDesktop">{{band.componentNumber}}</td>
                     <td *ngIf="isTablet">{{band.creationYear}}</td>
                     <td *ngIf="isDesktop" jhiTranslate="{{'musicroadApp.Genre.' + band.genre}}">{{band.genre}}</td>
-                    <td *ngIf="isTablet">{{band.description}}</td>
+                    <!-- <td *ngIf="isDesktop">{{band.bio}}</td> -->
                    <!-- <td *ngIf="isDesktop"><img [src]="band.coverPicture" [alt]="band.coverPicture" /></td>-->
                    <td *ngIf="isDesktop">
                         <img [src]="'data:' + band.coverPictureContentType + ';base64,' + band.coverPicture" style="max-height: 80px;" alt=""/>
