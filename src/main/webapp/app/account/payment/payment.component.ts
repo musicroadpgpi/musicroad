@@ -83,6 +83,7 @@ export class PaymentComponent {
     chargeCreditCard() {
         this.resetErrorMessages();
         const form = document.getElementsByTagName('form')[0];
+        form.cardNumber.value = form.cardNumber.value.trim();
         const numberCard: string = form.cardNumber.value;
         const expMonth: string = form.expMonth.value;
         const expYear: string = form.expYear.value;
