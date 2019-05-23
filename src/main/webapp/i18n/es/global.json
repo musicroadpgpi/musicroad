@@ -121,8 +121,8 @@
         "form": {
             "username": "Usuario",
             "username.placeholder": "Nombre de usuario",
-            "currentpassword": "Current password",
-            "currentpassword.placeholder": "Current password",
+            "currentpassword": "Contraseña Actual",
+            "currentpassword.placeholder": "Contraseña Actual",
             "newpassword": "Nueva contraseña",
             "newpassword.placeholder": "Nueva contraseña",
             "confirmpassword": "Confirmación de la nueva contraseña",

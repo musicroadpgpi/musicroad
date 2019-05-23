@@ -42,6 +42,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     errorTerms: string;
     errorCNumber: string;
     cargando: boolean;
+    load: boolean;
     constructor(
         protected dataUtils: JhiDataUtils,
         protected elementRef2: ElementRef,
@@ -76,12 +77,14 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     }
 
     register() {
+        this.load = true;
         this.ngAfterViewInit();
         if (this.registerAccount.password !== this.confirmPassword) {
             this.doNotMatch = 'ERROR';
-            this.cargando = false;
+            this.load = false;
         } else if (this.terms !== 'option1') {
             this.errorTerms = 'ERROR';
+            this.load = false;
         } else {
             this.doNotMatch = null;
             this.errorTerms = null;
@@ -97,6 +100,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
                 this.registerService.save(this.registerAccount).subscribe(
                     () => {
                         this.success = true;
+                        this.load = false;
                     },
                     response => this.processError(response)
                 );
@@ -125,6 +129,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         return option;
     }
     private processError(response: HttpErrorResponse) {
+        this.load = false;
         this.success = null;
         if (response.status === 400 && response.error.type === LOGIN_ALREADY_USED_TYPE) {
             this.errorUserExists = 'ERROR';
