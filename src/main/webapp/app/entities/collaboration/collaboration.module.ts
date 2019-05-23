@@ -15,6 +15,8 @@ import {
     collaborationPopupRoute
 } from './';
 
+import { FutureDateValidator } from './futureDate.directive';
+
 const ENTITY_STATES = [...collaborationRoute, ...collaborationPopupRoute];
 
 @NgModule({
@@ -25,7 +27,8 @@ const ENTITY_STATES = [...collaborationRoute, ...collaborationPopupRoute];
         CollaborationUpdateComponent,
         CollaborationDeleteDialogComponent,
         CollaborationCreateComponent,
-        CollaborationDeletePopupComponent
+        CollaborationDeletePopupComponent,
+        FutureDateValidator
     ],
     entryComponents: [
         CollaborationComponent,

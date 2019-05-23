@@ -25,7 +25,7 @@
                     <label class="form-control-label" jhiTranslate="musicroadApp.collaboration.proposedDate" for="field_proposedDate">Proposed Date</label>
                     <div class="input-group">
                         <input id="field_proposedDate" type="text" class="form-control" name="proposedDate" ngbDatepicker  #proposedDateDp="ngbDatepicker" [(ngModel)]="collaboration.proposedDate"
-                        #proposedDate="ngModel" required />
+                        #proposedDate="ngModel" required futureDate />
                         <span class="input-group-append">
                             <button type="button" class="btn btn-secondary" (click)="proposedDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
                         </span>
@@ -35,7 +35,10 @@
                         <small class="form-text text-danger" *ngIf="proposedDate.errors.required" jhiTranslate="musicroadApp.collaboration.messages.validate.proposedDate.required">
                             A proposed date is required.
                         </small>
-                        <small class="form-text text-danger" *ngIf="!proposedDate.errors.required && !dateIsPast" jhiTranslate="musicroadApp.collaboration.messages.validate.proposedDate.notValid">
+                        <small class="form-text text-danger" *ngIf="!proposedDate.errors.required && !proposedDate.errors.futureDate" jhiTranslate="musicroadApp.collaboration.messages.validate.proposedDate.notValid">
+                            The proposed date is not valid.
+                        </small>
+                        <small class="form-text text-danger" *ngIf="!proposedDate.errors.required && proposedDate.errors.futureDate" jhiTranslate="musicroadApp.collaboration.messages.validate.proposedDate.mustBeFuture">
                             The proposed date is not valid.
                         </small>
                     </div>

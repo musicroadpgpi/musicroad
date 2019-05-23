@@ -25,7 +25,7 @@
                 "validate": {
                     "proposedDate": {
                         "required": "A proposed date is required.",
-                        "notValid": "The proposed date is not a valid date.",
+                        "notValid": "The proposed date is not a valid date. Use a year-month-day format, for example 2186-12-31",
                         "mustBeFuture": "The proposed date must be future."
                     },
                     "message": {

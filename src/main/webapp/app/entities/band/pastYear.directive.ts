@@ -35,12 +35,9 @@ export class PastYearValidator implements AsyncValidator {
     }
 
     validation(expYear: string): ValidationErrors | null {
-        console.log(expYear);
         if (this.evaluateCreationYear(expYear)) {
-            console.log('BIEN');
             return null;
         } else {
-            console.log('MAL');
             return {
                 pastYear: {
                     valid: false
@@ -56,10 +53,8 @@ export class PastYearValidator implements AsyncValidator {
         if (isNaN(Number(expYear)) || expYear.includes(',') || expYear.includes('.')) {
             return false;
         }
-        console.log('HILA');
         const now: Date = new Date(Date.now());
         const year: Number = new Number(expYear);
-        console.log(now.getFullYear());
         if (now.getFullYear() < year) {
             return false;
         } else {
