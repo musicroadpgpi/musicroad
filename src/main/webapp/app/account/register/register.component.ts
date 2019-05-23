@@ -80,9 +80,11 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         this.load = true;
         this.ngAfterViewInit();
         if (this.registerAccount.password !== this.confirmPassword) {
+            this.errorTerms = null;
             this.doNotMatch = 'ERROR';
             this.load = false;
         } else if (this.terms !== 'option1') {
+            this.doNotMatch = null;
             this.errorTerms = 'ERROR';
             this.load = false;
         } else {
