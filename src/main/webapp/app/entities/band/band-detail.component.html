@@ -81,14 +81,11 @@
                     class="btn btn-info">
                 <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
             </button>
-
-            <ng-container *jhiHasAnyAuthority="'ROLE_USER'">
-                <button type="button"
-                        [routerLink]="['/band', band.id, 'edit']"
-                        class="btn btn-primary"
-                        *ngIf="user.authorities.includes('ROLE_ADMIN') || user.id === band.user.id">
-                    <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
-                </button>
+            <button type="button"
+                [routerLink]="['/band', 'edit-my-band']"
+                class="btn btn-primary"
+                *ngIf="user.id === band.user.id">
+            <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
         </div>
     </div>
 </div>
