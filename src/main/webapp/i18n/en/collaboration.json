@@ -4,7 +4,7 @@
             "home": {
                 "title": "Collaborations",
                 "createLabel": "Create a new Collaboration",
-                "createOrEditLabel": "Create or edit a Collaboration",
+                "createOrEditLabel": "Create Collaboration",
                 "search": "Search for Collaboration",
                 "mycollaborations": "My Collaborations"
             },

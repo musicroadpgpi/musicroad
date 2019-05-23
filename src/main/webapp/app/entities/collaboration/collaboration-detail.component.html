@@ -21,51 +21,43 @@
                         <dd>
                             <span *ngFor="let band of collaboration.bands">{{band.bandName}}<br></span>
                         </dd>
-                        <div *ngIf="false">
+                        <!-- <div *ngIf="false">
                             <dt><span jhiTranslate="musicroadApp.collaboration.accepted">Accepted</span></dt>
                             <dd>
                                 <span>{{collaboration.accepted}}</span>
                             </dd>
-                        </div>
+                        </div> -->
 
                     </dl>
 
-                    <button type="submit"
-                            (click)="previousState()"
-                            class="btn btn-info">
-                        <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
-                    </button>
-
-                    <button type="button" *ngIf="false"
+                    <!-- <button type="button" *ngIf="false"
                             [routerLink]="['/collaboration', collaboration.id, 'edit']"
                             class="btn btn-primary">
                         <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
-                    </button>
+                    </button> -->
+
+                    
 
                     <button type="submit"
+                            *ngIf="idOtherBand"
                             [routerLink]="['/collaboration-petition', idOtherBand, 'view']"
                             class="btn btn-info">
-                        <fa-icon [icon]="'eye'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.view">View</span>
+                        <fa-icon [icon]="'eye'"></fa-icon>&nbsp;<span jhiTranslate="musicroadApp.band.viewOtherBand">View</span>
                     </button>
+                    <br>
+                    <br>
                 </div>
             </div>
         </div>
 
-        <button type="submit" *ngIf="!collaboration"
-            (click)="previousState()"
-            class="btn btn-info">
+        <button type="submit"
+                *ngIf="collaboration"
+                (click)="previousState()"
+                class="btn btn-info">
             <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
         </button>
 
-        <div *ngIf="collaboration">
-            <button type="submit" *ngIf="!collaboration.bands"
-                (click)="previousState()"
-                class="btn btn-info">
-                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
-            </button>
-        </div>
-
-        <div *ngIf="collaboration">
+        <!-- <div *ngIf="collaboration">
             <div *ngIf="collaboration.bands">            
                 <button type="submit" *ngIf="!collaboration.bands.includes(userBand)"
                     (click)="previousState()"
@@ -73,7 +65,7 @@
                     <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
                 </button>
             </div>
-        </div>
+        </div> -->
 
     </div>
 </div>

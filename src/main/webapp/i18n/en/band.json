@@ -1,6 +1,7 @@
 {
     "musicroadApp": {
         "band": {
+            "viewOtherBand": "View the other band",
             "home": {
                 "title": "Bands",
                 "createLabel": "Create a new band",
