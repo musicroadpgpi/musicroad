@@ -25,7 +25,8 @@
                 },
                 "creationYear": {
                     "required": "Your creation year is required.",
-                    "pattern": "Your creation year can only contain digits."
+                    "pattern": "Your creation year can only contain digits.",
+                    "mustPast": "Your creation year must be in the past"
                 },
                 "bio": {
                     "required": "Your bio is required.",

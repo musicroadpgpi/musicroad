@@ -25,7 +25,8 @@
                 },
                 "creationYear": {
                     "required": "Su año de creación es obligatorio.",
-                    "pattern": "Su año de creación sólo puede contener dígitos."
+                    "pattern": "Su año de creación sólo puede contener dígitos.",
+                    "mustPast": "Su año de creación debe ser pasado"
                 },
                 "bio": {
                     "required": "Su biografía es obligatoria.",

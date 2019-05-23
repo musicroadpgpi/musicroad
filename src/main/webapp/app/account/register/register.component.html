@@ -181,7 +181,7 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.creationYear"
                         for="field_creationYear">Creation Year</label>
-                    <input type="text" class="form-control" name="creationYear" id="field_creationYear" required
+                    <input type="text" class="form-control" name="creationYear" id="field_creationYear" required pastYear
                         placeholder="{{'global.form.creationYear.placeholder' | translate}}" #creationYear="ngModel"
                         pattern="[0-9]*" [(ngModel)]="registerAccount.creationYear" />
 
@@ -194,11 +194,11 @@
                             jhiTranslate="register.messages.validate.creationYear.pattern">
                             Your creation year can only contain digits.
                         </small>
-                        
+                        <small class="form-text text-danger" *ngIf="creationYear.errors.pastYear"
+                            jhiTranslate="register.messages.validate.creationYear.mustPast">
+                            Must be in past.
+                        </small>
                     </div>
-                    <small class="form-text text-danger" *ngIf="errorYear" jhiTranslate="global.messages.error.year">
-                        The creation year must be prior that current one.
-                    </small>
 
                 </div>
                 <div class="form-group">

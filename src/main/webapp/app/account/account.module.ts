@@ -1,5 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { PastYearValidator } from './pastYear.directive';
 
 import { MusicroadSharedModule } from 'app/shared';
 
@@ -25,7 +26,8 @@ import { PaymentComponent } from './payment/payment.component';
         PasswordResetInitComponent,
         PasswordResetFinishComponent,
         SettingsComponent,
-        PaymentComponent
+        PaymentComponent,
+        PastYearValidator
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

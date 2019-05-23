@@ -51,7 +51,7 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="musicroadApp.band.creationYear"
                         for="field_creationYear">Creation Year</label>
-                    <input type="text" class="form-control" name="creationYear" id="field_creationYear" required
+                    <input type="text" class="form-control" name="creationYear" id="field_creationYear" required pastYear
                         #creationYear="ngModel" pattern="[0-9]*" [(ngModel)]="band.creationYear" />
 
                     <div *ngIf="creationYear.dirty && creationYear.invalid">
@@ -62,6 +62,10 @@
                         <small class="form-text text-danger" *ngIf="creationYear.errors.pattern"
                             jhiTranslate="register.messages.validate.creationYear.pattern">
                             Your component number can only contain digits.
+                        </small>
+                        <small class="form-text text-danger" *ngIf="creationYear.errors.pastYear"
+                            jhiTranslate="register.messages.validate.creationYear.mustPast">
+                            Must be in past.
                         </small>
                     </div>
 
