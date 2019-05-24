@@ -99,6 +99,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
             this.errorYear = null;
             this.errorImage = null;
             this.errorCNumber = null;
+            this.errorImageB = null;
             this.languageService.getCurrent().then(key => {
                 this.registerAccount.langKey = key;
                 this.registerService.save(this.registerAccount).subscribe(
