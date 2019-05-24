@@ -110,13 +110,9 @@ export class PaymentComponent {
                 cvc: form.cvc.value
             },
             (status: number, response: any) => {
-                if (this.expirationYearTooLarge) {
-                    this.paymentError = true;
-                } else if (status === 200) {
+                if (status === 200 && !this.paymentError) {
                     const token = response.id;
                     this.chargeCard(token);
-                } else {
-                    this.paymentError = true;
                 }
             }
         );
