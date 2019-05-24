@@ -71,6 +71,9 @@ public class AccountResource {
         if (managedUserVM.getCoverPicture() == null) {
             throw new ImageException();
         }
+        if(managedUserVM.getCoverPicture().length > 1048500){
+            throw new ByteException();
+        }
         if (managedUserVM.getComponentNumber() < 1) {
             throw new NumberException();
         } else {

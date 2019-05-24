@@ -152,6 +152,7 @@
                 "bandName": "El nombre de la banda no puede estar en blanco.",
                 "year": "El año de creación debe ser anterior al actual.",
                 "picture": "La foto de portada está vacía o no es un formato de imagen correcto.",
+                "pictureB": "La foto de portada es muy pesada (max: 1 MB).",
                 "terms": "Para continuar, debe aceptar los términos y condiciones.",
                 "CNumber": "El número de componentes debe ser mayor o igual a 1."
             },

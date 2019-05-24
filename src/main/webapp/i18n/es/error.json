@@ -14,6 +14,7 @@
             "error": {
                 "year": "El año de creación debe ser anterior al actual.",
                 "picture": "La foto de portada está vacía o no es un formato de imagen correcto.",
+                "pictureB": "La foto de portada es muy pesada (max: 1 MB).",
                 "CNumber": "El número de componentes debe ser mayor o igual a 1."
             }
         }
