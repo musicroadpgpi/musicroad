@@ -169,7 +169,8 @@
                     "required": "Your email is required.",
                     "invalid": "Your email is invalid.",
                     "minlength": "Your email is required to be at least 5 characters.",
-                    "maxlength": "Your email cannot be longer than 50 characters."
+                    "maxlength": "Your email cannot be longer than 50 characters.",
+                    "email": "It's not a valid email"
                 }
             }
         },
