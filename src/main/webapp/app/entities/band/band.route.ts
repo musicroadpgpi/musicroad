@@ -90,17 +90,17 @@ export const bandRoute: Routes = [
 ];
 
 export const bandPopupRoute: Routes = [
-    {
-        path: ':id/delete',
-        component: BandDeletePopupComponent,
-        resolve: {
-            band: BandResolve
-        },
-        data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'musicroadApp.band.home.title'
-        },
-        canActivate: [UserRouteAccessService],
-        outlet: 'popup'
-    }
+    // {
+    // path: ':id/delete',
+    // component: BandDeletePopupComponent,
+    // resolve: {
+    //     band: BandResolve
+    // },
+    // data: {
+    //     authorities: ['ROLE_USER'],
+    //     pageTitle: 'musicroadApp.band.home.title'
+    // },
+    // canActivate: [UserRouteAccessService],
+    // outlet: 'popup'
+    // }
 ];

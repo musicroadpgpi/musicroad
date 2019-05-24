@@ -70,33 +70,33 @@ export const collaborationRoute: Routes = [
             pageTitle: 'musicroadApp.collaboration.home.title'
         },
         canActivate: [UserRouteAccessService]
-    },
-    {
-        path: ':id/edit',
-        component: CollaborationUpdateComponent,
-        resolve: {
-            collaboration: CollaborationResolve
-        },
-        data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'musicroadApp.collaboration.home.title'
-        },
-        canActivate: [UserRouteAccessService]
     }
+    // {
+    //     path: ':id/edit',
+    //     component: CollaborationUpdateComponent,
+    //     resolve: {
+    //         collaboration: CollaborationResolve
+    //     },
+    //     data: {
+    //         authorities: ['ROLE_USER'],
+    //         pageTitle: 'musicroadApp.collaboration.home.title'
+    //     },
+    //     canActivate: [UserRouteAccessService]
+    // }
 ];
 
 export const collaborationPopupRoute: Routes = [
-    {
-        path: ':id/delete',
-        component: CollaborationDeletePopupComponent,
-        resolve: {
-            collaboration: CollaborationResolve
-        },
-        data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'musicroadApp.collaboration.home.title'
-        },
-        canActivate: [UserRouteAccessService],
-        outlet: 'popup'
-    }
+    // {
+    // path: ':id/delete',
+    // component: CollaborationDeletePopupComponent,
+    // resolve: {
+    //     collaboration: CollaborationResolve
+    // },
+    // data: {
+    //     authorities: ['ROLE_USER'],
+    //     pageTitle: 'musicroadApp.collaboration.home.title'
+    // },
+    // canActivate: [UserRouteAccessService],
+    // outlet: 'popup'
+    // }
 ];
