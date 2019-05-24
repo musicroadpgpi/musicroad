@@ -19,7 +19,7 @@ import { IUser, AccountService } from 'app/core';
 })
 export class SearcherComponent implements OnInit {
     currentSearch: string;
-    page: any;
+    page: any = 1;
     itemsPerPage: number;
     predicate: any;
     reverse: any;
@@ -121,7 +121,7 @@ export class SearcherComponent implements OnInit {
             });
         });
         this.itemsPerPage = ITEMS_PER_PAGE;
-        this.page = 0;
+        this.page = 1;
         this.links = {
             last: 0
         };
