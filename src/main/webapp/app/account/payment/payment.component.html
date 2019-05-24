@@ -61,6 +61,9 @@
             <small class="form-text text-danger" *ngIf="expirationDateIsPast" jhiTranslate="global.stripe.expirationDateIsPast">
                 The credit card has expired
             </small>
+            <small class="form-text text-danger" *ngIf="expirationYearTooLarge" jhiTranslate="global.stripe.expirationYearTooLarge">
+                Expiration year too large
+            </small>
 
             <div class="form-group">
                     <label class="form-control-label" jhiTranslate="global.stripe.cvc" for="cvc"> CVC
@@ -78,9 +81,13 @@
             </small>
 
 
-            <div class="row justify-content-center">
-            <button type="submit" class="btn btn-primary"  (click)="chargeCreditCard()"jhiTranslate="global.stripe.pay">Pay 9.95€</button>
+        <div class="row justify-content-center">
+            <button type="submit" [disabled]="disabled" class="btn btn-primary" (click)="chargeCreditCard()" jhiTranslate="global.stripe.pay">Pay 9.95€</button>
         </div>
+
+        <small class="form-text text-danger" *ngIf="paymentError" jhiTranslate="global.menu.account.paymentError">
+            Expiration year too large
+        </small>
 
 </form>
 

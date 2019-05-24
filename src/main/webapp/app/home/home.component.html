@@ -25,6 +25,9 @@
             <li class="list-inline-item" *ngIf="!isAuthenticated()">
                 <button type="button" class="btn btn-secondary text-center" routerLink="register"  routerLinkActive="active" jhiTranslate="global.menu.account.register">Sign Up</button>
             </li>
+            <li class="list-inline-item" *ngIf="isAuthenticated()">
+                <button type="button" class="btn btn-secondary text-center" routerLink="payment"  routerLinkActive="active" jhiTranslate="global.menu.account.suscribe">Subscribe</button>
+            </li>
         </ul>
     </div>
     <div class="col-md-1"></div>

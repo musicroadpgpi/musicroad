@@ -186,12 +186,12 @@
 
                     
 
-                    <li *jhiHasAnyAuthority="'ROLE_USER'">
+                    <!-- <li *jhiHasAnyAuthority="'ROLE_USER'">
                         <a class="dropdown-item" routerLink="payment" routerLinkActive="active" (click)="collapseNavbar()">
                             <fa-icon icon="wrench" fixedWidth="true"></fa-icon>
                             <span jhiTranslate="global.menu.account.payment">Payment</span>
                         </a>
-                    </li>
+                    </li> -->
 
                     <li *ngSwitchCase="true">
                         <a class="dropdown-item" (click)="logout()" id="logout">

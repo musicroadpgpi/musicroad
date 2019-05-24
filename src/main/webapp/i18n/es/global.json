@@ -17,7 +17,8 @@
             "cvcRequired": "Se requiere un cvc.",
             "cvcMustBeNumber": "El cvc debe ser un entero.",
             "cvcNotInRange": "El cvc debe ser un entero entre 100 y 999.",
-            "providedNumbers": "Números de tarjeta de crédito válidos para pagar. Por favor, úselos."
+            "providedNumbers": "Números de tarjeta de crédito válidos para pagar. Por favor, úselos.",
+            "expirationYearTooLarge": "El año de caducidad no puede ser mayor que 2060"
         },
         "gdpr": {
             "1": "Política de privacidad de Null Pointer Software",

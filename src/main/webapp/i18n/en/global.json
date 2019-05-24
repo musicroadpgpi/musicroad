@@ -17,7 +17,8 @@
             "cvcRequired": "A cvc is required.",
             "cvcMustBeNumber": "The cvc must be an integer.",
             "cvcNotInRange": "The cvc must be an integer between 100 and 999.",
-            "providedNumbers": "Valid credit card numbers for payment. Please, use them."
+            "providedNumbers": "Valid credit card numbers for payment. Please, use them.",
+            "expirationYearTooLarge": "The expiration year can't be greater than 2060"
         },
         "gdpr": {
             "1": "Privacy Policy for Null Pointer Software",

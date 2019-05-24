@@ -4,6 +4,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { AuthServerProvider } from 'app/core/auth/auth-jwt.service';
 import { SERVER_API_URL } from 'app/app.constants';
 import { JhiAlertService, JhiAlert } from 'ng-jhipster';
+import { Router } from '@angular/router';
 import { now } from 'moment';
 
 @Component({
@@ -22,11 +23,16 @@ export class PaymentComponent {
     expirationYearBlank = false;
     expirationMonthNotNumber = false;
     expirationYearNotNumber = false;
+    expirationYearTooLarge = false;
     expirationDateIsPast = false;
 
     cvcBlank = false;
     cvcNotNumber = false;
     cvcNotInRange = false;
+
+    paymentError = false;
+
+    disabled = false;
 
     validCreditCardNumbers = [
         '4242424242424242',
@@ -49,7 +55,8 @@ export class PaymentComponent {
         public stripeScriptTag: StripeScriptTag,
         protected jhiAlertService: JhiAlertService,
         protected http: HttpClient,
-        protected authServerProvider: AuthServerProvider
+        protected authServerProvider: AuthServerProvider,
+        private router: Router
     ) {
         this.stripeScriptTag.setPublishableKey(this.publishableKey);
     }
@@ -81,6 +88,7 @@ export class PaymentComponent {
 */
 
     chargeCreditCard() {
+        this.disabled = true;
         this.resetErrorMessages();
         const form = document.getElementsByTagName('form')[0];
         form.cardNumber.value = form.cardNumber.value.trim();
@@ -93,6 +101,7 @@ export class PaymentComponent {
         this.evaluateCreditCardNumber(numberCard);
         this.evaluateExpirationDate(expMonth, expYear);
         this.evaluateCvc(cvc);
+        this.isPaymentError();
         (<any>window).Stripe.card.createToken(
             {
                 number: form.cardNumber.value,
@@ -101,13 +110,13 @@ export class PaymentComponent {
                 cvc: form.cvc.value
             },
             (status: number, response: any) => {
-                if (status === 200) {
+                if (this.expirationYearTooLarge) {
+                    this.paymentError = true;
+                } else if (status === 200) {
                     const token = response.id;
                     this.chargeCard(token);
                 } else {
-                    console.log(response);
-                    this.jhiAlertService.error('global.menu.account.paymentError', null, null);
-                    console.log(response.error.message);
+                    this.paymentError = true;
                 }
             }
         );
@@ -126,13 +135,13 @@ export class PaymentComponent {
             if (resp !== undefined) {
                 if (resp !== null) {
                     this.jhiAlertService.success('global.menu.account.paymentSuccess', null, null);
-                    this.previousState();
+                    this.previousStateSuccess();
                 }
             }
         });
     }
 
-    previousState() {
+    previousStateSuccess() {
         window.history.back();
     }
 
@@ -144,9 +153,11 @@ export class PaymentComponent {
         this.expirationYearBlank = false;
         this.expirationMonthNotNumber = false;
         this.expirationYearNotNumber = false;
+        this.expirationYearTooLarge = false;
         this.expirationDateIsPast = false;
         this.cvcNotNumber = false;
         this.cvcNotInRange = false;
+        this.paymentError = false;
     }
 
     evaluateCreditCardNumber(numberCard: string) {
@@ -185,6 +196,9 @@ export class PaymentComponent {
             } else if (now.getFullYear() === year.valueOf() && now.getMonth() > month.valueOf()) {
                 this.expirationDateIsPast = true;
             }
+            if (year > 2060) {
+                this.expirationYearTooLarge = true;
+            }
         }
     }
 
@@ -199,6 +213,26 @@ export class PaymentComponent {
                     this.cvcNotInRange = true;
                 }
             }
+        }
+    }
+
+    isPaymentError() {
+        if (
+            this.expirationMonthBlank ||
+            this.expirationDateIsPast ||
+            this.expirationMonthNotNumber ||
+            this.expirationYearBlank ||
+            this.expirationYearNotNumber ||
+            this.expirationYearTooLarge ||
+            this.cvcBlank ||
+            this.cvcNotInRange ||
+            this.cvcNotNumber ||
+            this.numberCardNotNumber ||
+            this.numberCardBlank ||
+            this.numberCardNotValid
+        ) {
+            this.paymentError = true;
+            this.disabled = false;
         }
     }
 }
