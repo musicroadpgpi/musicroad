@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
@@ -26,6 +26,7 @@ export class CollaborationComponent implements OnInit, OnDestroy {
     itemsPerPage: number;
     links: any;
     page: any;
+    previousPage: any;
     predicate: any;
     reverse: any;
     totalItems: number;
@@ -41,29 +42,24 @@ export class CollaborationComponent implements OnInit, OnDestroy {
         protected parseLinks: JhiParseLinks,
         protected activatedRoute: ActivatedRoute,
         protected accountService: AccountService,
-        protected bandService: BandService
+        protected bandService: BandService,
+        private router: Router
     ) {
         this.collaborations = [];
         this.itemsPerPage = ITEMS_PER_PAGE;
-        this.page = 0;
+        this.page = 1;
         this.links = {
             last: 0
         };
         this.predicate = 'id';
         this.reverse = true;
-        console.log('SNAPCHAT : ' + this.activatedRoute.snapshot.url.toString());
         if (this.activatedRoute.snapshot.url.toString() === 'my-collaborations') {
             this.onlyMyCollaborations = true;
         }
         this.accountService.fetch().subscribe((response: HttpResponse<IUser>) => {
             this.user = response.body;
             if (this.onlyMyCollaborations) {
-                this.collaborationService
-                    .search({ query: 'bands.user.login:(' + this.user.login + ')' })
-                    .subscribe((responseQuery: HttpResponse<ICollaboration[]>) => {
-                        this.collaborations = responseQuery.body;
-                    });
-                this.currentSearch = '';
+                this.currentSearch = 'bands.user.login:(' + this.user.login + ')';
             } else {
                 this.currentSearch =
                     this.activatedRoute.snapshot && this.activatedRoute.snapshot.params['search']
@@ -78,7 +74,7 @@ export class CollaborationComponent implements OnInit, OnDestroy {
             this.collaborationService
                 .search({
                     query: this.currentSearch,
-                    page: this.page,
+                    page: this.page - 1,
                     size: this.itemsPerPage,
                     sort: this.sort()
                 })
@@ -87,29 +83,43 @@ export class CollaborationComponent implements OnInit, OnDestroy {
                     (res: HttpErrorResponse) => this.onError(res.message)
                 );
             return;
+        } else if (this.onlyMyCollaborations) {
+            this.collaborationService
+                .query({
+                    query: this.currentSearch = 'bands.user.login:(' + this.user.login + ')',
+                    page: this.page - 1,
+                    size: this.itemsPerPage,
+                    sort: this.sort()
+                })
+                .subscribe(
+                    (res: HttpResponse<ICollaboration[]>) => this.paginateCollaborations(res.body, res.headers),
+                    (res: HttpErrorResponse) => this.onError(res.message)
+                );
+        } else {
+            this.collaborationService
+                .query({
+                    page: this.page - 1,
+                    size: this.itemsPerPage,
+                    sort: this.sort()
+                })
+                .subscribe(
+                    (res: HttpResponse<ICollaboration[]>) => this.paginateCollaborations(res.body, res.headers),
+                    (res: HttpErrorResponse) => this.onError(res.message)
+                );
         }
-        this.collaborationService
-            .query({
-                page: this.page,
-                size: this.itemsPerPage,
-                sort: this.sort()
-            })
-            .subscribe(
-                (res: HttpResponse<ICollaboration[]>) => this.paginateCollaborations(res.body, res.headers),
-                (res: HttpErrorResponse) => this.onError(res.message)
-            );
     }
 
     reset() {
         this.page = 0;
         this.collaborations = [];
+        this.currentSearch = 'bands.user.login:(' + this.user.login + ')';
         this.loadAll();
     }
 
-    loadPage(page) {
-        this.page = page;
-        this.loadAll();
-    }
+    // loadPage(page) {
+    //     this.page = page;
+    //     this.loadAll();
+    // }
 
     clear() {
         this.collaborations = [];
@@ -119,7 +129,7 @@ export class CollaborationComponent implements OnInit, OnDestroy {
         this.page = 0;
         this.predicate = 'id';
         this.reverse = true;
-        this.currentSearch = '';
+        this.currentSearch = 'bands.user.login:(' + this.user.login + ')';
         this.loadAll();
     }
 
@@ -139,10 +149,26 @@ export class CollaborationComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        if (!this.onlyMyCollaborations) {
-            this.loadAll();
+        if (this.activatedRoute.snapshot.url.toString() === 'my-collaborations') {
+            this.onlyMyCollaborations = true;
         }
-        console.log('Colaboraciones ' + this.collaborations);
+        this.accountService.fetch().subscribe((response: HttpResponse<IUser>) => {
+            this.user = response.body;
+            if (this.onlyMyCollaborations) {
+                this.currentSearch = 'bands.user.login:(' + this.user.login + ')';
+            } else {
+                this.currentSearch =
+                    this.activatedRoute.snapshot && this.activatedRoute.snapshot.params['search']
+                        ? this.activatedRoute.snapshot.params['search']
+                        : '';
+            }
+            this.loadAll();
+            this.accountService.identity().then(account => {
+                this.currentAccount = account;
+            });
+            this.registerChangeInCollaborations();
+        });
+        this.loadAll();
         this.accountService.identity().then(account => {
             this.currentAccount = account;
         });
@@ -172,6 +198,7 @@ export class CollaborationComponent implements OnInit, OnDestroy {
     protected paginateCollaborations(data: ICollaboration[], headers: HttpHeaders) {
         this.links = this.parseLinks.parse(headers.get('link'));
         this.totalItems = parseInt(headers.get('X-Total-Count'), 10);
+        this.collaborations = [];
         for (let i = 0; i < data.length; i++) {
             this.collaborations.push(data[i]);
         }
@@ -179,5 +206,24 @@ export class CollaborationComponent implements OnInit, OnDestroy {
 
     protected onError(errorMessage: string) {
         this.jhiAlertService.error(errorMessage, null, null);
+    }
+
+    loadPage(page: number) {
+        if (page !== this.previousPage) {
+            this.previousPage = page;
+            this.transition();
+        }
+    }
+
+    transition() {
+        this.router.navigate(['/collaboration/my-collaborations'], {
+            queryParams: {
+                query: this.currentSearch,
+                page: this.page,
+                size: this.itemsPerPage,
+                sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
+            }
+        });
+        this.loadAll();
     }
 }
